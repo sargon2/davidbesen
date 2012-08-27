@@ -73,6 +73,7 @@ img {border: 0}
 <table height="100%" cellpadding="0" cellspacing="0" border="0"><tr><td valign="center"><center>
 <a href="/"><img src="myname.gif"></a><hr width="450">
 <?
+                $about = $_REQUEST['about'];
 		if(isset($about)) {
 ?>
 <table width="400"><tr><td>
@@ -84,7 +85,7 @@ Growing up, he hand-carved hiking trails into the wondrous face of the Rocky Mou
 In his free time he is a full-time IT professional for a research firm somewhere in northern Colorado.<br>
 You may contact him <a href="mailto:besen@softhome.net">here</a>.<br>
 <br>
-go <a href="/">back</a>
+go <a href="/old/">back</a>
 </span>
 </td></tr></table>
 <?		} else {
