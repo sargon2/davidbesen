@@ -1,0 +1,33 @@
+<html>
+<head>
+<title>Graphics project</title>
+</head>
+<body>
+<img src="graphics-project.png" width="509" height="439"/>
+<br>
+<br>
+For those interested, here is my final graphics project for CS410 (Fall 07).  It's an interactive animation of the death star blowing up a planet.<br>
+<br>
+Windows: <a href="deathstar.zip">download</a>, unzip, run<br>
+Linux: <a href="dbesen-project3.tar.gz">download</a>, untar, make, ./main<br>
+Mac: Download the linux version, replace all of the #include &lt;GL/glut.h&gt; with #include &lt;GLUT/glut.h&gt;, do "LIBS =  -framework OpenGL -framework GLUT -framework Foundation" in the makefile, make, ./main<br>
+<br>
+<a href="cs410prjct3besen.html">Here</a>'s the writeup I had to submit with the program.<br>
+<br>
+Controls:
+<ul>
+<li><b>e</b>: Move forward</li>
+<li><b>d</b>: Move backward</li>
+<li><b>s</b>: Move left (strafe)</li>
+<li><b>f</b>: Move right</li>
+<li><b>a</b>: Move up</li>
+<li><b>z</b>: Move down</li>
+<li><b>Left mouse click</b>: Toggle mouse look</li>
+<li><b>Spacebar</b>: Fire the Death Star's main weapon</li>
+<li><b>r</b>: Begin recording 180 frames of PPM at 30 fps (disabled in windows version)</li>
+<li>The mouse Y axis is reversed (if you move the mouse towards you, you look up)</li>
+<li>To view the animation again, you must restart the program (there is no reset key)</li>
+</ul>
+The star destroyer is directly above the camera.  Some of its surface normals are set incorrectly.  Also, both models are missing some faces, because they were non-convex.
+</body>
+</html>

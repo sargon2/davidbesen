@@ -1,0 +1,51 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>CS 410 Fall 07 Project  3 Report for David Besen</title>
+
+<link href="cs410prjct3.css" rel="stylesheet" type="text/css" />
+
+</head>
+
+<body>
+
+<h1 id="title">    The Death Star</h1>
+<h2 id="subtitle"> CS 410 Project 3, Fall 2007</h2>
+<h2 id="author">   David K. Besen</h2>
+
+<hr />
+
+<h2>Overview</h2>
+<p> I have created an animation of the <a href="http://en.wikipedia.org/wiki/Death_star">Death Star</a> blowing up a planet.  This takes place outside of the normal Star Wars storyline, as the Death Star from the actual story never attacked a planet located so close to it.  There is, however, an Imperial-class star destroyer included in the scene to help set the mood.
+</p>
+<p>
+I choose this animation since I believed it would be both visually compelling and within my means to complete during the allotted time.
+</p>
+<h2>Best View</h2>
+<p> When the program opens, the camera is initially positioned such that you can see the death star and the planet.  The star destroyer is located some distance directly above the camera.  The controls are as follows:</p>
+<ul>
+<li><b>e</b>: Move forward</li>
+<li><b>d</b>: Move backward</li>
+<li><b>s</b>: Move left (strafe)</li>
+<li><b>f</b>: Move right</li>
+<li><b>a</b>: Move up</li>
+<li><b>z</b>: Move down</li>
+<li><b>Left mouse click</b>: Toggle mouse look</li>
+<li><b>Spacebar</b>: Fire the Death Star's main weapon</li>
+<li><b>r</b>: Begin recording 180 frames at 30 fps (via the provided saveFrames function)</li>
+<li>The mouse Y axis is reversed (if you move the mouse towards you, you look up)</li>
+<li>To view the animation again, you must restart the program (there is no reset key)</li>
+</ul>
+</p>
+<h2>Technical Challenges</h2>
+<p> The planetary debris is implemented via glutSolidSphere with a low geometric resolution.  After creating a jagged sphere with this function, I scaled it in three dimensions by a random amount, and set its velocity and angular momentum.  Angular momentum was calculated (after some experimentation) by picking a random unit vector and rotating the debris around that vector at a random speed.
+</p>
+<p> The explosion is implemented by scaling a sphere and rotating its material color.  Notice that the (colored) explosion light is visible on the side of the debris facing it, as well as on the death star.  The death star's beam weapon is implemented with a simple thickened line.
+</p>
+<p> The death star and star destroyer models were taken from Google's 3d warehouse.  The death star is courtesy of <a href="http://sketchup.google.com/3dwarehouse/details?mid=699db2163a198b104d31a907396dad9c">toommcy</a> and the star destroyer is by <a href="http://sketchup.google.com/3dwarehouse/details?mid=8bbdae052f76ab48c27244dfa3ac406c">aggeldim</a>.  All non-convex faces were removed, and some non-planar polygons were adjusted so that my normal calculations would work right.
+</p>
+<p> I had originally intended to texture the planet to make it look more like a planet, but ran out of time.  Ah well, I am still happy with the results.  Overall, this was a very enjoyable assignment.
+</p>
+</body>
+</html>

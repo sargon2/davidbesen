@@ -26,6 +26,7 @@
 
 	$numimages = count($images);
 
+        $id = $_REQUEST['id'];
 	if(isset($id)) {
 		$image = "sized/" . $images[$id-1];
 ?>
@@ -42,7 +43,7 @@ img {border: 0}
 <center>
 <table height="100%" cellpadding="0" cellspacing="0" border="0"><tr><td valign="center">
 <table cellpadding="0" cellspacing="0" border="0"><tr><td colspan="3">
-<center><b><a href="/">up</a></b></center></td></tr>
+<center><b><a href="/old">up</a></b></center></td></tr>
 <tr><td><b><?if($id>1) { ?><a href="?id=<?=$id-1?>">back</a><? } else { ?><a href="?id=<?=$numimages?>">back</a><? } ?></b></td><td>
 <img src="<?=$image?>">
 </td><td><b><?if($id < $numimages) { ?><a href="?id=<?=$id+1?>">next</a><? } else { ?><a href="?id=1">next</a><? } ?></b></td></tr>

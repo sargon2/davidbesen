@@ -1,0 +1,61 @@
+@charset "UTF-8";
+/* CSS Document */
+
+body
+{
+    font-family: Garamond, Baskerville, Georgia, Times New Roman, Times, Serif;
+    font-size: 12pt;
+    line-height: 18pt;
+    margin: 0;
+    margin-top: 24pt;
+    width: 75%;
+    max-width: 800px;
+    padding: 1em 0 10px 100px;
+}
+
+p {
+   text-align:justify;
+}
+
+h1 {
+   font-weight    : normal;
+}
+
+h2 {
+   font-weight    : normal;
+}
+
+#title {
+   text-align     : center;
+}
+
+#subtitle {
+   text-align     : center;
+}
+
+#author{
+   text-align     : center;
+}
+
+a
+{
+    color: #830020;
+	text-decoration: none;
+	border-bottom: 1px dotted #666;
+}
+a:visited:
+{
+    color: #660020;
+	border-bottom: 1px dotted #ccc;
+}
+a:hover
+{
+	color: #766;
+	border-bottom: 1px solid #000;
+
+}
+a:active
+{
+	color: #000;
+	border-bottom: 1px solid #830020;
+}

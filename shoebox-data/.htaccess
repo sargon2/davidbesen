@@ -1,0 +1,2 @@
+SetEnvIf Request_URI "^\/shoebox" no-gzip
+SetEnvIf Request_URI "^\/shoebox" no-deflate
