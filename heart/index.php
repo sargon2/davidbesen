@@ -31,14 +31,14 @@ Update 12/26/08: I got a ton more tests (CT scan, x-rays, more ultrasounds, bloo
 Update 1/4/09: I'm still alive.  I have tons of media to upload, including disgusting pics of the thing.
 <br />
 <br />
-Update 1/7/08: So three days after the surgery, I went into rapid atrial fibrillation.  My heart rate was about 200 bpm.  They gave me medication for it, which didn't work, so they tried different medication, which eventually worked.  I was in it for about 7 hours.<br />
+Update 1/7/09: So three days after the surgery, I went into rapid atrial fibrillation.  My heart rate was about 200 bpm.  They gave me medication for it, which didn't work, so they tried different medication, which eventually worked.  I was in it for about 7 hours.<br />
 People say that it's like running a marathon, but it's really not.  When you're running a marathon, your heartbeat is steady; in AF, it's just random.
 <br />
 Yesterday morning (1/6) I went back into AF, and went to the emergency room.  They got me out of it, and did an echocardiogram, which showed some fluid around my heart.  I go back in tomorrow to have that looked at again.<br />
 I guess 30% of cardiac surgery patients go into AF, and it's just part of the recovery.<br />
 <br />
 <br />
-1/14/08: Still recovering.  My pericardial effusion is draining, and my resting heart rate is dropping back to normal levels.  On the down side, I've been in and out of AF.  The doctors are changing my meds around to try to keep me out of it; apparently if I spend too much time in it, the electrical pathways across my heart change, and I become more likely to go into it.<br />
+1/14/09: Still recovering.  My pericardial effusion is draining, and my resting heart rate is dropping back to normal levels.  On the down side, I've been in and out of AF.  The doctors are changing my meds around to try to keep me out of it; apparently if I spend too much time in it, the electrical pathways across my heart change, and I become more likely to go into it.<br />
 <br />
 Here's the pic of the myxoma:<br />
 <img src="http://j.xem.us/myxoma.jpg" /><br />
@@ -46,7 +46,7 @@ This thing would have killed me.  Listen to your body!
 <br />
 <br />
 <br />
-2/11/08: I'm doing well.  My atrial fibrillation has pretty much completely stopped.  My bones have mended to the point that I can open doors, drive, etc.  I had some complications with my incision, so I'm on antibiotics, but it's healing fine now.  I'll probably be back to work next week.
+2/11/09: I'm doing well.  My atrial fibrillation has pretty much completely stopped.  My bones have mended to the point that I can open doors, drive, etc.  I had some complications with my incision, so I'm on antibiotics, but it's healing fine now.  I'll probably be back to work next week.
 <br />
 <br />
 Interesting facts:<br />
