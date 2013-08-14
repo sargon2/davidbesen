@@ -14,13 +14,15 @@ header("Expires: Sat, 26 Jul 1997 05:00:00 GMT"); // Date in the past
 <p>As part of the followup for that, I went in to see a cardiologist.  He said he thought I just had a normal palpitation and hyperventilated, causing my other symptoms.  He also scheduled me for an echocardiogram to check for "extra tissue" that is apparently common in people my age, and can cause irregular heartbeats.</p>
 
 <p>12/19/08: My echo shows this:</p>
-<object width="500" height="468"><param name="allowfullscreen" value="true" /><param name="allowscriptaccess" value="always" /><param name="movie" value="http://vimeo.com/moogaloop.swf?clip_id=2608021&amp;server=vimeo.com&amp;show_title=1&amp;show_byline=1&amp;show_portrait=0&amp;color=00ADEF&amp;fullscreen=1" /><embed src="http://vimeo.com/moogaloop.swf?clip_id=2608021&amp;server=vimeo.com&amp;show_title=1&amp;show_byline=1&amp;show_portrait=0&amp;color=00ADEF&amp;loop=1&amp;fullscreen=1" type="application/x-shockwave-flash" allowfullscreen="true" allowscriptaccess="always" width="500" height="468"></embed></object>
+
+<iframe src="http://player.vimeo.com/video/2608021?portrait=0&amp;loop=1" width="500" height="468" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
+
 <br />
 <p>A 3cm mass in my left atrium.  The cardiologist says he thinks it might be a myxoma, which is a benign tumor.  Pieces of it could break off and cause stroke or sudden death.  I need open-heart surgery to remove it.</p>
 
 <p>12/22/08: I get a TEE (another kind of echocardiogram), which still shows the mass consistent with a myxoma.  The surgeon recommends against using the da Vinci robot to do the surgery, since it will keep me under longer.  He wants to just open my breastplate and get it out that way.  Here's a video from the TEE showing the tumor bouncing off my mitral valve:</p>
 
-<object width="500" height="460"><param name="allowfullscreen" value="true" /><param name="allowscriptaccess" value="always" /><param name="movie" value="http://vimeo.com/moogaloop.swf?clip_id=2608113&amp;server=vimeo.com&amp;show_title=1&amp;show_byline=1&amp;show_portrait=0&amp;color=00ADEF&amp;fullscreen=1" /><embed src="http://vimeo.com/moogaloop.swf?clip_id=2608113&amp;server=vimeo.com&amp;show_title=1&amp;show_byline=1&amp;show_portrait=0&amp;color=00ADEF&amp;loop=1&amp;fullscreen=1" type="application/x-shockwave-flash" allowfullscreen="true" allowscriptaccess="always" width="500" height="460"></embed></object>
+<iframe src="http://player.vimeo.com/video/2608113?portrait=0&amp;loop=1" width="500" height="460" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
 
 <br />
 <br />
