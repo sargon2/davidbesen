@@ -26,7 +26,7 @@
 
 	$numimages = count($images);
 
-        $id = $_REQUEST['id'];
+        @$id = $_REQUEST['id'];
 	if(isset($id)) {
 		$image = "sized/" . $images[$id-1];
 ?>
@@ -73,7 +73,7 @@ img {border: 0}
 <table height="100%" cellpadding="0" cellspacing="0" border="0"><tr><td valign="center"><center>
 <a href="/"><img src="myname.gif"></a><hr width="450">
 <?
-                $about = $_REQUEST['about'];
+                @$about = $_REQUEST['about'];
 		if(isset($about)) {
 ?>
 <table width="400"><tr><td>
