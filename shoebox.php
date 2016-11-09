@@ -1,1 +1,3 @@
-../shoebox/shoebox.php
+<?php
+header('Location: https://goo.gl/photos/VmBBuqhT9VRXFqGB7');
+?>
