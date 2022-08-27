@@ -1,0 +1,6 @@
+<!doctype html>
+<body>
+    <img style="width: 2000px;" src="network.svg"/>
+    <br />
+    <a href="https://dreampuf.github.io/GraphvizOnline/#${URL}">edit this graph</a>
+</body>
