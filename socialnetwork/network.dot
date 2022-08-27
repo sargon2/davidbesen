@@ -34,7 +34,7 @@ digraph G {
     Amy -> Sean
 
     Friends -> Alex, Joe, Kyle, Pat, "Andy Jenkins", Cole, IRC
-    IRC -> Mike, Alex, Joe, Pat, "Andy Jenkins"
+    IRC -> Mike, Alex, Joe, Pat, "Andy Jenkins", Nathan
 
     "Ex-Friends" -> "Michael Vincent", "Ben Wayne", "Ben Cameron", James, Nels, Marsha, "Dave Kapp", "Matt Bishop"
 
