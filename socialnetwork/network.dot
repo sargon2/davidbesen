@@ -10,7 +10,7 @@ digraph G {
     Nels, Alex, Mike, "Ben Cameron", "Dave Kapp", "Ben Wayne", "James", "Andy", "Andy Jenkins" [style=filled fillcolor=lightblue]
     Cole, Pat, Joe, "Michael Vincent", Kyle, Wade, Corey, Steven, "Mike (forevern00b)", Jef [style=filled fillcolor=lightblue]
     "Mike Stabnow", "Jon Yu", "Sahil", "Lokesh", "Ruthvik", "David Ward", Adam, Karl, Matt, Peter [style=filled fillcolor=lightblue]
-    Kevin, Sean, Bob, Gary, "Michael Scheetz", Don, "Matt Bishop" [style=filled fillcolor=lightblue]
+    Kevin, Sean, Bob, Gary, "Michael Scheetz", Don, "Matt Bishop", Gurov, Nathan [style=filled fillcolor=lightblue]
 
     Deceased [style=filled fillcolor=black fontcolor=white]
 
