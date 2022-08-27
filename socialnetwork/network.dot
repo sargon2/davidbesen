@@ -1,0 +1,57 @@
+digraph G {
+    layout=neato;
+    // overlap values: scale prism false voronoi scalexy compress 
+    overlap=scalexy;
+
+    Me [shape=doublecircle style=bold]
+
+    Mary, Audrey, Bonnie, Liza, Marsha, Amy, Nancy, Linda, "Judy Besen", "Judy Glades", Dev [style=filled fillcolor=pink]
+
+    Nels, Alex, Mike, "Ben Cameron", "Dave Kapp", "Ben Wayne", "James", "Andy", "Andy Jenkins" [style=filled fillcolor=lightblue]
+    Cole, Pat, Joe, "Michael Vincent", Kyle, Wade, Corey, Steven, "Mike (forevern00b)", Jef [style=filled fillcolor=lightblue]
+    "Mike Stabnow", "Jon Yu", "Sahil", "Lokesh", "Ruthvik", "David Ward", Adam, Karl, Matt, Peter [style=filled fillcolor=lightblue]
+    Kevin, Sean, Bob, Gary, "Michael Scheetz", Don, "Matt Bishop" [style=filled fillcolor=lightblue]
+
+    Deceased [style=filled fillcolor=black fontcolor=white]
+
+    Me -> Friends, Family, Coworkers
+    Coworkers -> "Current coworkers"
+    Coworkers -> "Previous coworkers"
+    Me -> "Ex-Friends"
+    Me -> "Ex-Lovers"
+
+    "Ex-Lovers" -> Mary, Audrey, Bonnie, Liza, Dev
+
+    Family -> "Immediate family", "Mom's side", "Dad's side"
+    "Mom's side" -> "Gary and Judy"
+    "Immediate family" -> Amy, Bob, Linda
+    "Gary and Judy" -> Gary, "Judy Glades"
+    "Mom's side" -> Nancy, Kevin, Karl
+    "Dad's side" -> Adam, Matt, Peter, Andy, "Judy Besen"
+
+    Deceased -> Andy, Karl
+
+    Amy -> Sean
+
+    Friends -> Alex, Joe, Kyle, Pat, "Andy Jenkins", Cole, IRC
+    IRC -> Mike, Alex, Joe, Pat, "Andy Jenkins"
+
+    "Ex-Friends" -> "Michael Vincent", "Ben Wayne", "Ben Cameron", James, Nels, Marsha, "Dave Kapp", "Matt Bishop"
+
+    Kyle -> "Mike (forevern00b)"
+
+    "Previous coworkers" -> Steven, Jef, Corey, Wade, "Mike Stabnow", Kyle, Don, "Michael Scheetz", Liza, Pat
+
+    "Current coworkers" -> "David Ward", Sahil, "Jon Yu", Ruthvik, Lokesh
+
+    "Junior Rangers" [shape=box]
+    "Junior Rangers" -> Me, Liza, "Ben Wayne"
+    "High School" [shape=box]
+    "High School" -> Me, Audrey, Mary, "Michael Vincent", "Ben Wayne", "Ben Cameron"
+
+    College [shape=box]
+    College -> Me, Bonnie, Alex
+
+    "Grad school" [shape=box]
+    "Grad school" -> Me, Cole
+}
