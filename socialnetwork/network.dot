@@ -1,6 +1,7 @@
 digraph G {
+    // layout engines: dot neato fdp sfdp circo twopi nop nop2 osage patchwork
     layout=neato;
-    // overlap values: scale prism false voronoi scalexy compress 
+    // overlap values: scale prism false voronoi scalexy compress
     overlap=scalexy;
 
     Me [shape=doublecircle style=bold]
