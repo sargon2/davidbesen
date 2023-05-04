@@ -10,10 +10,15 @@
   <header>
     <h1>Dave's Video Game Hall of Fame</h1>
   </header>
-  <main>
+  <main id="game-list">
     <section class="description">
       <p>This is my gaming hall of fame. Games are inducted either because I can't help but keep returning to them over and over, or because I played them once and they forever changed how I view gaming.</p>
     </section>
+    <nav id="pagination-top" class="pagination">
+      <button id="prev-btn-top" disabled>Previous</button>
+      <div id="pages-top" class="pages"></div>
+      <button id="next-btn-top">Next</button>
+    </nav>
     <section class="game">
       <img src="images/portal.jpg" alt="Portal">
       <div class="game-info">
@@ -275,8 +280,68 @@
     </section>
     <!-- Add more game sections as needed -->
   </main>
+  <nav id="pagination-bottom" class="pagination">
+    <button id="prev-btn-bottom" disabled>Previous</button>
+    <div id="pages-bottom" class="pages"></div>
+    <button id="next-btn-bottom">Next</button>
+  </nav>
   <footer>
     <p>Created by David K. Besen - 2023</p>
   </footer>
+  <script>
+const gameList = document.getElementById('game-list');
+const prevBtns = document.querySelectorAll('[id^="prev-btn"]');
+const nextBtns = document.querySelectorAll('[id^="next-btn"]');
+const pagesContainers = document.querySelectorAll('.pages');
+const gamesPerPage = 10; // Adjust the number of games per page
+let currentPage = 1;
+
+function showPage(page) {
+  const games = Array.from(gameList.getElementsByClassName('game'));
+  const totalPages = Math.ceil(games.length / gamesPerPage);
+  const startIndex = (page - 1) * gamesPerPage;
+  const endIndex = startIndex + gamesPerPage;
+
+  games.forEach((game, index) => {
+    game.style.display = (index >= startIndex && index < endIndex) ? '' : 'none';
+  });
+
+  prevBtns.forEach(btn => btn.disabled = (page <= 1));
+  nextBtns.forEach(btn => btn.disabled = (page >= totalPages));
+
+  pagesContainers.forEach(container => {
+    container.innerHTML = '';
+    for (let i = 1; i <= totalPages; i++) {
+      const pageBtn = document.createElement('button');
+      pageBtn.textContent = i;
+      pageBtn.classList.toggle('current', i === page);
+      pageBtn.addEventListener('click', () => {
+        currentPage = i;
+        showPage(currentPage);
+      });
+      container.appendChild(pageBtn);
+    }
+  });
+}
+
+prevBtns.forEach(btn => btn.addEventListener('click', () => {
+  currentPage--;
+  showPage(currentPage);
+}));
+
+document.getElementById('next-btn-top').addEventListener('click', () => {
+  currentPage++;
+  showPage(currentPage);
+});
+
+document.getElementById('next-btn-bottom').addEventListener('click', () => {
+  currentPage++;
+  showPage(currentPage);
+  // the other option for behavior is 'smooth'
+  document.getElementById('pagination-top').scrollIntoView({ behavior: 'auto' });
+});
+
+showPage(currentPage);
+  </script>
 </body>
 </html>

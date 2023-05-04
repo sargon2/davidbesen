@@ -60,6 +60,37 @@ main {
   color: #777;
 }
 
+/* Add these styles to your existing CSS */
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.pages {
+  display: flex;
+  margin: 0 1rem;
+}
+
+.pages button {
+  background-color: transparent;
+  border: none;
+  color: #333;
+  cursor: pointer;
+  font-size: 1rem;
+  margin: 0 0.25rem;
+  padding: 0.25rem;
+  text-decoration: underline;
+}
+
+.pages button.current {
+  color: #333;
+  font-weight: bold;
+  text-decoration: none;
+}
+
 footer {
   text-align: center;
   padding: 1rem;
