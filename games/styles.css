@@ -104,6 +104,11 @@ main {
   text-decoration: none;
 }
 
+a.darklink:link { color: #333; }
+a.darklink:visited { color: #333; }
+a.darklink:hover { color: #333; }
+a.darklink:active { color: #333; }
+
 footer {
   text-align: center;
   padding: 1rem;
