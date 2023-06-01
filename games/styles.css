@@ -104,10 +104,10 @@ main {
   text-decoration: none;
 }
 
-a.darklink:link { color: #333; }
-a.darklink:visited { color: #333; }
-a.darklink:hover { color: #333; }
-a.darklink:active { color: #333; }
+a.whitelink:link { color: #fff; }
+a.whitelink:visited { color: #fff; }
+a.whitelink:hover { color: #fff; }
+a.whitelink:active { color: #fff; }
 
 footer {
   text-align: center;
