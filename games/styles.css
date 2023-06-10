@@ -64,6 +64,10 @@ main {
   margin-top: 1em;
 }
 
+.game-info p {
+  white-space: pre-wrap;
+}
+
 .release-year {
   font-size: 1rem;
   font-weight: normal;
