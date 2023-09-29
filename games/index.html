@@ -262,6 +262,10 @@
         <p>Celeste started at a game jam as a <a href="https://www.lexaloffle.com/pico-8.php">Pico-8</a> game.  At first, it seems like a run-of-the-mill platformer, but as you play you realize it has a lot of depth.  The player movement is tuned absolutely perfectly.  There are speedrunning techniques built into the game that no normal player would ever need, but that are there for the serious players.  The game scales its difficulty well.  The dialogue is a little on-the-nose, but still somehow adds to the atmosphere of the game well.  The art in the different areas is detailed and charming.  But the real reason this game was inducted is because of its music, composed by Lena Raine.  The music is varied -- it can be simple, complex, slow, fast, moody, nostalgic, or haunting... but above all, it is consistently spellbinding.</p>
       </div>
     </section>
+    <section class="changelog">
+      <p><b><u>Changelog</u></b></p>
+      <p><b>9/29/2023</b> Initial 34 games published.</p>
+    </section>
     <!-- Add more game sections as needed -->
     <nav id="pagination-bottom" class="pagination pagination-bottom">
       <button id="prev-btn-bottom" disabled>Previous</button>
@@ -306,6 +310,13 @@ function showPage(page) {
       container.appendChild(pageBtn);
     }
   });
+
+  changelogs = gameList.getElementsByClassName('changelog');
+  if(page < totalPages) {
+    changelogs[0].style.display = 'none';
+  } else {
+    changelogs[0].style.display = '';
+  }
 }
 
 prevBtns.forEach(btn => btn.addEventListener('click', () => {

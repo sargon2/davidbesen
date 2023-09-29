@@ -35,6 +35,11 @@ main {
   text-align: center;
 }
 
+.changelog {
+  font-size: 80%;
+  margin-top: 2rem;
+}
+
 .game {
   display: flex;
   background-color: #fff;
