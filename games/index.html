@@ -207,6 +207,13 @@
       </div>
     </section>
     <section class="game">
+      <img src="images/celeste.jpg" alt="Celeste">
+      <div class="game-info">
+        <h2>Celeste <span class="release-year">(2018)</span></h2>
+        <p>Celeste started at a game jam as a <a href="https://www.lexaloffle.com/pico-8.php">Pico-8</a> game.  At first, it seems like a run-of-the-mill platformer, but as you play you realize it has a lot of depth.  The player movement is tuned absolutely perfectly.  There are speedrunning techniques built into the game that no normal player would ever need, but that are there for the serious players.  The game scales its difficulty well.  The dialogue is a little on-the-nose, but still somehow adds to the atmosphere of the game well.  The art in the different areas is detailed and charming.  But the real reason this game was inducted is because of its music, composed by Lena Raine.  The music is varied -- it can be simple, complex, slow, fast, moody, nostalgic, or haunting... but above all, it is consistently spellbinding.</p>
+      </div>
+    </section>
+    <section class="game">
       <img src="images/stanleyparable.jpg" alt="Tetris">
       <div class="game-info">
         <h2>Stanley Parable <span class="release-year">(2013)</span></h2>
@@ -241,32 +248,10 @@
         <p>Starcraft was a logical progression of the real-time strategy genre after Warcraft.  It was built with care, and tuned carefully over time, and becamse a worldwide phenomenon as one of the first e-sports games.  One result of the competitive Starcraft scene was the concept of "APM" - Actions Per Minute.  Players who did a large number of meaningless actions such as pressing buttons and clicking (i.e. making selection boxes or clicking on units) quite a lot generally outperformed their peers who didn't do these things.  Why is that? Is it because the sheer number of orders they're giving units is overwhelming the enemy?  No.  I think it's because interacting with the game more increases your connection with the game.  When you're reading a novel, you're interacting with it constantly, and that increases your immersion in the novel's world; likewise, the more you interact with a game, the more immersive it is.  This is a surprising and core concept, and Starcraft (perhaps unintentionally) taught it to us.</p>
       </div>
     </section>
-    <section class="game">
-      <img src="images/hearthstone.jpg" alt="Hearthstone">
-      <div class="game-info">
-        <h2>Hearthstone <span class="release-year">(2014)</span></h2>
-        <p></p>
-      </div>
-    </section>
-    <section class="game">
-      <img src="images/megamanx.jpg" alt="Mega Man X">
-      <div class="game-info">
-        <h2>Mega Man X <span class="release-year">(1993)</span></h2>
-        <p></p>
-      </div>
-    </section>
-    <section class="game">
-      <img src="images/celeste.jpg" alt="Celeste">
-      <div class="game-info">
-        <h2>Celeste <span class="release-year">(2018)</span></h2>
-        <p>Celeste started at a game jam as a <a href="https://www.lexaloffle.com/pico-8.php">Pico-8</a> game.  At first, it seems like a run-of-the-mill platformer, but as you play you realize it has a lot of depth.  The player movement is tuned absolutely perfectly.  There are speedrunning techniques built into the game that no normal player would ever need, but that are there for the serious players.  The game scales its difficulty well.  The dialogue is a little on-the-nose, but still somehow adds to the atmosphere of the game well.  The art in the different areas is detailed and charming.  But the real reason this game was inducted is because of its music, composed by Lena Raine.  The music is varied -- it can be simple, complex, slow, fast, moody, nostalgic, or haunting... but above all, it is consistently spellbinding.</p>
-      </div>
-    </section>
     <section class="changelog">
       <p><b><u>Changelog</u></b></p>
-      <p><b>9/29/2023</b> Initial 34 games published.</p>
+      <p><b>9/29/2023</b> Initial 32 games published.</p>
     </section>
-    <!-- Add more game sections as needed -->
     <nav id="pagination-bottom" class="pagination pagination-bottom">
       <button id="prev-btn-bottom" disabled>Previous</button>
       <div id="pages-bottom" class="pages"></div>
@@ -281,7 +266,7 @@ const gameList = document.getElementById('game-list');
 const prevBtns = document.querySelectorAll('[id^="prev-btn"]');
 const nextBtns = document.querySelectorAll('[id^="next-btn"]');
 const pagesContainers = document.querySelectorAll('.pages');
-const gamesPerPage = 10; // Adjust the number of games per page
+const gamesPerPage = 8;
 let currentPage = 1;
 
 function showPage(page) {
