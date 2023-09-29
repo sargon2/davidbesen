@@ -65,7 +65,10 @@ main {
 }
 
 .game-info blockquote {
-  margin-left: 40px;
+  margin-left: 25px;
+  padding-left: 15px;
+  margin-right: 40px;
+  border-left: thick solid #666;
 }
 
 .game-info p + p {
