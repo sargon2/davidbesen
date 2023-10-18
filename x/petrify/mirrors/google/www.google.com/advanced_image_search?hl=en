@@ -1,0 +1,36 @@
+<html><head><META HTTP-EQUIV="content-type" CONTENT="text/html; charset=ISO-8859-1"><title>Google Advanced&nbsp;Image&nbsp;Search</title><style><!--
+body { margin-right: 1em; margin-left: 1em;}
+ // --></style>
+<style><!--
+body,td,div,.p,a{font-family:arial,sans-serif}
+div,td{color:#000}
+.f,.fl:link{color:#6f6f6f}
+a:link,.w,a.w:link,.w a:link{color:#00c}
+a:visited,.fl:visited{color:#551a8b}
+a:active,.fl:active{color:#f00}
+.t a:link,.t a:active,.t a:visited,.t{color:#ffffff}
+.t{background-color:#224499}
+.h{color:#224499;font-size:14px}
+.i,.i:link{color:#a90a08}
+.a,.a:link{color:#008000}
+.z{display:none}
+div.n {margin-top: 1ex}
+.n a{font-size:10pt; color:#000}
+.n .i{font-size:10pt; font-weight:bold}
+.q a:visited,.q a:link,.q a:active,.q {text-decoration: none; color: #00c;}
+.b{font-size: 12pt; color:#00c; font-weight:bold}
+//-->
+</style>
+<script><!--
+function setFocus() { 
+document.f.as_q.focus(); }
+// -->
+</script></head>
+
+<body alink=#ff0000 bgcolor=#ffffff link=#0000cc text=#000000 vlink=#551a8b onLoad="setFocus()"><font face=arial,sans-serif><form method=GET  action="/images" name=f><table width=99% border=0 cellpadding=0 cellspacing=2><tr><td rowspan=2 width=1%><table cellpadding=0 cellspacing=0 border=0><tr><td align=right valign=bottom><a href=index.html><img src=images/res0.gif alt="Go to Google Image Search Home" border=0 width=110 height=58></a></td><td valign=bottom><a href=index.html><img src=images/res1.gif border=0 width=38 height=58 alt=""></a></td><td valign=bottom><a href=index.html><img src=images/res2.gif border=0 width=52 height=58 alt=""></a></td></tr><tr><td align=right valign=top class=h><b>Image Search</b></td><td valign=top><a href=index.html><img src=images/res3.gif border=0 width=38 height=20 alt=""></a></td><td valign=top><font color=#6f6f6f style=font-size:14px>&nbsp;</font></td></tr></table></td><td valign=bottom align=right><font face=arial,sans-serif size=-1><a href=help/faq_images.html>Images Help</a> | <a href=about.html>All About Google</a></td></tr><tr><td valign=top><table cellspacing=2 cellpadding=2 border=0 width=100%><tr bgcolor=#224499><td><font face=arial,sans-serif color=#ffffff><b>&nbsp;Advanced&nbsp;Image&nbsp;Search</font></td></tr></table></td></tr></table><p><table cellspacing=0 cellpadding=3 width=99%><tr bgcolor=#bbcced><td><table width=100% cellspacing=0 cellpadding=0><tr bgcolor=#bbcced><td><table width=100% cellspacing=0 cellpadding=2><tr><td valign=top width=15%><font size=-1><br><b>Find results </b></font></td><td width=85%><table width=100% cellpadding=2 cellspacing=0><tr><td><font size=-1>related to <b>all</b> of the words</font></td><td><input type=text value="" name=as_q size=25>
+<script>
+<!--
+document.f.as_q.focus();
+// -->
+</script>
+</td><td valign=top rowspan=4><font size=-1><input type=hidden name=num value=10><input type=submit name=btnG value="Google Search"></font></td></tr><tr><td nowrap><font size=-1>related to the <b>exact phrase</b></font></td><td><input type=text size=25 value="" name=as_epq></td></tr><tr><td nowrap><font size=-1>related to <b>any</b> of the words</font></td><td><input type=text size=25 value="" name=as_oq></td></tr><tr><td nowrap><font size=-1><b>not related</b> to the words</font></td><td><input type=text size=25 value="" name=as_eq></td></tr></table></td></tr></table></td></tr><tr bgcolor=#ffffff><td><table width=100% cellspacing=0 cellpadding=2><tr><td width=15%><font size=-1><b>Size</b></font></td><td width=40% nowrap><font size=-1>Return images that are</font></td><td><font size=-1><select name=imgsz><option value="">any size<option value="icon">icon-sized<option value="small">small<option value="medium">medium<option value="large">large<option value="xlarge">very large<option value="xxlarge">wallpaper-sized</select> </font></td></tr><tr><td width=15%><font size=-1><b>Filetypes</b></font></td><td width=40%><font size=-1>Return only image files formatted as</font></td><td><font size=-1><select name=as_filetype><option value="">any filetype<option value="jpg">JPG files<option value="gif">GIF files</select> </font></td></tr><tr><td width=15%><font size=-1><b>Coloration</b></font></td><td width=40% nowrap><font size=-1>Return only images in</font></td><td><font size=-1><select name=imgc><option value="">any colors<option value="mono">black and white<option value="gray">grayscale<option value="color">full color</select> </font></td></tr><tr><td width=15%><font size=-1><b>Domains</b></font></td><td width=40% nowrap><font size=-1>Return images from the site or domain</font></td><td><font size=-1><input type=text value="" size=30 name=as_sitesearch></font></td></tr><tr><td width=15%><font size=-1><b>Mature Content</b></font></td><td width=40% nowrap colspan=2><font size=-1><input type=radio value=off name=imgsafe>No filtering&nbsp;&nbsp;&nbsp;&nbsp;<input type=radio checked value=active name=imgsafe>Use mature content filter</font></td></tr></table></td></tr></table></td></tr></form></table><p><center><font color=#6f6f6f size=-1>&copy;2002 Google</font></center></font></body></html>

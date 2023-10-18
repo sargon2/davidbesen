@@ -1,0 +1,164 @@
+<BR> Project Drawboard, http://sourceforge.net/projects/drawboard
+<BR> Author: Tomek "TomasH" Zielinski, tomash@fidonet.org.pl
+<BR>
+<BR> v 1.4 (2002-12-25 "Christmas Edition") 
+<BR> + board background can now be loaded from file or network. See server -b 
+<BR>   switch in documentation for details (this feature isn't used by default) 
+<BR> + board background can now be also replaced by a new one in any moment by
+<BR>   connecting to server on specified port and giving new picture 
+<BR>   URL/filename, see the -l server switch in documentation.
+<BR>
+<BR> v 1.3 (2002-10-15)
+<BR> + Drawboard client goes international, it can now display sentences 
+<BR>   in your favourite language. English, Polish and German are 
+<BR>   currently supported, please contribute your language!
+<BR> @ InfoPeople and ImagePrint bugfix
+<BR>
+<BR> v 1.2 (2002-10-07)
+<BR> + InfoPerson feature added (get current number of users with CGI)
+<BR> + imageprint features added (get current PNG image via http)
+<BR>   (Thanks to Manuel Kiessling for inspiration)
+<BR>
+<BR> v 1.1 (2002-09-05)
+<BR> + "onlyview" mode added, useful for e-teaching (thanks to Simon 
+<BR>   Triantafillou for motivation)
+<BR>
+<BR> v 1.0 (2002-08-08)
+<BR> @ about box replaced with a new one
+<BR>
+<BR> v 0.75 (2002-07-21)
+<BR> + menu transparency added (hack, not a real one)
+<BR> + graphics load error raports not loaded images
+<BR> @ disable networking when images load error
+<BR>
+<BR> v 0.71 (2002-04-09)
+<BR> + finally created JAR package 
+<BR> + Text tool backspace handling added
+<BR> + Polish and German national characters added (thanx to Kay for umlaut's)
+<BR>
+<BR> v 0.70 (2002-03-05)
+<BR> + image e-mailing feature added
+<BR> @ small initialization error fixed
+<BR>
+<BR> v 0.61 (2002-02-25)
+<BR> @ small bugfix, applet didn't worked when loaded from local file
+<BR>
+<BR> v 0.60 (2002-02-24)
+<BR> + server is now able to save user images in PNG format.
+<BR>
+<BR> v 0.56 (2002-02-21)
+<BR> @ applet now load images properly also on non-default HTTP socket (thanx to 
+<BR>   VR Kaushik for bug report)
+<BR>
+<BR> v 0.55 (2002-02-09)
+<BR> * Drawboard licence changed to less restrictive LGPL
+<BR> @ disconnected-but-still-counted problem fixed
+<BR> + Server class is now full Java 1.1 compatible (thanx to Nicolas Vignal for 
+<BR>   bug report, support and motivation)
+<BR> 
+<BR> v 0.50 (2002-02-02)
+<BR> + features text writing  (WARNING - skin definition changes!)
+<BR> @ board refresh flickering reduced
+<BR> @ server improvements (-quiet option implemented)
+<BR> 
+<BR> v 0.45 (2001-10-24)
+<BR> + full skin support added, better than Winamp 2.x
+<BR> 
+<BR> v 0.40 (2001-10-09)
+<BR> + changed server image holding and client image displaying methods
+<BR> @ board no longer flickers during drawing
+<BR> + great improvement of archive image transport
+<BR> @ removed server memory wasting serwer bug
+<BR> + added "loading graphics" information
+<BR> + improved performance
+<BR> + more configuration options added
+<BR> @ non-default port bugfix in applet
+<BR> 
+<BR> v 0.31 (2001-09-09)
+<BR> @ Server class CPU heavy load bug fixed
+<BR> 
+<BR> v 0.30 (2001-08-30)
+<BR> + multithreaded server class
+<BR> + applet communication module
+<BR> @ "wait" cursor is shown, if connection is lost
+<BR> + people couter ready and working
+<BR> + warning printed, if opened from local file
+<BR> 
+<BR> v 0.20 (2001-08-26)
+<BR> IMPORTANT: THIS VERSION DOES NOT SUPPORT NETWORKING! Whole Drawboard was
+<BR> completely rewritted. All GUI code is new, much more clear than previous.
+<BR> See also HISTORY and TODO. Main improvements are:
+<BR> + more powerful ColorPicker (with old color set and previev box)
+<BR> + new menu graphics and layout
+<BR> + clipboard module
+<BR> + about box (ugly, but it's priority is rather low)
+<BR> + HTML documentation created and included
+<BR> 
+<BR> v 0.15 (2001-05-31)
+<BR> @ removed AWT Color instance from server (got error on some Java VM's)
+<BR> 
+<BR> v 0.14 (2001-05-30)
+<BR> + added greyscale to ColorPicker
+<BR> + checked and improved server class sources
+<BR> @ removed Netscape mousekey bug from 0.13 
+<BR> @ fixed out-of-bounds circle and box drawing bug
+<BR> 
+<BR> v 0.13 (2001-05-29) SWITCHED TO BETA PHASE
+<BR> + added graphical draw type and thickness choosing
+<BR> + added nice pseudobutton reset
+<BR> + added filled rectangle
+<BR> + improved connection status raport
+<BR> + reorganized source code
+<BR> - disabled right mouse key (PixelGrabber major bug, unable to workaround)
+<BR> 
+<BR> v 0.12 (2001-05-28)
+<BR> + added connection status line
+<BR> + added rectangle, circle and straight line drawing
+<BR> + incerased graphics rendering performance
+<BR> 
+<BR> v 0.11 (2001-05-27)
+<BR> + created basic GUI
+<BR> + improved thick lines drawing
+<BR> + added image color picking (second mouse key, yet fails on most browsers)
+<BR> + added online painters counter
+<BR> @ fixed single point drawing bug
+<BR> 
+<BR> v 0.10 (2001-05-13)
+<BR> @ fixed color-bug (visible on some versions of IE)
+<BR> @ initialization bug workaround (working, but not really fixed yet)
+<BR> 
+<BR> v 0.09 (2001-05-11)
+<BR> + optimized network communication
+<BR> + recent lines buffering in server (for send to new clients)
+<BR> + improved ColorPicker
+<BR> @ fixed Netscape resize window bug
+<BR> - bug: sometimes glowna.java throws exception at line 138. Why?
+<BR> - bug: in some browser all painting is in black color. Why???
+<BR> 
+<BR> v 0.08 (2001-05-10)
+<BR> + added nice and colorful ColorPicker
+<BR> + added current color preview box
+<BR> + added crosshair cursor on main window and ColorPicker
+<BR>
+<BR> v 0.07 (2001-05-09)
+<BR> + network communication model changed and improved
+<BR> - raported problem with MSIE 4 java.awt.List bug, ignoring now 
+<BR>
+<BR> v 0.06 (2001-05-08)
+<BR> + basic color support added
+<BR> * bugfix - now at exit client closes connection to server
+<BR> * transmitted data format changed
+<BR>
+<BR> v 0.05 (2001-05-06)
+<BR> + server receives and distributes data to all clients
+<BR> + client automatically reconnect when connection is lost
+<BR> * removed "exit" button (you cannot exit applet)
+<BR>
+<BR> v 0.02 (2001-04-28)
+<BR> + first socked based server class
+<BR> * removed BufferedImage Class (now works with Java 1.1)
+<BR>
+<BR> v 0.01 (2001-04-22)
+<BR> + free-hand drawing class
+<BR> + image changes tracking
+

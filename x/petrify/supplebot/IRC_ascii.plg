@@ -1,0 +1,153 @@
+$MODULE_NAME = "IRC_ascii.plg";
+$MODULE_AUTHOR = "sargon";
+$MODULE_DESC = "pretty much useless";
+
+if ($B_code == $IRCCB_ONPRIVMSG || $B_code == $IRCCB_ONCHANNELMSG) { 
+
+   // *** ascii module
+   // *** params: integer
+   // *** access: -1
+   if (($SYS_COMMAND == "ascii" && $B_code == $IRCCB_ONPRIVMSG) || $SYS_COMMAND == "ascii") { 
+      if ( $B_code == $IRCCB_ONPRIVMSG ) 
+         $dest = $B_nick;
+      else
+         $dest = $B_destination;
+
+	$in = $SYS_PARAMSTRING;
+
+$out = $in;
+if($in==0) { $out='NUL'; }
+if($in==1) { $out='SOH'; }
+if($in==2) { $out='STX'; }
+if($in==3) { $out='ETX'; }
+if($in==4) { $out='EOT'; }
+if($in==5) { $out='ENQ'; }
+if($in==6) { $out='ACK'; }
+if($in==7) { $out='BEL'; }
+if($in==8) { $out='BS'; }
+if($in==9) { $out='HT'; }
+if($in==10) { $out='LF'; }
+if($in==11) { $out='VT'; }
+if($in==12) { $out='FF'; }
+if($in==13) { $out='CR'; }
+if($in==14) { $out='SO'; }
+if($in==15) { $out='SI'; }
+if($in==16) { $out='DLE'; }
+if($in==17) { $out='DC1'; }
+if($in==18) { $out='DC2'; }
+if($in==19) { $out='DC3'; }
+if($in==20) { $out='DC4'; }
+if($in==21) { $out='NAK'; }
+if($in==22) { $out='SYN'; }
+if($in==23) { $out='ETB'; }
+if($in==24) { $out='CAN'; }
+if($in==25) { $out='EM'; }
+if($in==26) { $out='SUB'; }
+if($in==27) { $out='ESC'; }
+if($in==28) { $out='FS'; }
+if($in==29) { $out='GS'; }
+if($in==30) { $out='RS'; }
+if($in==31) { $out='US'; }
+if($in==32) { $out='SPACE'; }
+if($in==33) { $out='!'; }
+if($in==34) { $out='"'; }
+if($in==35) { $out='#'; }
+if($in==36) { $out='$'; }
+if($in==37) { $out='%'; }
+if($in==38) { $out='&'; }
+if($in==39) { $out='\''; }
+if($in==40) { $out='('; }
+if($in==41) { $out=';'; }
+if($in==42) { $out='*'; }
+if($in==43) { $out='+'; }
+if($in==44) { $out=','; }
+if($in==45) { $out='-'; }
+if($in==46) { $out='.'; }
+if($in==47) { $out='/'; }
+if($in==48) { $out='0'; }
+if($in==49) { $out='1'; }
+if($in==50) { $out='2'; }
+if($in==51) { $out='3'; }
+if($in==52) { $out='4'; }
+if($in==53) { $out='5'; }
+if($in==54) { $out='6'; }
+if($in==55) { $out='7'; }
+if($in==56) { $out='8'; }
+if($in==57) { $out='9'; }
+if($in==58) { $out=':'; }
+if($in==59) { $out=';'; }
+if($in==60) { $out='<'; }
+if($in==61) { $out='='; }
+if($in==62) { $out='>'; }
+if($in==63) { $out='?'; }
+if($in==64) { $out='@'; }
+if($in==65) { $out='A'; }
+if($in==66) { $out='B'; }
+if($in==67) { $out='C'; }
+if($in==68) { $out='D'; }
+if($in==69) { $out='E'; }
+if($in==70) { $out='F'; }
+if($in==71) { $out='G'; }
+if($in==72) { $out='H'; }
+if($in==73) { $out='I'; }
+if($in==74) { $out='J'; }
+if($in==75) { $out='K'; }
+if($in==76) { $out='L'; }
+if($in==77) { $out='M'; }
+if($in==78) { $out='N'; }
+if($in==79) { $out='O'; }
+if($in==80) { $out='P'; }
+if($in==81) { $out='Q'; }
+if($in==82) { $out='R'; }
+if($in==83) { $out='S'; }
+if($in==84) { $out='T'; }
+if($in==85) { $out='U'; }
+if($in==86) { $out='V'; }
+if($in==87) { $out='W'; }
+if($in==88) { $out='X'; }
+if($in==89) { $out='Y'; }
+if($in==90) { $out='Z'; }
+if($in==91) { $out='['; }
+if($in==92) { $out='\\'; }
+if($in==93) { $out=']'; }
+if($in==94) { $out='^'; }
+if($in==95) { $out='_'; }
+if($in==96) { $out='`'; }
+if($in==97) { $out='a'; }
+if($in==98) { $out='b'; }
+if($in==99) { $out='c'; }
+if($in==100) { $out='d'; }
+if($in==101) { $out='e'; }
+if($in==102) { $out='f'; }
+if($in==103) { $out='g'; }
+if($in==104) { $out='h'; }
+if($in==105) { $out='i'; }
+if($in==106) { $out='j'; }
+if($in==107) { $out='k'; }
+if($in==108) { $out='l'; }
+if($in==109) { $out='m'; }
+if($in==110) { $out='n'; }
+if($in==111) { $out='o'; }
+if($in==112) { $out='p'; }
+if($in==113) { $out='q'; }
+if($in==114) { $out='r'; }
+if($in==115) { $out='s'; }
+if($in==116) { $out='t'; }
+if($in==117) { $out='u'; }
+if($in==118) { $out='v'; }
+if($in==119) { $out='w'; }
+if($in==120) { $out='x'; }
+if($in==121) { $out='y'; }
+if($in==122) { $out='z'; }
+if($in==123) { $out='{'; }
+if($in==124) { $out='|'; }
+if($in==125) { $out='}'; }
+if($in==126) { $out='~'; }
+if($in==127) { $out='DEL'; }
+
+	irc_privmsg($dest, "Result: " . $out);
+
+	unset($in);
+	unset($out);
+}
+}

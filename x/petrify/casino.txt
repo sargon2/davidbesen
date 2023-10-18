@@ -1,0 +1,12 @@
+
+
+PROGRAMMING NOTE RE Q.19:  Up to two casinos will be selected for Q.19 (attribute perceptions), using the following “selection” rules:
+
+1.	Sam's Town will always be selected as long as it has been “ever visited.” 
+2.	If Sam's Town is selected, and no “targeted” casino has been visited within the past three months (per Q.8B), one that has been visited within the past twelve months (randomly selected from responses in Q.8A) would be the second casino.  If no “targeted” casino has been visited within the past twelve months, Q.19 would be asked only for Sam's Town. 
+3.	If Sam's Town is selected, and only one “targeted” casino has been visited within the past three months (per Q.8B), the other casino will be the second casino.
+4.	If Sam's Town is selected, and more than one “targeted” casino has been visited within the past three months (per Q.8B), one “targeted” casino will be randomly selected as the second casino.
+5.	If Sam's Town has never been visited, up to two “targeted” casinos which have been visited within the past three months (per Q.8B) will be addressed in Q.19.  If only one has been visited within that time period, it will be the only casino addressed in Q.19.  If no casinos have been visited within that time period, Q.19 will be skipped.
+6.	If two casinos are addressed in Q.19, their position (first or second) will be randomly determined.  Thus the above use of the term “second casino” does not relate to position within the survey.
+
+

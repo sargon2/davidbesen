@@ -1,0 +1,128 @@
+$MODULE_NAME = "IRC_system.plg";
+$MODULE_AUTHOR = "guantes";
+$MODULE_DESC = "Supplebot system commands and user maintenance";
+
+if ($B_code == $IRCCB_ONPRIVMSG) {
+    $params = split( " ", $B_param );
+    $command = $params[0];
+    
+    
+    // *** id - authenticate a user
+    // *** params: username, password
+    // *** access: -1
+    if ( $command == "id" ) {
+        $uname = $params[1];
+        $pass = $params[2];
+    
+        irc_privmsg( $B_nick, authenticate_user($uname, $B_nick, $pass, $B_host, $B_identd) );
+    } // End id
+
+    
+    // *** checklevel - check what access level you have
+    // *** params: none
+    // *** access: -1
+    if ( $command == "checklevel" ) {
+        
+        if ( ($res = get_access_level( $B_nick, $B_host, $B_identd )) > -1) {
+            irc_privmsg( $B_nick, "Your current access level is: $res" );
+        } 
+    }// End checklevel
+    
+    
+    // *** adduser - adds a user with given password and access level
+    // *** params: new username, password, access level
+    // *** access: 500
+    if ( $command == "adduser" && $USR_LEVEL >= 500) {
+        $lvl = get_access_level( $B_nick, $B_host, $B_identd );
+        $newusr = $params[1];
+        $newpass = $params[2];
+        $newlevel = $params[3];
+        
+        if ($newlvl > $lvl) {
+            irc_privmsg( $B_nick, "New level must be less than or equal to your current level." );
+        } else {
+            $query = "insert into bot_auth
+                        (username, password, level)
+                        values
+                        (\"$newusr\", Password(\"$newpass\"), \"$newlevel\")";
+            mysql_query($query);
+            if (mysql_error()) {
+                irc_privmsg( $B_nick, "SQL Error: " . mysql_error());
+            } else {
+                irc_privmsg( $B_nick, "User: $newusr added with level $newlevel" );
+            }
+        }
+    }// End adduser
+    
+    
+    // *** deluser - removes a user from the database
+    // *** params: username to delete
+    // *** access: 900
+    if ( $command == "deluser" && $USR_LEVEL >= 900 ) {
+        $usrname = $params[1];   
+        $query = "delete from bot_auth where username=\"$usrname\"";
+        $res = mysql_query($query);
+        if (mysql_error()) {
+            irc_privmsg( $B_nick, "SQL Error: " . mysql_error());
+        } 
+        else if (mysql_num_rows($res) == 0) {
+            irc_privmsg( $B_nick, "No rows were deleted.  Wrong username?" );
+        }
+        else {
+            irc_privmsg( $B_nick, "Deleted: $usrname" );
+        }
+    }
+    
+    
+    // *** newuser - adds a new user to the system
+    // *** params: requested username, requested password
+    // *** access: -1
+    if ( $SYS_COMMAND == "newuser" ) {
+        $uname = $SYS_PARAMS[1];
+        $pass = $SYS_PARAMS[2];
+        
+        $query = "insert into bot_auth
+                  (username, password, level)
+                  values
+                  (\"$uname\", Password(\"$pass\"), 0)";
+        
+        mysql_query($query);
+        if (mysql_error()) {
+            irc_privmsg( $B_nick, "SQL Error: " . mysql_error());
+        } else {
+            irc_privmsg( $B_nick, "You have been added to the database." );
+        }
+    }
+    
+    
+    // *** moduser - modifies the level of an existing user
+    // *** params: username to modify, new level
+    // *** access: 1
+    if ( $SYS_COMMAND == "moduser" ) {
+        $uname = $SYS_PARAMS[1];
+        $newlevel = $SYS_PARAMS[2];
+        
+        if ($newlevel > $USR_LEVEL) {
+            irc_privmsg( $B_nick, "You cannot set someone to a higher level than you are." );
+        } else {
+            $query = "update bot_auth
+                      set level=\"$newlevel\"
+                      where username=\"$uname\"";
+            
+            mysql_query($query);
+            if (mysql_error()) {
+                irc_privmsg( $B_nick, "SQL Error: " . mysql_error());
+            } else {
+                irc_privmsg( $B_nick, "Updated user's level." );
+            }
+        }
+    }
+    
+    
+    // *** quit - shuts down the bot
+    // *** params: none
+    // *** access: 900
+    if ( $command == "quit" && $USR_LEVEL >= 900 ) {
+        exit;   
+    }
+}

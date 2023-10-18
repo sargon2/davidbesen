@@ -1,0 +1,25 @@
+// *** !timecube - timecube sez...
+// *** params: none
+// *** access: -1
+
+$MODULE_NAME = "IRC_timecube.plg";
+$MODULE_AUTHOR = "guantes";
+$MODULE_DESC = "supplebot is 4 dimensional, cbot is 1";
+
+if ($SYS_COMMAND == "timecube") {
+   if ( $B_code == $IRCCB_ONPRIVMSG )
+      $dest = $B_nick;
+   else
+      $dest = $B_destination;
+
+   $num = rand(1, 537);
+   if($SYS_PARAMS[1] > 0) { $num = $SYS_PARAMS[1]; }
+   $query = "select text from timecube where id=$num";
+   $res = mysql_query($query);
+   $saying = mysql_fetch_assoc($res);
+   $saying = $saying["text"];
+   irc_privmsg($dest, "Timecube says ($num): $saying\n");
+
+
+}
+

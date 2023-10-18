@@ -1,0 +1,187 @@
+$MODULE_NAME = "IRC_babelfish.plg";
+$MODULE_AUTHOR = "guantes";
+$MODULE_DESC = "Does babelfish translations.";
+
+if ($B_code == $IRCCB_ONPRIVMSG || $B_code == $IRCCB_ONCHANNELMSG) {
+   // *** babelfish - translates a word from one language to another using babelfish
+   // *** params: language phrase is in, language you want to see it in, the phrase itself
+   // *** access: -1
+   if (($SYS_COMMAND == "babelfish" && $B_code == $IRCCB_ONPRIVMSG) || $SYS_COMMAND == "babelfish") {
+      if ( $B_code == $IRCCB_ONPRIVMSG ) 
+         $dest = $B_nick;
+      else
+         $dest = $B_destination;
+      
+      $srclang = $SYS_PARAMS[1];
+      $destlang = $SYS_PARAMS[2];
+      $phrase = implode(" ", array_slice($SYS_PARAMS, 3));
+      
+      if ($srclang && $destlang && $phrase) {
+         // make the source language have the right code
+         $srclang = strtolower($srclang);
+         $srclang = str_replace("english", "en", $srclang);
+         $srclang = str_replace("chinese", "zh", $srclang);
+         $srclang = str_replace("french", "fr", $srclang);
+         $srclang = str_replace("german", "de", $srclang);
+         $srclang = str_replace("italian", "it", $srclang);
+         $srclang = str_replace("japanese", "ja", $srclang);
+         $srclang = str_replace("korean", "ko", $srclang);
+         $srclang = str_replace("portugese", "pt", $srclang);
+         $srclang = str_replace("russian", "ru", $srclang);
+         $srclang = str_replace("spanish", "es", $srclang);
+         
+         // make the destination language have the right code
+         $destlang = strtolower($destlang);
+         $destlang = str_replace("english", "en", $destlang);
+         $destlang = str_replace("chinese", "zh", $destlang);
+         $destlang = str_replace("french", "fr", $destlang);
+         $destlang = str_replace("german", "de", $destlang);
+         $destlang = str_replace("italian", "it", $destlang);
+         $destlang = str_replace("japanese", "ja", $destlang);
+         $destlang = str_replace("korean", "ko", $destlang);
+         $destlang = str_replace("portugese", "pt", $destlang);
+         $destlang = str_replace("russian", "ru", $destlang);
+         $destlang = str_replace("spanish", "es", $destlang);
+         
+         irc_privmsg($dest, "Translated: " . getTranslatedText($srclang, $destlang, $phrase));
+      }
+   }
+   
+   // *** enbabulate - applies babelfish nonsense to an english phrase
+   // *** params: language to use to enbabulate, phrase
+   // *** access: -1
+   if ($SYS_COMMAND == "enbabulate" || $SYS_COMMAND == "enb") {
+      if ( $B_code == $IRCCB_ONPRIVMSG ) 
+         $dest = $B_nick;
+      else
+         $dest = $B_destination;
+      
+      $srclang = "english";
+      $destlang = $SYS_PARAMS[1];
+      $phrase = implode(" ", array_slice($SYS_PARAMS, 2));
+      
+      
+      
+      if ($srclang && $phrase) {
+         // make the source language have the right code
+         $destlang = strtolower($destlang);
+         $destlang = str_replace("english", "en", $destlang);
+         $destlang = str_replace("chinese", "zh", $destlang);
+         $destlang = str_replace("french", "fr", $destlang);
+         $destlang = str_replace("german", "de", $destlang);
+         $destlang = str_replace("italian", "it", $destlang);
+         $destlang = str_replace("japanese", "ja", $destlang);
+         $destlang = str_replace("korean", "ko", $destlang);
+         $destlang = str_replace("portugese", "pt", $destlang);
+         $destlang = str_replace("russian", "ru", $destlang);
+         $destlang = str_replace("spanish", "es", $destlang);
+         
+         $langstr = getTranslatedText("en", $destlang, $phrase);
+         if (substr($langstr, 0, 5) != "Error") {
+            $langstr = getTranslatedText($destlang, "en", $langstr);
+            $langstr = str_replace("\n", " ", $langstr);
+            irc_privmsg($dest, "Enbabulated: " . $langstr);
+         } else {
+            irc_privmsg($dest, "Error? : " . $langstr);
+         } 
+           
+      }
+      
+   }
+   
+   
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+if (!function_exists("getTranslatedText")) {
+      function getTranslatedText($startlang, $endlang, $phrase) {
+         // Remove the \' and such
+         $phrase = stripslashes($phrase);
+         // url encode our phrase
+         $phrase = urlencode($phrase);
+         
+         // build the proper language string
+         $langinfo = $startlang . "_" . $endlang;
+         
+         $regex = "/q\">(.*)/i";
+         $url = "http://babelfish.altavista.com/tr?urltext=$phrase&lp=$langinfo";
+         
+         $fd = fopen($url, "r");
+         if ( !$fd ) {
+            return("Error: Something terrible has happened trying to get the webpage!");
+         } else {
+            socket_set_timeout($fd, 2);
+            $pagesrc = fread($fd, 60000);
+            fclose($fd);
+            
+            
+            $lines = explode("\n", $pagesrc);
+            foreach ($lines as $line) {
+               preg_match($regex, $line, $matches);
+               if (count($matches) > 0) break;
+            }
+            
+            
+            if (count($matches) > 0) {
+               return($matches[1]);
+            } else {
+               $error = 1;
+            }
+            // Maybe it was just too long... try a different regex
+            if ($error == 1) {
+               $matches = array();
+               $regex = "/<td bgcolor=white>([^<]+)/m";
+               /*foreach ($lines as $line) {
+                  preg_match($regex, $line, $matches);
+                  if (count($matches) > 0) break;
+               }*/
+               preg_match($regex, $pagesrc, $matches);
+               
+               if (count($matches) > 0) {
+                  return ($matches[1]);
+               }
+            }
+            
+            // If we still have an error, try to parse it out...
+            if ($error == 1) {
+               // Let's try to find out what error it was...
+               $regex = "/BabelFish Error (\d+)/";
+               preg_match($regex, $pagesrc, $matches);
+               // If there's a match, we can look for a description
+               if (is_numeric($matches[1])) {
+                  $errno = $matches[1];
+                  $regex = "/the error encountered is:<p>\n<b>(.*)<\/b>/im";
+                  preg_match($regex, $pagesrc, $matches);
+                  $errdesc = $matches[1];
+               }
+      
+               if ($errno && $errdesc) {
+                  return("Error: $errno, $errdesc");
+               } else {
+                  return("Error: $errdesc");
+               }
+            }
+         }
+      }
+}

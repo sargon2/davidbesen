@@ -1,0 +1,1095 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-type" CONTENT="text/html; charset=iso-8859-2">
+<META HTTP-EQUIV="Reply-to" CONTENT="tomash@fidonet.org.pl">
+<META HTTP-EQUIV="Content-Language" CONTENT="pl">
+<META NAME="Description" CONTENT="Drawboard manual">
+<META NAME="Author" CONTENT="Tomek 'TomasH' Zielinski">
+<TITLE>Drawboard manual</TITLE>
+<STYLE TYPE="text/css">
+<!--
+.tytul {
+        font-size: 35px;
+        text-align: center;
+        font-weight: bold;
+}
+
+.date {
+        font-size: 15px;
+        text-align: center;
+        font-weight: bold;
+}
+
+.podtytul {
+	    margin-top: 50px;
+        font-weight: bold;
+        font-size: 25px;
+}
+
+.shell {
+      color: #A0E8BF;
+      margin-left: 130px;
+	  font-family: monospace;
+}
+
+.mono {
+	  font-family: monospace;
+      font-weight: bold;
+}
+
+.podpodtytul {
+	    margin-top: 40px;
+        margin-left: 50px;
+        font-weight: bold;
+        font-size: 20px;
+}
+
+.podpodpodtytul {
+	    margin-top: 30px;
+        margin-left: 100px;
+        font-weight: bold;
+}
+
+BODY, P, TABLE, TR, TD, TH, SPAN {
+        color: #A0E8FF;
+        background: #000000;
+        font-family: Arial;
+        font-size: 15px;
+}
+
+a:visited {
+        color: #D0E8FF;
+}
+
+a:active {
+        color: #D0E8FF;
+}
+
+a:link {
+        color: #D0E8FF;
+}
+
+a:hover {
+        color: #D0E8FF;
+        text-decoration: none;
+}
+
+.podtytultekst {
+        margin-left: 50px;
+}
+
+.podpodtytultekst {
+        margin-left: 100px;
+}
+
+.podpodpodtytultekst {
+        margin-left: 150px;
+}
+
+-->
+</STYLE>
+</HEAD>
+<BODY TEXT="#A0E8FF"><BR><table width=600><tr><td>
+<p class="tytul">Drawboard Manual <BR>
+(v 1.4 Christmas Edition)</p>
+<p class="date">last changes: 25 Dec 2002</p>
+<BR>
+<p class="podtytul">Content</p>
+<UL>
+<li><B>License</B></li>
+<li><B>1. Operating manual</B>
+			  <UL>
+			  <li>1.1. Blackboard</li>
+			  <li>
+			  1.2. Colorpicker
+			  	   <UL>
+				   <li>1.2.1. Rainbow</li>
+				   <li>1.2.2. Grayscale</li>
+				   <li>1.2.3. Old color set</li>
+				   <li>1.2.4. Current color</li>
+				   <li>1.2.5. New color preview</li>
+				   </UL>
+			  </li>
+			  <li>
+			  	  1.3. Menu
+				  	   <UL>
+					   <LI>1.3.1. Tool select</LI>
+					   <LI>1.3.2. Thickness select</LI>
+					   <LI>1.3.3. People counter</LI>
+					   <LI>1.3.4. Reset button</LI>
+					   <LI>1.3.5. Clipboard</LI>
+					   <LI>1.3.6. Connection indicator</LI>
+					   <LI>1.3.7. Copyright information</LI>
+					   </UL>
+			  </li>
+			  <li>
+			  	  1.4. Clipboard
+				  	   <UL>
+					   <LI>1.4.1. Clipboard selector</LI>
+					   <LI>1.4.2. Clipboard preview</LI>
+					   <LI>1.4.3. Copy button</LI>
+					   <LI>1.4.4. Show clipboard</LI>
+					   <LI>1.4.5. Empty clipboard</LI>
+				  	   </UL>
+			  </li>
+			  <li>
+			  	  1.5. The "onlyview" mode
+				  	   <UL>
+					   <LI>1.5.1. "Onlyview" applet configuration</LI>
+					   <LI>1.5.2. Useful informations</LI>
+				  	   </UL>
+			  </li>
+				
+			  </UL>
+</li>
+<li><B>2. Installation</B>
+	   <ul>
+	   	   <li>2.1. Paths and directories</li>
+	   	   <li>2.2. HTML file</li>
+	   	   <li>2.3. Running server</li>
+	   	   <li>2.4. Server command line switches</li>
+	   	   <li>2.5. Image saving
+			  	   <UL>
+					   <LI>2.5.1. Why PNG format?</LI>
+					   <LI>2.5.2. How about Unix and Windows differences?</LI>
+					   <LI>2.5.3. From which directory should I run server?</LI>
+					   <LI>2.5.4. What is the image filename?</LI>
+					   <LI>2.5.5. How can user see saved images?</LI>
+					   <LI>2.5.6. How can user know saving was successful?</LI>
+						 <LI>2.5.7. Server crashes after a few saved images!</li>
+							</ul>				 
+				 </li>
+	   	   <li>2.6. Image e-mailing
+			  	   <UL>
+					   <LI>2.6.1. Why this is option is off by default?</LI>
+					   <LI>2.6.2. What is SMTP host?</LI>
+					   <LI>2.6.3. What is my e-mail address used for?</LI>
+					   <LI>2.6.4. How can user know that image was successfully sent?</LI>
+					   <LI>2.6.5. Does e-mail sending affect other activities?</LI>
+							</ul>
+					</li>
+					<li>2.7. Modifying sources
+						<UL>
+							<LI>2.7.1. Recompiling Drawboard</li>
+							<LI>2.7.2. Creating JAR package</LI>
+						</ul>
+					</li>
+
+					 
+	   </ul>
+</li>
+<li><B>3. Applet options</B>
+	   <ul>
+	   	   <li>3.1. Applet size</li>
+	   	   <li>3.2. Applying new skin</li>
+		   		<ul>
+			<li>3.2.1. Creating new skin</li>
+			<li>3.2.2. Creating skin definition file</li>
+			<li>3.2.3. Transparent menu</li>				
+			</ul>
+	   	   <li>3.3. Applet options</li>
+				<ul>
+          <LI>3.3.1. Communication port number</li>
+          <LI>3.3.2. Initial background color</li>
+          <LI>3.3.3. Initial pen color</li>
+          <LI>3.3.4. People counter color</li>
+          <LI>3.3.5. Menu background color</li>
+          <LI>3.3.6. Empty menu clipboard color</li>
+          <LI>3.3.7. Skin definition</li>
+					<LI>3.3.8. Menu background image definiton (transparency option)</li>  
+					<LI>3.3.9. Menu background image transparent color  (transparency option)</li>  
+					<LI>3.3.10. Background image X offset (transparency option)</li>  
+					<LI>3.3.11. Background image Y offset (transparency option)</li>  
+<LI>3.3.12. "Onlyview" mode switch</li>
+<LI>3.3.13. Language selection</li>					
+				</ul>
+	   </ul>
+</li>
+<li><B>4. FAQ</B></li>
+<li><B>5. Download</B></li>
+<li><B>6. Feedback</B></li>
+</UL>
+
+<BR>
+<BR>
+<p class="podtytul">License</p>
+<p class="podtytultekst">
+<B>Drawboard</B> - Java applet used to make graphical teleconferences<BR>
+Copyright (C) 2001  Tomek "TomasH" Zieliński, <A HREF="mailto:tomash@fidonet.org.pl">tomash@fidonet.org.pl</A><BR>
+Download - see project homepage at <a href="http://sourceforge.net/projects/drawboard">www.sourceforge.net/projects/drawboard</a>
+<BR>
+<BR>
+This is free software; you can redistribute it and/or
+modify it under the terms of the GNU Lesser General Public
+License as published by the Free Software Foundation; either
+version 2.1 of the License, or (at your option) any later version.
+<BR>
+<BR>
+This software is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+Lesser General Public License for more details.
+<BR>
+<BR>
+You should have received a copy of the GNU Lesser General Public
+License along with this software; if not, write to the Free Software
+Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+<BR>
+<BR>
+This software uses a modified <B>PngEncoder</B> library created by <B>J. David Eisenberg</B> and
+<B>PNGImageProducer</B> library created by <B>Jason Marshall</B>.
+</p>
+
+<p class="podtytul">1. Operating manual</p>
+<p class="podtytultekst">
+This is the standard Drawboard screen.<BR clear=all>
+<IMG SRC="image/drawboard.png" WIDTH="315" HEIGHT="225" HSPACE="5" VSPACE="5" BORDER="0" ALT=""><BR clear=all>
+As you see, it can be divided to three parts: blackboard, colorpicker and menu.
+</p>
+
+<p class="podpodtytul">1.1. Blackboard</p>
+<p class="podpodtytultekst">
+There isn't much to write about. Blackboard is area, when you can draw.
+Color of your pen is selected with colorpicker, tool - by clicking menu. Normal cursor style is
+crosshair. When cursor is in "WAIT" mode, you have to wait for connection with server.  
+<B>NOTE:</B> you can pick color by clicking with right mouse key on blackboard.
+</p>
+
+<p class="podpodtytul">1.2. Colorpicker</p>
+<p class="podpodtytultekst">
+This is the colorpicker:<BR clear=all>
+<IMG SRC="image/colorpicker.png" WIDTH="500" HEIGHT="99" HSPACE="5" VSPACE="5" BORDER="0" ALT=""><BR clear=all>
+It can be divided to five parts: rainbow, grayscale, old colors set, current color and new color preview.
+</p>
+
+<p class="podpodpodtytul">1.2.1.  Rainbow</p>
+<p class="podpodpodtytultekst">
+This is the hi-color palette. Click to set current color.
+</p>
+
+<p class="podpodpodtytul">1.2.2.  Grayscale</p>
+<p class="podpodpodtytultekst">
+This is the grayscale palette. It includes pure white and black colors. Click to set current color. 
+</p>
+
+<p class="podpodpodtytul">1.2.3.  Old color set</p>
+<p class="podpodpodtytultekst">
+When you click a rainbow or grayscale, you select new color. This color is also inserted into old color
+set. Four earlier colors are moved one cell up (fifth, oldest color is lost). You can revert to one of
+the old colors by clicking selected square. In this case the color set won't be changed.
+</p>
+
+<p class="podpodpodtytul">1.2.4.  Current color</p>
+<p class="podpodpodtytultekst">
+This rectangle shows current color. You can select new color by clicking rainbow, grayscale or old color set.
+When you drag mouse (with mousekey pressed), the current color changes in realtime. 
+</p>
+
+<p class="podpodpodtytul">1.2.5.  New color preview</p>
+<p class="podpodpodtytultekst">
+This small rectangle shows the color under cursor. It helps you select new color.
+</p>
+
+<p class="podpodtytul">1.3. Menu</p>
+<p class="podpodtytultekst">
+This is the standard menu.<BR clear=all>
+<IMG SRC="image/menu.png" WIDTH="177" HEIGHT="350" HSPACE="5" VSPACE="5" BORDER="0" ALT=""><br clear=all>
+<B>NOTE:</B> Menu can be customized by applying the "skins" (like WinAmp). In this case location and appearance of
+buttons can be completely different. If you have problems with modified design, write to your webmaster.
+Below you can see explanation of standard menu. 
+</p>
+
+<p class="podpodpodtytul">1.3.1.  Tool select</p>
+<p class="podpodpodtytultekst">
+<table cellpadding=0 cellspacing=0 border=0><tr><td rowspan=7  height=300><IMG SRC="image/tool.png" WIDTH="50" HEIGHT="350" HSPACE="5" BORDER="0" ALT=""></td>
+<td valign=center height=50>Freehand tool. Click and drag mouse to draw freehand line.</td></tr>
+<tr><td valign=center height=50>Line tool. Click to set start of line, drag mouse to the end of line and relase the mousekey.</td></tr>
+<tr><td valign=center height=50>Rectangle tool. Click to set one corner, drag mouse to the opposite corner point and relase the mousekey.</td></tr>
+<tr><td valign=center height=50>Filled rectangle tool. See rectangle tool.</td></tr>
+<tr><td valign=center height=50>Ellipse tool. Click to set center point, drag to define ellipse size and relase the mousekey.</td></tr>
+<tr><td valign=center height=50>Filled ellipse tool. See ellipse tool.</td></tr>
+<tr><td valign=center height=50>Text tool. Indicate place and use keyboard to enter characters</td></tr>
+</table>
+</p>  
+  
+<p class="podpodpodtytul">1.3.2. Thickness select</p>  
+<p class="podpodpodtytultekst">
+Click the desired line to set current thickness. The line thickness affects freehand, line, rectangle and ellipse tools. 
+</p>
+  
+<p class="podpodpodtytul">1.3.3. People counter</p>  
+<p class="podpodpodtytultekst">
+Above the people icon there is a people counter. The number tells you, how many people are
+currently connected to the Drawboard. "<B>1</B>" means you are drawing alone. Counter is updated
+by every incoming <I>ping</I> packet. When connection is lost, counter is switched off. 
+</p>
+
+<p class="podpodpodtytul">1.3.4. Reset button</p>  
+<p class="podpodpodtytultekst">
+Click to reset whole image. The blackboard's background color is set to current color by default.
+If background image feature is used, this button will refresh the current background image.
+</p>
+
+<p class="podpodpodtytul">1.3.5. Clipboard</p>  
+<p class="podpodpodtytultekst">
+This is the cliboard panel:<br clear=all>
+<IMG SRC="image/clipboard.png" WIDTH="99" HEIGHT="59" HSPACE="5" VSPACE="5" BORDER="0" ALT=""><br clear=all>
+This important element is described in p. 1.4 
+</p>
+
+<p class="podpodpodtytul">1.3.6. Connection indicator</p>  
+<p class="podpodpodtytultekst">
+<table cellpadding=0 cellspacing=0 border=0><tr><td rowspan=6  height=135><IMG SRC="image/status.png" WIDTH="45" HEIGHT="135" HSPACE="5" BORDER="0" ALT=""></td>
+<td valign=center height=45>Connection to server estabilished.</td></tr>
+<tr><td valign=center height=45>Data transfer in progress.</td></tr>
+<tr><td valign=center height=45>Connection to server is lost. Watch Java console for error messages.</td></tr>
+</table>
+If the connection is lost, applet sets the <I>"WAIT"</I> cursor style and tries to restore it. 
+Remember: all, what you draw during disconnection
+phase, will be lost. At reconnect whole image will be re-fetched from server.
+</p>
+
+<p class="podpodpodtytul">1.3.7. Copyright information</p>  
+<p class="podpodpodtytultekst">
+Click to watch "about" and copyleft license dialog box.  
+</p>
+
+<p class="podpodtytul">1.4. Clipboard</p>
+<p class="podpodtytultekst">
+This is the magnified clipboard panel:<BR clear=all>
+<IMG SRC="image/clipboard_zoom.png" WIDTH="282" HEIGHT="197" HSPACE="5" VSPACE="5" BORDER="0" ALT=""><br clear=all>
+The clipboard is used for two reasons. First, you can prevent images from loss. Second, you can request
+saving image to file. As you see, clipboard panel can be divided to five parts. 
+
+<p class="podpodpodtytul">1.4.1. Clipboard selector</p>
+<p class="podpodpodtytultekst">You have three independent clipboards, marked <B>1</B>, <B>2</B> and <B>3</B>.
+The current clipboard number is indicated. Click number to select desired one.  
+</p>
+
+<p class="podpodpodtytul">1.4.2. Clipboard preview</p>
+<p class="podpodpodtytultekst">Here can you see miniature of clipboard content. If there is no image
+inside, empty rectangle is showed. See p. 3.3.6 to see how to set empty clipboard color.
+</p>
+
+<p class="podpodpodtytul">1.4.3. Copy button</p>
+<p class="podpodpodtytultekst">Copies current image to selected clipboard. Current clipboard content
+is lost. You can click this button at any moment. 
+</p>
+
+<p class="podpodpodtytul">1.4.4. Show clipboard</p>
+<p class="podpodpodtytultekst">
+<IMG SRC="image/clipboard_showed.png" WIDTH="203" HEIGHT="186" HSPACE="5" VSPACE="5" BORDER="0" ALT=""><br clear=all>
+Click this button to see clipboard content. New window will appear. If your webmaster allows it,
+you can save image to the file on server and/or send it to e-mail address. 
+<BR>
+<BR>
+See p. 2.5 for more informations about image saving. See p. 2.6. for more informations
+about image e-mailing.
+</p>
+
+<p class="podpodpodtytul">1.4.5. Empty clipboard</p>
+<p class="podpodpodtytultekst">By pressing this button you can empty selected clipboard. Current
+content will be lost.
+</p>
+
+<p class="podpodtytul">1.5. The "onlyview" mode</p>
+<p class="podpodtytultekst">
+The "onlyview" mode allows you to use Drawboard with e-teaching. There can be one (or a few)
+drawing persons and much more thin-client students with read-only whiteboards. See 
+the <span class="mono">onlyview.html</span> for live example.     
+</p>
+
+<p class="podpodpodtytul">1.5.1. "Onlyview" applet configuration</p>
+<p class="podpodpodtytultekst">
+You can turn on the "onlyview" mode with <B>onlyview</B> parameter (see p. 3.3.12 for details).
+<BR>
+<BR>
+Notice, that in this case <B>countercolor</B>, <B>menubgcolor</B>, <B>emptythumbnailcolor</B>,
+<B>skindef</B>, <B>menubgimagetransparentcolor</B>, <B>menubgimageoffsetx</B> and 
+<B>menubgimageoffsety</B> are no longer useful. You can still use <B>port</B>, <B>bgcolor</B> and <B>pencolor</B>. 
+</p>
+<p class="podpodpodtytul">1.5.2. Useful informations</p>
+<p class="podpodpodtytultekst">
+<BR>
+The "onlyview" applet <B>must</B> be 100 pixels narrower and 50 pixels shorter than 
+the full version. Otherwise the error message will appear. See the <span class="mono">onlyview.html</span>
+for live example.
+</p>
+
+ <p class="podtytul">2. Installation</p>
+<p class="podtytultekst">
+Terminology used in this chapter:<BR><BR>
+
+<B>SERVER</B> - the Drawboard server program<BR>
+<B>CLIENT</B> - Drawboard applet<BR>
+<B>HOST</B> - remote WWW server machine<BR>
+<B>APACHE</B> - HTTP server on remote <I>host</I>
+</p>
+
+<p class="podpodtytul">2.1. Paths and directories</p>
+<p class="podpodtytultekst">
+Unzip Drawboard distribution packet to selected directory. You can see there: <span class="mono">test.html</span>
+example file, <span class="mono">drawboard.jar</span> file with compressed class files and <span class="mono">skin</span>
+directory with default skin files. The <span class="mono">doc</span> directory contains this documentation and
+you can delete it at your will. Do not delete <span class="mono">LICENSE</span> file.
+<BR></p><p class="podpodtytultekst">
+All files must be accessible through <I>Apache</I>. If you have account on Unix machine, create <span class="mono">public_html</span>
+dir in your home directory and unzip there Drawboard files. If the <I>host</I> name is <B>host.com</B> and your username 
+is <B>user</B>, Drawboard should be avaible at <B>http://host.com/~user/test.html</B> - if doesn't work, ask
+your local admin for details. 
+</p>
+
+<p class="podpodtytul">2.2. HTML file</p>
+<p class="podpodtytultekst">
+Applet is "inserted" into HTML file as an <B>&lt;APPLET&gt;</B> tag. You have to load your WWW document 
+to your vrowser through <I>Apache</I> (even on the same <I>host</I>). If you load local file, Drawboard will not be able to communicate with anybody.
+Use following sequence to place Drawboard into your page (see <span class="mono">test.html</span> file
+to see live example):
+<BR><BR>    
+<B>&lt;APPLET code="drawboard.Main.class" archive="drawboard.jar" WIDTH="600" HEIGHT="450"&gt; &lt;/APPLET&gt;</B><BR>
+<BR>
+Don't change "Main" to "main", whole text between quotation-marks is case-sensitive. See Chapter 3 for
+additional Drawboard applet options.
+<BR>
+<BR>
+<B>Attention</B> - Drawboard is distributed in JAR package since v 0.71. 
+</p>
+
+
+<p class="podpodtytul">2.3. Running server</p>
+<p class="podpodtytultekst">
+All Drawboard <I>clients</I> are connecting to <I>server</I>. Without working <I>server</I>
+communication is impossible. You should run <I>server</I> process by typing
+<p class="shell">$ java -cp drawboard.jar drawboard.Server</p>
+<p class="podpodtytultekst">
+in the drawboard root directory (where HTML file is). This is important! Running <I>server</I> from
+other directory can cause problems, see p. 2.4. and 2.5.  
+<BR>
+<BR>
+You can treat <I>server</I> as a daemon and run it from startup scripts. 
+You can also use the <B>screen</B> or <B>nohup</B> Unix utility to
+prevent <I>server</I> process kill at logout.    
+</p>
+<p class="podpodtytultekst">
+Notice, that there is no <span class="mono">drawboard.Server</span> file anywhere. It's just
+<span class="mono">Server.class</span> in <span class="mono">drawboard</span> directory, but Java treats
+this notation like "run instance of Server class from drawboard package" and everything works fine. You
+don't have to recompile anything before running <I>server</I>. 
+</p>
+
+<p class="podpodtytul">2.4. Server command line switches</p>
+<p class="podpodtytultekst">
+There are several <I>server</I> comand line options:<BR>
+<BR>
+
+<table cellpadding=5>
+
+<tr><td class="mono" valign=top nowrap>-x XSIZE</td><td>
+specifies <I>client</I> width in pixels. This value must be equal to <B>width</B> parameter in
+HTML applet definition (see p.&nbsp;3.1). Default value (used in <span class="mono">test.html</span>) is <B>650</B>.  
+</td></tr>
+
+<tr><td class="mono" valign=top nowrap>-y YSIZE</td><td>
+specifies <I>client</I> height in pixels. This value must be equal to <B>height</B> parameter in
+HTML applet definition (see p.&nbsp;3.1). Default value (used in <span class="mono">test.html</span>) is <B>400</B>.  
+</td></tr>
+
+<tr><td class="mono" valign=top nowrap>-p PORT</td><td>
+specifies <I>server</I> port number. <I>Server</I> and <I>client</I> must use the same port number to communicate.
+Under Unix systems only superuser can use ports 0-1023. See also p.&nbsp;3.3.1. Default value is <B>7904</B>.  
+</td></tr>
+
+<tr><td class="mono" valign=top nowrap>-i PORT</td><td>
+specifies InfoPeople service port number. If you enable this funtion, <I>server</I> will handle
+additional socket. Anyone connecting to this socket will receive number of current users as a 
+series of ASCII characters ('0' for zero, '14' for fourteen and so on). Connection will be terminated
+immediately. You can use this function with an CGI script to show number of users in your
+WWW page. It's recommended to disallow connection with this port from outer network. 
+Under Unix systems only superuser can use ports 0-1023. Default value is <B>none</B>
+(service disabled).  
+</td></tr>
+
+<tr><td class="mono" valign=top nowrap>-r PORT</td><td>
+specifies imageprinter service port number. If you enable this funtion, <I>server</I> will 
+send PNG file with current image to anyone connecting this port (and 
+terminate connection immediately). You can use this function to preview current image on your 
+WWW page. It's required to allow connection with this port from outer network. 
+Under Unix systems only superuser can use ports 0-1023. Default value is <B>none</B>
+(service disabled).  
+</td></tr>
+
+<tr><td class="mono" valign=top nowrap>-l PORT</td><td>
+specifies imagebgload service port number. If you enable this funtion, you will be allowed
+to change bacground image at any moment. Just connect to desired socket and send as first
+and only line remote filename (relative or full path) or full URL to image (with "http://"
+at the beginning). Server will send answer string with "<span class="mono">OK: </span>" if image was loaded successfully
+or "<span class="mono">ERR: </span>" and error description, if it was failed.
+Notice, that users will see new bgimage after first image reset, not immediately.
+It's recommended to restrict connection with this port from outer network. 
+Under Unix systems only superuser can use ports 0-1023. Default value is <B>none</B>
+(service disabled).  
+</td></tr>
+
+<tr><td class="mono" valign=top nowrap>-m MAXCLIENTS</td><td>
+specifies maximum number of clients connected at once. To limit bandwidth loss you can lower the number.
+Default value is <B>15</B>.
+</td></tr>
+
+<tr><td class="mono" valign=top nowrap>-d DELAY</td><td>
+specifies delay between two "ping" packets sended to each client. "Ping" checks the connection and updates
+the people counter. Too small number can give in effect lower performance. Suggested 
+value: 15-180 seconds. Default value:
+<B>30</B> seconds.      
+</td></tr>
+
+<tr><td class="mono" valign=top nowrap>-c RRGGBB</td><td>
+specifies initial background color in RGB format - two-char hexadecimal values for each RGB color.    
+Remember this is importand only for a few very first clients. Default value is <B>A6A8F8</B> (kind of blue).  
+</td></tr>
+
+<tr><td class="mono" valign=top nowrap>-s [on|off]</td><td>
+allow or disallow image saving. When this option is turned on, user can save his (Drawboard) clipboard
+content in a file on remote server <I>host</I>. Files are stored in directory indicated by <span class="mono">-savepath</span>
+option. See p. 2.5. for more informations. Default value is <B>on</B>.
+</td></tr>
+
+<tr><td class="mono" valign=top nowrap>-savepath DIR</td><td>
+Indicates directory for image saving. This should be absolute path to directory with
+write permissions. However, default value is <span class="mono">./screenshot</span>. BE CAREFUL! This directory
+is relative to one, where you run <I>server</I>! When running <I>server</I> please follow instruction 
+from p. 2.3. You can read more about paths and directories in p. 2.5.
+</td></tr>
+
+<tr><td class="mono" valign=top nowrap>-e [on|off]</td><td>
+allow or disallow image e-mailing. When this option is turned on, user can send his images through
+e-mail (using <span class="mono">-smtp</span> value as a SMTP host and <span class="mono">-from</span> as
+a "From:" field). Notice, that this option is <B>off</B> by default. Please read p. 2.6. for details.
+</td></tr>
+
+<tr><td class="mono" valign=top nowrap>-from</td><td>
+defines the "From:" field in sended e-mails. Please read p. 2.6.2. and 2.6.3. for details. The default 
+value is <B>nobody@localhost</B>, but it won't work in most cases.
+</td></tr>
+
+<tr><td class="mono" valign=top nowrap>-smtp</td><td>
+defines your SMTP host. Please read p. 2.6.2. for details. The default value is <B>localhost</B>, but
+it won't work, if current host doesn't handle SMTP connections.	 
+</td></tr>
+
+<tr><td class="mono" valign=top nowrap>-lang [de|en|pl]</td><td>
+defines language for outgoing e-mails. English, German and Polish are currently supported.
+Notice, this option does not affect server messages nor user interface. See also
+p. 3.3.13 for client language options. Default value is <B>en</B>.
+</td></tr>
+
+<tr><td class="mono" valign=top nowrap>-b FILE/URL</td><td>
+defines the blackboard background image. Users will see this painting at their boards. If you define background image,
+<B>Reset</B> button will cause refresh this image, <B>not</B> fill board with specified color. The
+only valid file format is <B>PNG</B>, size of image must fit the drawing area exactly (like <I>onlyview</I> applet,
+see p. 1.5.2.). You can specify local image file location or full URL to image. If file is not found,
+has incorrect dimension or wrong format, simple screen erase is performed. Notice, that
+path to the file depends on OS, we suggest using full path (like <I>/tmp/image.png</I> or <I>c:\temp\image.png</I>).
+The URL must begin with <span class="mono">http://</span> protocol definiton. 
+    
+<span class="mono">bgimage.png</span> is sample file included in distribution archive, it fits the default applet size
+(you can try it with <span class="mono">test.html</span> page).
+
+This feature is <B>off</B> by default.
+</td></tr>
+
+<tr><td class="mono" valign=top nowrap>-quiet</td><td>
+run without any output 
+</td></tr>
+
+<tr><td class="mono" valign=top nowrap>-help</td><td>
+print help</td></tr>
+
+</table>
+<BR>
+
+Sample server command line invocations, write whole command in one line (please notice differences in Windows and Unix path defintions):
+<p class="shell">$ java -cp drawboard.jar drawboard.Server -d 60 -m 8 -savepath c:\temp</p>
+<p class="shell">$ java -cp drawboard.jar drawboard.Server -d 60 -m 8 -savepath /tmp/</p>
+</p>
+
+<p class="podpodtytul">2.5. Image saving</p>
+<p class="podpodtytultekst">
+<IMG SRC="image/save.png" WIDTH="381" HEIGHT="39" BORDER="0" ALT=""><BR clear=all>
+There are several issues in image saving. If user requests saving his clipboard content, he 
+transmits compressed data to <I>server</I>. Server creates <B>PNG</B> file and saves
+it in desired directory. Image can be saved if there
+is a <B>Save image</B> button under the image in clipboard viewer (p. 1.4.4.).<BR>
+</P>
+
+<p class="podpodpodtytul">2.5.1. Why PNG format?</p>
+<p class="podpodpodtytultekst">Main reason: <B>PNG</B> is the best. It produces small, loseless
+files and handles true-color palette. In opposite <B>GIF</B> supports only 256 color palette and
+is copyrighted, <B>JPEG</B> saves images with quality loss. 
+</P>
+
+<p class="podpodpodtytul">2.5.2. How about Unix and Windows differences?</p>
+<p class="podpodpodtytultekst">Drawboard <I>server</I> can be run at any operating system with JVM.
+The only difference is path indication in <span class="mono">-savepath</span> option. On <I>Unix hosts</I>
+write <p class="shell">-savepath /home/user/images_to_save</p>
+<p class="podpodpodtytultekst">, on Windows</P>
+<p class="shell">-savepath d:\temp</p>
+<p class="podpodpodtytultekst">or</P>
+<p class="shell">-savepath "c:\My documents"</p>
+<p class="podpodpodtytultekst">for paths including spaces. The path should be absolute. 
+If it's relative, read next point carefully. If you are using multiuser OS, 
+remember, that indicated directory must have write permissions for <I>server</I> process.<BR>
+<BR>
+We have tested this mechanism with Windows, Linux and Irix, and it worked. However, if you found any bug, 
+please report it.  
+</P>
+
+<p class="podpodpodtytul">2.5.3. From which directory should I run <I>server</I>?</p>
+<p class="podpodpodtytultekst">If you are defining relative path to image saving directory,
+you must run Drawboard <I>server</I> from base directory. For example - the default save dir is
+<span class="mono">./screenshot</span> and it's base is directory containing <span
+class="mono">test.html</span> file (we are talking about distribution package defaults). If you
+run <I>server</I> from other directory, the save dir will not be found and saving will be impossible.
+</P>
+
+<p class="podpodpodtytul">2.5.4. What is the image filename?</p>
+<p class="podpodpodtytultekst">
+Filenames are based on current date, the pattern is <B>YYYY_MM_DD_HH_MM_SS.PNG</B> (for example 
+<span class="mono">2002_02_23_22_50_49.png</span>). If many images come in the same moment (and <I>host</I>
+is able to process them in one second), duplicated files will have additional underscore before filename
+extension.
+</P>
+
+<p class="podpodpodtytul">2.5.5. How can user see saved images?</p>
+<p class="podpodpodtytultekst">
+Unfortunatelly he cannot. Loading images is not implemented yet (don't know whether or when it be). 
+Webmaster can write <B>CGI</B> or <B>PHP</B> script displaing content of desired directory or
+simply make it accessible through WWW. 
+</P>
+
+<p class="podpodpodtytul">2.5.6. How can user know saving was successful?</p>
+<p class="podpodpodtytultekst">
+In a few seconds the report windows should appear. If it doesn't, please submit a 
+bug report with detailed description of situation and environment.
+</P>
+
+<p class="podpodpodtytul">2.5.7. Server crashes after a few saved images!</p>
+<p class="podpodpodtytultekst">
+If you receive "<B>OutOfMemoryError</B>" and server crashes, you are probably using JDK 1.1.8.
+I know about this error, but it is probably Java Virtual Machine bug. Use version 1.3 or higher, 
+it works OK.   
+</P>
+
+<p class="podpodtytul">2.6. Image e-mailing</p>
+<p class="podpodtytultekst">
+<IMG SRC="image/email.png" WIDTH="381" HEIGHT="39" BORDER="0" ALT=""><BR clear=all>
+There are several issues in image emailing. If user requests e-mail with his clipboard content, he 
+transmits receiver address and compressed data to <I>server</I>. Server makes connection to
+defined SMTP host and sends multipart/mixed e-mail with a image/png base64-encoded file.  
+<BR>
+<BR>
+Image can be emailed if there is an <B>e-mail address field</B> under the image in clipboard viewer (p. 1.4.4.).<BR>
+</P>
+
+<p class="podpodpodtytul">2.6.1. Why this is option is off by default?</p>
+<p class="podpodpodtytultekst">
+Webmaster should configure and test this service. In most cases default settings are insufficient
+and e-mailing will not work.
+</P>
+
+<p class="podpodpodtytul">2.6.2. What is SMTP host?</p>
+<p class="podpodpodtytultekst">SMTP is Simple Mail Transfer Protocol. The SMTP host is an machine
+able to receive and transmit your e-mails. You need SMTP host which allows you sending e-mails, 
+check your mail client program for proper settings (most hosts refuses process mail from strangers). 
+</P>
+
+<p class="podpodpodtytul">2.6.3. What is my e-mail address used for?</p>
+<p class="podpodpodtytultekst">The only reason is image emailing. Server will send images in e-mails 
+with this "From:" field. Remember, that SMTP server must accept this address. If you are not
+sure whether it does, just check it. 
+</P>
+
+<p class="podpodpodtytul">2.6.4. How can user know that image was successfully sent?</p>
+<p class="podpodpodtytultekst">In a few seconds the report window should appear. If the error occured,
+report will contain proper SMTP message. If it doesn't show, please submit a 
+bug report with detailed description of situation and environment.  
+</P>
+
+<p class="podpodpodtytul">2.6.5. Does e-mail sending affect other activities?</p>
+<p class="podpodpodtytultekst">Yes. When server sends your image, it queues any other messages
+from you. Between submitting e-mail and receiving report all your messages are paused and will 
+be processed after end of e-mail task. Please remember that SMTP host will be fast and reliable. If
+connection is slow and interrupted, you can expect temporary unindicated "read-only" mode.
+</P>
+
+<p class="podpodtytul">2.7. Modifying sources</p>
+<p class="podpodpodtytul">2.7.1. Recompiling Drawboard</p>
+<p class="podpodpodtytultekst">Change current directory to Drawboard directory (where the 
+<span class="mono">test.html</span> is) and create new directory <span class="mono">drawboard</span>
+inside, then run</P> 
+<p class="shell">javac source/*.java -d drawboard</p>
+</p>
+<p class="podpodpodtytul">2.7.2. Creating JAR package</p>
+<p class="podpodpodtytultekst">If you are in your Drawboard directory and have your compiled 
+<span class="mono">*.class</span> files in the <span class="mono">drawboard</span> directory, you can
+(re)create JAR with command</P> 
+<p class="shell">jar cf drawboard.jar drawboard/*.class about.gif</p>
+</p>
+
+<p class="podtytul">3. Applet options</p>
+
+<p class="podpodtytul">3.1. Applet size</p>
+<p class="podpodtytultekst">
+Applet size is set in the <B>&lt;applet&gt;</B> tag. Example:<BR>
+<B>&lt;APPLET CODE="drawboard/Main.class" WIDTH=600 HEIGHT=450&gt;</B><BR>
+<BR>
+Minimum height of Drawboard depends on applied skin (for default skin it's 350 pixels). 
+Minimal width is about 200 pixels. Of course reasonable dimensions
+are much bigger. Size of right (100 pixels) and bottom (50 pixels) margins is fixed and 
+cannot be changed.<BR>
+<BR>
+<B>NOTE:</B> non-default applet dimensions must be also specified in <i>server</i> invocation (see p. 2.4), in other case <I>client</I>
+will not be able to communicate with <I>server</I>.  
+</p>
+
+<p class="podpodtytul">3.2. Applying new skin</p>
+<p class="podpodtytultekst">
+You can customize whole menu graphics design and buttons localization. It's better than Winamp 2 ;-) 
+</p>
+
+<p class="podpodpodtytul">3.2.1. Creating new skin</p>  
+<p class="podpodpodtytultekst">
+Look at <span class="mono">skin</span> directory. There are three GIF files, watch them. All clear?
+Most buttons have three different states - normal, mouseover and selected. Some (like Reset) have only
+two states - normal and selected. Network indicator is a special three-state icon. If you want to create
+your own skin, you have to create three files and edit them.<BR>
+<BR>
+<IMG SRC="image/buttons.png" WIDTH="400" HEIGHT="300" BORDER="0" ALT="">
+<BR>
+<BR>
+Skin files should have <B>GIF</B> format and be 100 pixel wide. Height isn't bounded, but
+reasonable range is 200-500 pixels. Set applet vertical dimension equal or higher than menu
+graphics. You can control menu empty part color with applet option, see p. 3.3.5.
+Without creating skin definition file you cannot change button sizes and positions.<BR>
+<BR>
+When you create any skin, feel free to contact Drawboards author.     
+</p>
+
+<p class="podpodpodtytul">3.2.2. Creating skin definition file</p>  
+<p class="podpodpodtytultekst">
+If you want to modify button positions, skin definition file is necessary. See 
+<span class="mono">skin</span> directory and watch  <span class="mono">default.def</span> file. 
+This is a template with default values. After
+creating own skin files measure button dimensions and modify definition file.  
+<BR>
+<BR>
+Definition file define names of three skin files and coordination of all menu elements. Those elements
+are: seven tool buttons, six line width buttons, three slot selection buttons, three thumbnail manipulation
+buttons, reset and copyright buttons, network indicator, thumbnail preview and people counter.<BR>
+<BR>
+All values must be set to change skin. Default values are located in <span class="mono">skin/default.def</span>. This file isn't necessary to
+Drawboard's work, you can copy and edit it to define your own values. To apply new skin, set proper
+applet option - see p. 3.3.7. If something goes wrong, watch Java console for error messages.
+<BR>
+<BR>
+When your new skin is ready, feel free to share with Drawboard's author :)  
+
+<p class="podpodpodtytul">3.2.3. Transparent menu</p>  
+<p class="podpodpodtytultekst">
+Some parts of menu can be transparent. This is a hack because applet cannot be transparent in
+general. But if you have background image on your page (like in the example 
+<span class="mono">test.html</span>), your applet can draw this image in selected places too.<BR>
+<BR>
+First you have to define background image in applet options (see p. 3.3.8). Then you should
+define an transparent color of your menu (p. 3.3.9), default is <I>0xff00ff</I> pink . Transparent  
+color and shape must be identical on all three skin files!<BR>
+<BR>
+The background image will be probably displayed misaligned. Two offset options can handle this 
+(see p. 3.3.10 and 3.3.11). This is an illustration of aligning background image.
+<BR clear=all><BR>
+
+<IMG SRC="image/offset.png" WIDTH="310" HEIGHT="200" BORDER="0" ALT="" align=center>
+<BR clear=all>
+<BR>
+Both X and Y offset can be a positive integers from 0 to <I>image dimension</I>. It defines
+right (X) and down (Y) shift, so if you want to move 40 pixel height image one pixel up (as in
+<span class="mono">test.html</span>), define a 39 pixel Y offset.<BR>
+<BR>
+Offset can change due to current resolution, so we recommend to put applet window into table with
+well-known dimensions (just as in the example). Remember you don't have to define plain color transparency,
+it can be done with simple menu background color (p. 3.3.5).
+<BR>
+<BR>
+Unfortunatelly, various browsers displays background images with various shift. For example IE and 
+Mozilla are uncompatible each other (<span class="mono">test.html</span> is set to IE correct values). If you want to have
+fully featured transparency, you have to detect browser and adjust setting, i.e. with JavaScript., 
+</p>
+
+
+<p class="podpodtytul">3.3. Applet options</p>
+<p class="podpodtytultekst">
+All tags must be inserted between
+<B>&lt;applet&gt;</B> and <B>&lt;/applet&gt;</B> tags. 
+
+<p class="podpodpodtytul">3.3.1. Communication port number</p>  
+<p class="podpodpodtytultekst">
+You can change default communication port number with tag<BR>
+<B>&lt;PARAM NAME="port" VALUE="4465"&gt;</B><BR>
+(it's of course example value). See p. 2.4 for details. 
+</p>
+
+<p class="podpodpodtytul">3.3.2. Initial background color</p>  
+<p class="podpodpodtytultekst">
+You can change initial background number with tag<BR>
+<B>&lt;PARAM NAME="bgcolor" VALUE="RRGGBB"&gt;</B><BR>
+(three two-chars hexadecimal values). This color is visible after
+applet was started but before archive image was fetched. Suggested
+color should be similiar to page background. 
+</p>
+
+<p class="podpodpodtytul">3.3.3. Initial pen color</p>  
+<p class="podpodpodtytultekst">
+You can change initial pen color with tag<BR>
+<B>&lt;PARAM NAME="pencolor" VALUE="RRGGBB"&gt;</B><BR>
+(three two-chars hexadecimal values). This color will be
+active when applet is started.  
+</p>
+
+<p class="podpodpodtytul">3.3.4. People counter color</p>  
+<p class="podpodpodtytultekst">
+You can change people counter color with tag<BR>
+<B>&lt;PARAM NAME="countercolor" VALUE="RRGGBB"&gt;</B><BR>
+(three two-chars hexadecimal values). This option is most useful
+while creating own skin.
+</p>
+
+<p class="podpodpodtytul">3.3.5. Menu background color</p>  
+<p class="podpodpodtytultekst">
+You can change menu background color with tag<BR>
+<B>&lt;PARAM NAME="menubgcolor" VALUE="RRGGBB"&gt;</B><BR>
+(three two-chars hexadecimal values). This color will be visible
+if menu image is shorter than applet's height. This option is most 
+useful while creating own skin. Warning! This setting is ignored
+if menu transparency is enabled (see p. 3.3.8 and 3.2.3).   
+</p>
+
+<p class="podpodpodtytul">3.3.6. Empty menu clipboard color</p>  
+<p class="podpodpodtytultekst">
+You can change empty clipboard's thumbnail color with tag<BR>
+<B>&lt;PARAM NAME="emptythumbnailcolor" VALUE="RRGGBB"&gt;</B><BR>
+(three two-chars hexadecimal values). This option is most useful while 
+creating own skin.
+</p>
+
+<p class="podpodpodtytul">3.3.7. Skin definition</p>  
+<p class="podpodpodtytultekst">
+You can change default skin with tag<BR>
+<B>&lt;PARAM NAME="skindef" VALUE="path/file"&gt;</B><BR>
+(path relative to <span class="mono">drawboard/skin</span>). See
+p. 3.2.1 for details. 
+</p>
+
+<p class="podpodpodtytul">3.3.8. Menu background image definiton (transparency option)</p>  
+<p class="podpodpodtytultekst">
+You can define menu background image with tag<BR>
+<B>&lt;PARAM NAME="skindef" VALUE="path/file"&gt;</B><BR>
+(path relative to <span class="mono">drawboard/</span>, <U>*not*</U> <span class="mono">drawboard/skins</span>!). 
+See p. 3.2.3 for transparent menu details. This option disables menu background color (p. 3.3.5). 
+</p>
+
+<p class="podpodpodtytul">3.3.9. Menu background image transparent color  (transparency option)</p>  
+<p class="podpodpodtytultekst">
+You can change menu transparent color with tag<BR>
+<B>&lt;PARAM NAME="menubgimagetransparentcolor" VALUE="RRGGBB"&gt;</B><BR>
+(three two-chars hexadecimal values). See p. 3.2.3 for transparent menu details. 
+</p>
+
+<p class="podpodpodtytul">3.3.10. Background image X offset (transparency option)</p>  
+<p class="podpodpodtytultekst">
+You can change menu background image X offset with tag<BR>
+<B>&lt;PARAM NAME="menubgimageoffsetx" VALUE="x"&gt;</B><BR>
+(positive integer value). See p. 3.2.3 for transparent menu details. 
+</p>
+
+<p class="podpodpodtytul">3.3.11. Background image Y offset (transparency option)</p>  
+<p class="podpodpodtytultekst">
+You can change menu background image Y offset with tag<BR>
+<B>&lt;PARAM NAME="menubgimageoffsety" VALUE="x"&gt;</B><BR>
+(positive integer value). See p. 3.2.3 for transparent menu details. 
+</p>
+
+<p class="podpodpodtytul">3.3.12. "Onlyview" mode switch</p>  
+<p class="podpodpodtytultekst">
+You can turn on the "onlyview" mode with tag<BR>
+<B>&lt;PARAM NAME="onlyview" VALUE="true"&gt;</B><BR>
+See p. 1.5 for details. If you don't want to enable this mode, just omit the parameter.
+</p>
+
+<p class="podpodpodtytul">3.3.13. Language selection</p>  
+<p class="podpodpodtytultekst">
+You can switch drawboard client to desired language with tag<BR>
+<B>&lt;PARAM NAME="lang" VALUE="XX"&gt;</B><BR>
+where XX is language tag. English (en), Polish (pl) and German (de) are currently
+supported. If you want to contribute your own language, please translate all sentences
+at the end of <span class="mono">Main.java</span> source file and send whole set to author. 
+Default value is <B>en</B>.
+</p>
+
+
+<p class="podtytul">4. FAQ</p>
+<p class="podtytultekst">
+
+<table border=0><tr><td VALIGN="TOP"><B>Q:</B></td><td>
+What are the hardware, software and network requirements? 
+</td></tr><tr><TD VALIGN="TOP"><B>A:</B></td><td>
+Drawboard <I>server</I> can be run on any host able to run Java Runtime Environtment. Please note
+that <I>server</I> process allocates about 8-15 MB of RAM. Drawboard applet can be run on any machine
+able to run graphical WWW browser.<BR>
+<BR>
+JDK or JRE 1.1 is enough to run server and client, but there is one issue - if you are planning to
+allow image saving, server must be run with JDK 1.3 or higher (with 1.1.8 it crashes after a few saved
+images)<BR>
+<BR>
+The required bandwidth is really small, I assume that 9600 bps is much more than single user needs.
+28800 bps should be enough for <I>server</I> to handle 10 clients. If you have any notices, please
+write me (my email is in p. 6)
+</td></tr></table><BR>
+
+<table border=0><tr><td VALIGN="TOP"><B>Q:</B></td><td>
+I write <B>java</B> command and I see <B>bash: java: command not found</B> or
+other error message.
+</td></tr><tr><TD VALIGN="TOP"><B>A:</B></td><td>
+You have to install Java Software Development Kit or Java Runtime Environment
+in order to run Drawboard server. Drawboard was tested with versions 1.1.8 and
+1.3.1, but should work with any version newer than 1.1. You can download desirable
+files from <A HREF="http://java.sun.com/">java.sun.com</A>
+</td></tr></table><BR>
+
+<table border=0><tr><td VALIGN="TOP"><B>Q:</B></td><td>
+Are the images identical on all machines?
+</td></tr><tr><TD VALIGN="TOP"><B>A:</B></td><td>
+They should be very similiar, but incoming data can intersect differently on
+some drawer's boards. Small differences are acceptable, aren't they?
+</td></tr></table><BR>
+
+<table border=0><tr><td VALIGN="TOP"><B>Q:</B></td><td>
+How about adding to Drawboard small chat window?
+</td></tr><tr><TD VALIGN="TOP"><B>A:</B></td><td>
+No. Drawboard is designed to supplement thrid-party chat engines, not replace them.
+Text tool must be sufficient. 
+</td></tr></table><BR>
+
+<table border=0><tr><td VALIGN="TOP"><B>Q:</B></td><td>
+I can run Drawboard, but on the blackboard there is an inscription "<B>WARNING: Network communication disabled, see doc for 
+details</B>". What does it mean?
+</td></tr><tr><TD VALIGN="TOP"><B>A:</B></td><td>
+You are opening Drawboard from local file. You can play and learn how to draw, but network communication will not work. 
+</td></tr></table><BR>
+
+<table border=0><tr><td VALIGN="TOP"><B>Q:</B></td><td>
+I can run Drawboard, but on the blackboard there is an inscription "<B>Wrong server image size, see doc for 
+details</B>". What does it mean?
+</td></tr><tr><TD VALIGN="TOP"><B>A:</B></td><td>
+Server was invoked with different dimension parameters than applet. See p.&nbsp;3.1 and 2.4  
+</td></tr></table><BR>
+
+<table border=0><tr><td VALIGN="TOP"><B>Q:</B></td><td>
+Why do you force me to load Drawboard through HTTP server? I want to load it from local file and
+have network connection.
+</td></tr><tr><TD VALIGN="TOP"><B>A:</B></td><td>
+This is a Java security policy. Applet can communicate only with host, which from has been loaded.
+Nothing we can do about it.
+</td></tr></table><BR>
+
+<table border=0><tr><td VALIGN="TOP"><B>Q:</B></td><td>
+Can I change the font on-the-fly?
+</td></tr><tr><TD VALIGN="TOP"><B>A:</B></td><td>
+No, letters are built in Drawboard to prevent variable browsers and operating systems font uncompatibility. 
+You can naturally edit <span class="mono">Alphabet.java</span> and
+recompile whole Drawboard. 
+</td></tr></table><BR>
+
+<table border=0><tr><td VALIGN="TOP"><B>Q:</B></td><td>
+When I run Drawboard, I have only red network icon and WAIT cursor. Why?
+</td></tr><tr><TD VALIGN="TOP"><B>A:</B></td><td>
+Applet cannot comunicate with server. Make sure server is running and port number are adequate. Drawboard
+not work with firewalls or proxy yet. See Java console for details.
+</td></tr></table><BR>
+
+<table border=0><tr><td VALIGN="TOP"><B>Q:</B></td><td>
+Applet stops loading with "<B>LOADING GRAPHICS ERROR</B>". Why?
+</td></tr><tr><TD VALIGN="TOP"><B>A:</B></td><td>
+If you are using custom skin, try to disable it. If it helped, fix error in definition file. 
+If you use default skin and error persist, check <span class="mono">skin</span> directory and 
+filenames (they are case-sensitive). Drawboard distribution packet includes proper files, you can
+check them and repair own. 
+</td></tr></table><BR>
+
+<table border=0><tr><td VALIGN="TOP"><B>Q:</B></td><td>
+Can I save image locally?
+</td></tr><tr><TD VALIGN="TOP"><B>A:</B></td><td>
+No, Java security policy forbids applet access to the local filesystem. The only thing you can do
+is grabbing whole screen with PrintScreen key (under Windows) or use any thrid-party tool (like
+shareware PaintShopPro).   
+</td></tr></table><BR>
+
+<table border=0><tr><td VALIGN="TOP"><B>Q:</B></td><td>
+The connection was lost but now it's OK. Why can't I save or e-mail clipboard image?
+</td></tr><tr><TD VALIGN="TOP"><B>A:</B></td><td>
+Disabled buttons doesn't changes at connection restore, close clipboard window
+and open it again. 
+</td></tr></table><BR>
+
+<table border=0><tr><td VALIGN="TOP"><B>Q:</B></td><td>
+I see <span class="mono">screenshot</span> directory in distribution packet but there is something
+else than application screenshots. Why? 
+</td></tr><tr><TD VALIGN="TOP"><B>A:</B></td><td>
+This directory contains images saved by drawboard users. Please read p. 2.5. for details.  
+</td></tr></table><BR>
+
+<table border=0><tr><td VALIGN="TOP"><B>Q:</B></td><td>
+Server crashes after a few saved images! What is wrong? 
+</td></tr><tr><TD VALIGN="TOP"><B>A:</B></td><td>
+You are probably using JDK 1.1.8 - this is a JVM bug. Please use JDK 1.3, it works OK.  
+</td></tr></table><BR>
+
+
+<!--
+<table border=0><tr><td VALIGN="TOP"><B>Q:</B></td><td>
+qqq
+</td></tr><tr><TD VALIGN="TOP"><B>A:</B></td><td>
+aaa
+</td></tr></table><BR>
+
+-->
+
+</p>
+
+<p class="podtytul">5. Download</p>
+<p class="podtytultekst">
+To get latest version od Drawboard, visit 
+ <a href="http://sourceforge.net/projects/drawboard">www.sourceforge.net/projects/drawboard</a><BR>
+Current version of this documentation can be reached at <a href="http://drawboard.sourceforge.net/">drawboard.sourceforge.net</a><BR>
+Drawboard is also noticed on <a href="http://freshmeat.net/">freshmeat.net</a>.
+</p>
+
+<p class="podtytul">6. Feedback</p>
+<p class="podtytultekst">
+Drawboard's author is <B>Tomek "TomasH" Zieliński</B><BR>
+You can e-mail him at <A HREF="mailto:tomash@fidonet.org.pl">tomash@fidonet.org.pl</A><BR>
+Any comments and proposals are welcome!<BR>
+</p>
+
+<BR><BR><BR>
+<HR NOSHADE COLOR="#80DEFF">
+</td></tr></table>
+
+<BR>
+<A href="http://sourceforge.net">
+<IMG src="http://sourceforge.net/sflogo.php?group_id=24482" width="210" height="62" border="0" 
+alt="SourceForge Logo"></A> 
+
+
+
+</BODY>
+</HTML>

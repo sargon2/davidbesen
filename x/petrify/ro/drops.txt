@@ -1,0 +1,11 @@
+
+drops = array(jellopy, scell, card, etc)
+chances = array(4000,   3000,  1,   50)
+
+func monster_died_so_figure_out_what_it_drops {
+	for(i=0;i<sizeof(drops);i++) {
+		if(rand() * 10000 < chances[i]) {
+			add drops[i] to what_monster_drops;
+		}
+	}
+}

@@ -1,0 +1,22 @@
+	// read and discard few of em
+	int tmpcount=1;
+	int tmp2 = this->count();
+	while(tmpcount < tmp2) {
+		inchar = fgetc(fp);
+		if(feof(fp)) {
+			Log("Attempt to update on smaller batch than original: %s", filename);
+			fclose(fp);
+			return false;
+		}
+		if(inchar == '\n') {
+			inchar = fgetc(fp);
+			if(feof(fp)) {
+				Log("Attempt to update on smaller batch than original: %s", filename);
+				fclose(fp);
+				return false;
+			}
+			if(inchar == '5') tmpcount++;
+		}
+	}
+//	Log("discarded %d", tmpcount);
+	Log("after discard, inchar is %d", inchar);

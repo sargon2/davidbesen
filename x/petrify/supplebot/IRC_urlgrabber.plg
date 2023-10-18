@@ -1,0 +1,33 @@
+$MODULE_NAME = "IRC_urlgrabber.plg";
+$MODELE_AUTHOR = "guantes";
+$MODULE_DESC = "URL Grabber - takes a regex and puts any matches in a databse for later use";
+
+if ($B_code == $IRCCB_ONCHANNELMSG) {
+    
+    // *** This module has no user commands.  Logs urls said in channel to a database.  Web page available at http://www.ramcon.net/~guantes/urlgrabber.php
+    // *** params: none
+    // *** access: -1
+    
+    $matches = array();
+    $regex = "/((?:http|ftp|gopher|telnet|game):\/\/|\s+|^)
+               ((?:(?:(?:\d{1,3}\.){3}|(?:\d{1,3}\.){7})\d{1,3}|
+               (?:[A-Za-z0-9\-]+\.)+
+               (?:com|net|org|mil|gov|edu|biz|museum|aero|coop|info|pro|name|[A-Za-z]{2}))
+               (?:\:\d+)?(?:(?:\/[A-Za-z0-9\-_\/\.~\,#\+%\$;=]*(?:\?\S*)?)|\s|\b|\$))
+               /imx";
+                           
+    preg_match( $regex, $B_param, $matches );
+    
+    if (count($matches) > 0) {
+        $url = $matches[0];
+        if (substr($url, 0, 1) == " ") $url = substr($url, 1);
+        
+        $query = "insert into urls_from_channel
+                    (nick, time, url, channel)
+                    values
+                    (\"$B_nick\", now(), \"$url\", \"$B_destination\")";
+        mysql_query($query);
+    }
+    unset($matches);
+    
+}

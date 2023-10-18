@@ -1,0 +1,28 @@
+// *** !seen - tells when <nick> last spoke
+// *** params: nickname [#channel]
+// *** access: 500
+
+$MODULE_NAME = "IRC_saydo.plg";
+$MODULE_AUTHOR = "freek";
+$MODULE_DESC = "tells supplebot to say or do something in the specified channel";
+
+if ($B_code == $IRCCB_ONPRIVMSG) {
+
+  // *** say - tells supplebot to say something in the specified channel
+  // *** params: channel, message
+  // *** access: 500
+  if( $SYS_COMMAND == 'say' && count($SYS_PARAMS)>2 && $USR_LEVEL >= 500 ) {
+    irc_privmsg($SYS_PARAMS[1], preg_replace('/say #\S*\s+/', '', $B_param));
+  }
+  
+  // *** say - tells supplebot to say something in the specified channel
+  // *** params: channel, message
+  // *** access: 500
+  if( $SYS_COMMAND == 'do' && count($SYS_PARAMS)>2 && $USR_LEVEL >= 500 ) {
+    irc_action($SYS_PARAMS[1], preg_replace('/do #\S*\s+/', '', $B_param));
+  }
+
+  unset($i);
+  unset($msg);
+
+}

@@ -1,0 +1,20 @@
+$MODULE_NAME = "IRC_test.plg";
+$MODULE_AUTHOR = "sargon";
+$MODULE_DESC = "does things.  Useful things.";
+
+if ($B_code == $IRCCB_ONPRIVMSG || $B_code == $IRCCB_ONCHANNELMSG) {
+
+   // *** test module
+   // *** params: none
+   // *** access: -1
+   if (($SYS_COMMAND == "ping" && $B_code == $IRCCB_ONPRIVMSG) || $SYS_COMMAND == "ping") {
+      if ( $B_code == $IRCCB_ONPRIVMSG ) 
+         $dest = $B_nick;
+      else
+         $dest = $B_destination;
+
+	irc_privmsg($dest, "pong");
+
+	}
+
+}

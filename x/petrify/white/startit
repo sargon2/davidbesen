@@ -1,0 +1,2 @@
+#!/bin/sh
+nohup java -cp drawboard.jar drawboard.Server -x 900 -y 650 &

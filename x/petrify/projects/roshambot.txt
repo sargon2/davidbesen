@@ -1,0 +1,215 @@
+#!/usr/bin/perl -w
+
+use Net::IRC;
+#use DBI;
+use strict;
+
+my %fights;
+my $fightsN = 0;
+my %weaps;  #r, p, s
+my %whochal; # who challenged who
+
+my $chan = "#ro";
+
+my $irc;
+$irc = new Net::IRC;
+
+my $conn;
+$conn = $irc->newconn(Nick => 'RoShamBot', Server=>'tehfeh', 
+Ircname=>'RoShamBot');
+
+$conn->add_global_handler('376', \&on_connect);
+#$conn->add_global_handler('public', \&on_public);
+$conn->add_handler('msg', \&on_msg);
+
+print ("....\n");
+$irc->start;
+
+sub on_connect {
+    my $self = shift;
+    $self->join ($chan);
+    $self->print ("joined\n");
+}
+
+sub on_msg {
+    my ($self, $event) = @_;
+    my ($nick, $mynick) = (lc($event->nick), $self->nick);
+    my ($arg) = $event->args;
+    my $temp;
+    my $key;
+    $arg = lc($arg);
+    my @in = split(/ /, $arg);
+    if($in[0] eq "join") {
+        $self->join($chan);
+    }
+    if($in[0] eq "help") {
+        $self->privmsg($nick, "/msg $mynick chal <nick>");
+        $self->privmsg($nick, "status shows active battles");
+        $self->privmsg($nick, "quit cancels current game");
+        return;
+    }
+    if($in[0] eq "status") {
+        $self->privmsg($nick, "$fightsN battles running");
+        foreach $key (keys %whochal) {
+            $self->privmsg($nick, "$key ---> $whochal{$key}");
+        }
+        return;
+    }
+    if($in[0] eq "quit") {
+        if($weaps{$nick}) {
+            $self->privmsg($nick, "game cancelled");
+            $self->privmsg($fights{$nick}, "game cancelled");
+            $self->privmsg($chan, "$nick cancelled their game");
+            clean($nick);
+        }
+        return;
+    }
+    if(substr($in[0], 0, 4) eq "chal") {
+        if($weaps{$nick}) {
+            # already in a battle
+            $self->privmsg($nick, "you're already in a battle");
+            return;
+        }
+        if($weaps{$in[1]}) {
+            # already in a battle
+            $self->privmsg($nick, "Sorry, $in[1] is already in a battle");
+            return;
+        }
+        if($nick eq $in[1]) {
+            # challenging self
+            $self->privmsg($nick, "cannot challenge yourself");
+            return;
+        }
+        if($in[1] eq lc($mynick)) {
+            $self->privmsg($nick, "please don't challenge me");
+            return;
+        }
+        # challenge accepted
+        $fights{$nick} = $in[1];
+        $whochal{$nick} = $in[1];
+        $fights{$in[1]} = $nick;
+        $weaps{$nick} = ' ';
+        $weaps{$in[1]} = ' ';
+        $fightsN++;
+        $self->privmsg($in[1], "you were just challenged by $nick");
+        $self->privmsg($in[1], "respond with r, p, or s");
+        $self->privmsg($nick, "sent challenge to $in[1], now pick your weapon with r, p, or s");
+        $self->privmsg($chan, "$nick challenged $in[1] at rock, paper, scissors!");
+    }
+    if(substr($in[0], 0, 1) =~ /[rps]/) {
+        if($weaps{$nick}) {
+            if($weaps{$nick} eq ' ') {
+                $weaps{$nick} = substr($in[0], 0, 1);
+                $weaps{$nick} =~ s/r/rock/;
+                $weaps{$nick} =~ s/p/paper/;
+                $weaps{$nick} =~ s/s/scissors/;
+                $self->privmsg($nick, "received choice from $nick");
+                $self->privmsg($fights{$nick}, "received choice from $nick");
+            #} else { # what an odd thing to comment out, eh?
+                if($weaps{$fights{$nick}} ne ' ') { # if we have a weap for both parties
+                    # decide who wins
+                    if(won($weaps{$nick}, $weaps{$fights{$nick}}) == 0) {
+                       $self->privmsg($nick, "tie, try again");
+                        $self->privmsg($fights{$nick}, "tie, try again");
+                        Log($nick, $fights{$nick}, $weaps{$nick}, $weaps{$fights{$nick}}, 1);
+                        $weaps{$nick} = ' ';
+                        $weaps{$fights{$nick}} = ' ';
+                    }
+                    elsif(won($weaps{$nick}, $weaps{$fights{$nick}}) == 1) {
+                        $self->privmsg($nick, "you win");
+                        $self->privmsg($fights{$nick}, "you lose");
+                        $self->privmsg($chan, $nick."'s $weaps{$nick} ".verb($weaps{$nick})." $fights{$nick}'s $weaps{$fights{$nick}}");
+                        Log($nick, $fights{$nick}, $weaps{$nick}, $weaps{$fights{$nick}}, 0);
+                        clean($nick);
+                    }
+                    elsif(won($weaps{$nick}, $weaps{$fights{$nick}}) == -1) {
+                        $self->privmsg($nick, "you lose");
+                        $self->privmsg($fights{$nick}, "you win");
+                        $self->privmsg($chan, "$fights{$nick}'s $weaps{$fights{$nick}} ".verb($weaps{$fights{$nick}})." ".($nick)."'s $weaps{$nick}");
+                        Log($fights{$nick}, $nick, $weaps{$fights{$nick}}, $weaps{$nick}, 0);
+                        clean($nick);
+                    }
+                }
+            } else {
+                # tried to submit twice
+                $self->privmsg($nick, "you already picked $weaps{$nick}");
+            }
+        } else {
+            # just submitted without being in a battle
+            $self->privmsg($nick, "you can't submit a weapon until you're in a battle");
+        }
+    }
+}
+
+sub verb {
+    my ($a) = @_;
+    $a = substr($a, 0, 1);
+    my @rocks = ("smashed", "crushed", "destroyed");
+    my @paps = ("smothered", "covered");
+    my @scis = ("ripped apart", "cut", "spliced");
+    if($a eq "r") {
+        $a = $rocks[int rand $#rocks];
+    }
+    elsif($a eq "p") {
+        $a = $paps[int rand $#paps];
+    }
+    elsif($a eq "s") {
+        $a = $scis[int rand $#scis];
+    }
+    return $a;
+}
+
+sub Log {
+    return;
+    my ($winner, $loser, $winwep, $losewep, $tiestat) = @_;
+    # tiestat is 1 if it's a tie, 0 otherwise
+
+    local *FL; open FL, "info"; my ($user, $pass, $data) = split(" ", <FL>); close FL;
+    my $dbc = DBI->connect("DBI:mysql:$data:localhost", "$user", "$pass", { RaiseError => 1 });
+$dbc->do("insert into Matches (Winner, Loser, WWeap, LWeap, Tie, Timestamp) values 
+	                      ('$winner', '$loser', '$winwep', '$losewep', $tiestat, NOW())");
+    $dbc->disconnect;
+
+}
+
+sub clean { # takes just a nick; cleans everything that person's in
+    my $nick = $_[0];
+    delete $weaps{$fights{$nick}};
+    delete $weaps{$nick};
+    delete $whochal{$fights{$nick}};
+    delete $whochal{$nick};
+    delete $fights{$fights{$nick}};
+    delete $fights{$nick};
+    $fightsN--;
+}
+
+sub won {
+    my ($a, $b) = @_;
+    $a = substr($a, 0, 1);
+    $b = substr($b, 0, 1);
+    if($a eq "r") {
+        if($b eq "r") {
+            return 0;
+        } elsif($b eq "p") {
+            return -1;
+        } elsif($b eq "s") {
+            return 1;
+        }
+    } elsif($a eq "p") {
+        if($b eq "r") {
+            return 1;
+        } elsif($b eq "p") {
+            return 0;
+        } elsif($b eq "s") {
+            return -1;
+        }
+    } elsif($a eq "s") {
+        if($b eq "r") {
+            return -1;
+        } elsif($b eq "p") {
+            return 1;
+        } elsif($b eq "s") {
+            return 0;
+        }
+    }
+}

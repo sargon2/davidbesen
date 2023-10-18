@@ -1,0 +1,35 @@
+<?
+
+if ($url) {
+   $fifo = fopen("/home/sargon/rourls", 'w');
+   $ra = getenv('REMOTE_ADDR');
+   $url = stripcslashes($url);
+   fputs ($fifo, $url);
+   fclose($fifo);
+
+$ra = getenv('REMOTE_ADDR');
+$who = fopen("/home/sargon/rowhopasted", 'w');
+fputs($who, $ra . "\n");
+fclose($who);
+print Header("Location: http://www.petrify.net/paste/");
+
+} else {
+	
+print 'Paste into #ro:';
+print '<form method="get">';
+print '<TEXTAREA name="url" rows="10" cols="80" wrap="virtual"></TEXTAREA>';
+print '<BR> ';
+print '<input type="submit" value="Paste">';
+print '</form>';
+print '<br>';
+print 'This one\'s better than guan\'s because:';
+print '<ul>';
+print '<li>it can do multiple lines';
+print '<li>it cuts out excess whitespace';
+print '<li>it wraps long lines properly, instead of cutting them off';
+print '<li>it doesn\'t re-paste on reload or \'back\'';
+print '<li>it replaces IPs with text';
+print '<li>easy to remember (and type) url';
+print '</ul>';
+}
+?>

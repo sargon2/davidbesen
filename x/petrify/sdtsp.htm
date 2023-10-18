@@ -1,0 +1,3902 @@
+<html>
+<head>
+<title></title>
+</head>
+<body text="#0000000" link="#0000FF" vlink="#551A8B" alink="#FF00000" bgcolor="#BFBFBF">
+
+<p>                                                                                                            
+<p align=right>FGDC-STD-002.6
+
+<p><img src="NSDILOGO.DRW.gif" width="198" height="127" align="bottom" >
+
+<pre>
+
+<p>
+
+<p>
+
+<p>
+
+</pre>
+
+<p><font size="+2">Spatial Data Transfer Standard (SDTS) -</font><br>
+
+<font size="+2">Part 6: Point Profile</font>
+
+<pre>
+
+<p>
+
+</pre>
+
+<p>Federal Geodetic Control Subcommittee<br>
+
+Federal Geographic Data Committee
+
+<br>
+
+<p>April 1998
+
+<pre>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</pre>
+<hr noshade>
+
+<center><u>Federal Geographic Data Committee</u><br>
+Department of Agriculture &#149; Department of Commerce &#149; Department of Defense &#149; Department of Energy<br>
+Department of Housing and Urban Development &#149; Department of the Interior &#149; Department of State<br>
+Department of Transportation &#149; Environmental Protection Agency<br>
+Federal Emergency Management Agency &#149; Library of Congress<br>
+National Aeronautics and Space Administration &#149; National Archives and Records Administration<br>
+Tennessee Valley Authority</center>
+<br><br><br><br>
+<br><br><br><br>
+<center>Federal Geographic Data Committee</center>
+
+<pre>
+
+</pre>
+
+<p>Established by Office of Management and Budget Circular A-16, the Federal Geographic Data
+Committee (FGDC) promotes the coordinated development, use, sharing, and dissemination of
+geographic data.
+
+
+<p>The FGDC is composed of representatives from the Departments of Agriculture, Commerce,
+Defense, Energy, Housing and Urban Development, the Interior, State, and Transportation; the
+Environmental Protection Agency; the Federal Emergency Management Agency; the Library
+of Congress; the National Aeronautics and Space Administration; the National Archives and
+Records Administration; and the Tennessee Valley Authority.  Additional Federal agencies
+participate on FGDC subcommittees and working groups.  The Department of the Interior
+chairs the committee.
+
+
+<p>FGDC subcommittees work on issues related to data categories coordinated under the circular. 
+Subcommittees establish and implement standards for data content, quality, and transfer;
+encourage the exchange of information and the transfer of data; and organize the collection of
+geographic data to reduce duplication of effort.  Working groups are established for issues
+that transcend data categories.
+
+
+<p>For more information about the committee, or to be added to the committee's newsletter
+mailing list, please contact:
+
+
+<center><p>Federal Geographic Data Committee Secretariat<br>
+
+c/o U.S. Geological Survey<br>
+
+590 National Center<br>
+
+Reston, Virginia 22092<br>
+
+
+<p>Telephone:  (703) 648-5514<br>
+
+Facsimile:  (703) 648-5755<br>
+
+Internet (electronic mail):  gdc@usgs.gov<br>
+
+Anonymous FTP:  ftp://www.fgdc.gov/pub/gdc/<br>
+
+World Wide Web:  http://www.fgdc.gov/fgdc.html</center>
+
+<pre>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</pre>
+<center>6-ii</center>
+<br><br><br><br>
+<table width="100%">
+<tr>
+<td>Federal Geographic Data Committee</td>
+<td align=right>FGDC-STD-002.6</td>
+</tr>     
+<tr>
+<td>Spatial Data Transfer Standard (SDTS) - Part 6: Point Profile, December 1997</td>
+</tr>
+</table>
+<hr noshade>
+<br><br>
+<center><font size="+2">Contents</font></center>
+
+<pre>
+
+
+                                                                                           Page
+1.  Introduction. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 6-1
+    1.1  Scope and Definition . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 6-1 
+         1.1.1   Geographic Data. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 6-1 
+         1.1.2   Point Data with No Topology. . . . . . . . . . . . . . . . . . . . . . . . 6-1 
+         1.1.3   Profile Annex Options. . . . . . . . . . . . . . . . . . . . . . . . . . . 6-2
+    1.2  Conformance. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 6-2 
+         1.2.1   Transfer Conformance . . . . . . . . . . . . . . . . . . . . . . . . . . . 6-2 
+         1.2.2   Encoder Conformance. . . . . . . . . . . . . . . . . . . . . . . . . . . . 6-3 
+         1.2.3   Decoder Conformance. . . . . . . . . . . . . . . . . . . . . . . . . . . . 6-3 
+    1.3  Changes to Parts 1 and 3 Requirements. . . . . . . . . . . . . . . . . . . . . . . 6-4 
+    1.4  Maintenance Authority. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 6-5 
+
+
+2.  Spatial Data Concepts . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 6-6 
+    2.1   Spatial Objects . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 6-6 
+    2.2   Layers and (or) Partitions. . . . . . . . . . . . . . . . . . . . . . . . . . . . 6-7 
+
+
+3.  Spatial Data Quality. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 6-8 
+    3.1   Lineage . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 6-8 
+    3.2   Positional Accuracy . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 6-8 
+    3.3   Logical Consistency . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 6-8 
+    3.4   Completeness and (or) Logical Consistency . . . . . . . . . . . . . . . . . . . . 6-8 
+
+
+4.  General Specification (The Transfer Model). . . . . . . . . . . . . . . . . . . . . . . 6-9 
+    4.1   Standard Module Names . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 6-9 
+    4.2   Order of Records, Fields, and Subfields within Modules. . . . . . . . . . . . . . 6-10 
+    4.3   Coordinate Frame of Reference . . . . . . . . . . . . . . . . . . . . . . . . . . 6-10    
+    4.4   Spatial Address (Coordinate) Format . . . . . . . . . . . . . . . . . . . . . . . 6-10 
+          4.4.1   External Spatial Reference. . . . . . . . . . . . . . . . . . . . . . . . 6-10 
+          4.4.2   Internal Representation of Spatial Addresses. . . . . . . . . . . . . . . 6-11 
+          4.4.3   Restrictions on X and Y Subfields . . . . . . . . . . . . . . . . . . . . 6-11 
+    4.5   Null (and Like) Values  . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 6-11 
+    4.6   Attribute Usage . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 6-12 
+    4.7   Relationships Between Modules and Layers. . . . . . . . . . . . . . . . . . . . . 6-12 
+    4.8   Multi-valued Attributes . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 6-13 
+    4.9   Attributing Points with Entity Labels . . . . . . . . . . . . . . . . . . . . . . 6-13 
+
+
+5.  Transfer Module Specification . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 6-15 
+
+
+
+
+</pre>
+<center>6-iii</center>
+<br><br><br><br>
+<table width=100%>
+<tr>
+<td>Federal Geographic Data Committee</td>
+<td align=right>FGDC-STD-002.6</td>
+</tr>
+<tr>
+<td>Spatial Data Transfer Standard (SDTS)-Part 6: Point Profile, December 1997</td>
+<td><br></td>
+</tr>
+</table>
+<hr noshade>
+<pre>
+
+
+     5.1   Global Information Modules . . . . . . . . . . . . . . . . . . . . . . . . . . . 6-17 
+     5.2   Data Quality Modules . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 6-18 
+     5.3   Attribute Modules. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 6-19 
+     5.4   Composite Module . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 6-19 
+     5.5   Vector Modules . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 6-19 
+           5.5.1   Topological Pointers . . . . . . . . . . . . . . . . . . . . . . . . . . 6-19 
+           5.5.2   Attribute Primary References . . . . . . . . . . . . . . . . . . . . . . 6-20 
+           5.5.3   Number of Object Types Within a Single Module. . . . . . . . . . . . . . 6-20 
+           5.5.4   Label Points . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 6-20 
+     5.6   Raster Modules . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 6-20 
+     5.7   Graphic Representation Modules . . . . . . . . . . . . . . . . . . . . . . . . . 6-20 
+     5.8   Module Restrictions/Requirements:  Identification Module . . . . . . . . . . . . 6-20 
+           5.8.1   External Spatial Reference . . . . . . . . . . . . . . . . . . . . . . . 6-20 
+           5.8.2   Profile Identification . . . . . . . . . . . . . . . . . . . . . . . . . 6-20 
+           5.8.3   Feature Level Conformance. . . . . . . . . . . . . . . . . . . . . . . . 6-21 
+           5.8.4   Global Attributes. . . . . . . . . . . . . . . . . . . . . . . . . . . . 6-21 
+     5.9   Module Restrictions/Requirements:  Internal Spatial Reference. . . . . . . . . . 6-21 
+     5.10  Module Restrictions/Requirements:  External Spatial Reference. . . . . . . . . . 6-22 
+     5.11  Module Restrictions/Requirements:  Catalog/Spatial Domain. . . . . . . . . . . . 6-22 
+     5.12  Module Restrictions/Requirements:  Catalog/Directory . . . . . . . . . . . . . . 6-22 
+     5.13  Module Restrictions/Requirements:  Data Dictionary/Schema. . . . . . . . . . . . 6-23 
+     5.14  Module Restrictions/Requirements:  Data Dictionary/Domain. . . . . . . . . . . . 6-23 
+     5.15  Module Restrictions/Requirements:  Data Dictionary/Definition. . . . . . . . . . 6-23 
+     5.16  Module Restrictions/Requirements:  Catalog/Cross Reference . . . . . . . . . . . 6-23 
+
+
+6.   ISO 8211 Specific Decisions. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 6-24 
+     6.1  Objective . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 6-24 
+     6.2  Relationship of Modules to ISO 8211 Files . . . . . . . . . . . . . . . . . . . . 6-24 
+     6.3  Media . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 6-24 
+     6.4  Organization of Files on Media. . . . . . . . . . . . . . . . . . . . . . . . . . 6-24 
+     6.5  File Names. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 6-25 
+     6.6  Taking Advantage of Dropped Leader and Directory. . . . . . . . . . . . . . . . . 6-25 
+     6.7  ISO 8211 DDR Contents . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 6-26 
+     6.8  Use of Binary Data Type for Spatial Addresses . . . . . . . . . . . . . . . . . . 6-26 
+     6.9  Use of Character Data Type for Dates. . . . . . . . . . . . . . . . . . . . . . . 6-27 
+     6.10  README File. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 6-27 
+
+
+Annexes . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 6-28 
+
+
+A:  The Data Dictionary Transfer. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 6-29 
+    A.1   Introduction. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 6-29 
+    A.2   Requirements for Master Data Dictionary Transfer. . . . . . . . . . . . . . . . . 6-29 
+
+
+
+</pre>
+<center>6-iv</center>
+<br><br><br><br>
+<table width="100%">
+<tr>
+<td>Federal Geographic Data Committee</td>
+<td align=right>FGDC-STD-002.6</td>
+</tr>
+<tr>
+<td>Spatial Data Transfer Standard (SDTS)-Part 6: Point Profile, December 1997</td>
+<td><br></td>
+</tr>
+</table>
+<hr noshade>
+<pre>
+
+
+          A.2.1   Required Modules. . . . . . . . . . . . . . . . . . . . . . . . . . . . . 6-29 
+          A.2.2   Required Contents Per Module. . . . . . . . . . . . . . . . . . . . . . . 6-29 
+          A.2.3   Version Numbering . . . . . . . . . . . . . . . . . . . . . . . . . . . . 6-30 
+          A.2.4   Module Naming Conventions . . . . . . . . . . . . . . . . . . . . . . . . 6-31 
+          A.2.5   File Restrictions and Naming Conventions. . . . . . . . . . . . . . . . . 6-31 
+          A.2.6   Requirements for Transfer Using a Master Data Dictionary. . . . . . . . . 6-32 
+          A.2.7   Creating a Complete Transfer. . . . . . . . . . . . . . . . . . . . . . . 6-33 
+
+
+B:    Encoding Multi-valued Attributes. . . . . . . . . . . . . . . . . . . . . . . . . . . 6-34 
+
+
+C:    An Example of Attributing Points with Entity Labels . . . . . . . . . . . . . . . . . 6-38 
+
+
+D:    Graphic Representation Option . . . . . . . . . . . . . . . . . . . . . . . . . . . . 6-40 
+      D.1   Introduction. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 6-40 
+      D.2   Spatial Objects . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 6-40 
+      D.3   Transfer Module Specification . . . . . . . . . . . . . . . . . . . . . . . . . 6-40 
+      D.4   Module Restrictions/Requirements:  Identification Module. . . . . . . . . . . . 6-40 
+      D.5   Module Restrictions/Requirements:  Catalog/Cross Reference Module . . . . . . . 6-41 
+
+
+Tables
+
+
+1.  Permitted Spatial Objects. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 6-6 
+2.  Module Level Restrictions and Requirements. . . . . . . . . . . . . . . . . . . . . . . 6-15 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</pre>
+<center>6-v</center>
+<br><br><br><br>
+<table width="100%">
+<tr>
+<td>Federal Geographic Data Committee</td>
+<td align=right>FGDC-STD-002.6</td>
+</tr>
+<tr>
+<td>Spatial Data Transfer Standard (SDTS)-Part 6: Point Profile, December 1997</td>
+<td><br></td>
+</tr>
+</table>
+<hr noshade>
+<pre>
+
+</pre>
+<font size="+2"><strong>Preface: Development</strong></font>
+<pre>
+
+</pre>
+This Point Profile was developed initially to provide a means to transfer geodetic control data.
+It was recognized that the Topological Vector Format was not usable for this purpose since
+coordinates in that profile are restricted to 32-bit words. Geodetic control data is always
+expressed in a global coordinate system and often given to 0.00001 second of arc in latitude
+and longitude. This requires at least a 64-bit computer word.
+
+
+<p>The National Geodetic Survey (NGS), worked cooperatively on a project with the Solid Earth
+Geophysics Division of the National Geophysical Data Center (NGDC), NOAA,  to place
+geodetic control in SDTS format. This project showed the need for a new profile to transfer
+high precision coordinates. NGS and NGDC approached the SDTS maintenance authority at
+USGS. These three offices worked together to develop this standard.
+<pre>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</pre>
+<center>6-vi</center>
+<br><br><br><br>
+<table width="100%">
+<tr>
+<td>Federal Geographic Data Committee</td>
+<td align=right>FGDC-STD-002.6</td>
+</tr>
+<tr>
+<td>Spatial Data Transfer Standard (SDTS)-Part 6: Point Profile, December 1997</td>
+<td><br></td>
+</tr>
+</table>
+<hr noshade>
+<pre>
+
+
+</pre>
+<p><strong><font size="+2">1.  Introduction</font></strong>
+
+
+<p>An SDTS profile, in general terms, is defined as a limited subset of the Spatial Data Transfer
+Standard, designed for use with a specific type of data.  Specific choices are made for
+encoding possibilities not addressed, left optional, or left with numerous choices within Parts
+1, 2, and 3 of SDTS.
+<dl><dt>
+<p>An SDTS profile shall provide for the transfer of files, records, fields, and subfields with the
+following objectives:
+
+<p>
+<dd>(a) to encode in a standard format;
+<p>
+
+<dd>(b) to provide for machine and media independence;
+<p>
+
+<dd>(c) to accompany the data with their description;
+<p>
+
+<dd>(d) to preserve all meaning and relationships of the data; and
+<p>
+
+<dd>(e) to keep both fields and records to an appropriate maximum length.</dl>
+
+
+<p><strong><font size="+1">1.1  Scope and Definition</strong></font>
+
+
+<p>Part  6, the Point Profile, contains specifications for an SDTS profile for use with geographic
+point data only, with the option to carry high precision coordinates such as those required for
+geodetic network control points.  (This profile is a modification of Part 4, the Topological
+Vector Profile, and follows many of the conventions of that profile.)
+
+
+<p><strong>1.1.1  Geographic Data</strong>
+
+
+<p>By "geographic" we mean data that describe "real-world" features, rather than a symbolized
+map graphic.  Less accurate (32 bit integer) data may be derived from a cartographic product
+(map), but the purpose of  this profile is to convey high precision point data, such as data
+derived from high precision geodetic network control surveys, rather than information about
+geographic features displayed on maps.
+
+
+<p><strong>1.1.2  Point Data with No Topology</strong>
+
+
+<p>The data are represented by zero-dimensional objects which have no explicit topological
+relationship to each other (see Part 1 definition 2.3.1.1).  Excluded are zero-dimension objects
+with topology (nodes), 1-dimensional and 2-dimensional vector objects, and raster data. 
+These types of data may be accommodated either by other profiles, or future extensions to
+this profile.
+<pre>
+
+
+</pre>
+<center>6-1</center>
+<br><br><br><br>
+<table width="100%">
+<tr>
+<td>Federal Geographic Data Committee</td>
+<td align=right>FGDC-STD-002.6</td>
+</tr>
+<tr>
+<td>Spatial Data Transfer Standard (SDTS)-Part 6: Point Profile, December 1997</td>
+<td><br></td>
+</tr>
+</table>
+<hr noshade>
+<pre>
+
+</pre>
+<p>Part 6 is organized using the same major headings found in Part 1 and Part 4.  Specific
+discussions regarding encoding possibilities in Part 1 are grouped under each major heading
+and will include specific references to Parts 1, 2, or 3 where necessary for clarification.
+
+
+<p><strong>1.1.3  Profile Annex Options</strong>
+
+
+<p>Annex D of Part 6 contains a permitted graphic representation option to this profile.  This
+option implements additional features of the SDTS which may be useful in some transfers. 
+Encoders and decoders are not required to implement this option to be conforming to this
+profile.  However, the presence of this option shall be tolerated by decoders.
+
+
+<p><font size="+1"><strong>1.2  Conformance</strong></font><br>
+(see also Part 1, Section 1.2, Conformance)
+
+<dl><dt>
+<p>There are three types of products which can be tested for conformance to this profile:
+
+<p>
+
+<dd>(a) SDTS transfers (the actual data sets);
+
+<p>
+
+<dd>(b) SDTS encoding software; and
+
+<p>
+
+<dd>(c) SDTS decoding software.</dl>
+
+<p>
+
+<p><strong>1.2.1  Transfer Conformance</strong>
+
+<dl><dt>
+<p>In order to conform to this Point Profile, an SDTS transfer shall:
+
+<p>
+
+<dd>(a) contain all mandatory spatial objects, modules, fields, and subfields as specified in this
+profile;
+
+<p>
+
+<dd>(b) not contain spatial objects, modules, fields, and subfields which are not permitted by this
+profile or its annexes;
+
+<p>
+
+<dd>(c) conform to all requirements and specifications of Parts 1, 2, and 3 of SDTS unless they
+conflict with this profile;
+
+<p>
+<dd>(d) conform to all restrictions on SDTS Parts 1, 2, and 3 as specified in this profile;
+
+<p>
+
+<dd>(e) be formatted in compliance to ANSI/ISO 8211; 
+
+<p>
+
+<dd>(f) contain only data sets which have level 1 External Spatial Reference conformance;</dl>
+<pre>
+
+
+
+</pre>
+<center>6-2</center>
+<br><br><br><br>
+<table width="100%">
+<tr>
+<td>Federal Geographic Data Committee</td>
+<td align=right>FGDC-STD-002.6</td>
+</tr>
+<tr>
+<td>Spatial Data Transfer Standard (SDTS)-Part 6: Point Profile, December 1997</td>
+<td><br></td>
+</tr>
+</table>
+<hr noshade>
+<pre>
+
+</pre>
+<dl><dt>
+<dd>(g) follow all module and file naming requirements of this profile; 
+
+<p>
+
+<dd>(h) contain any profile options it claims to include; and
+
+<p>
+
+<dd>(i) adhere to all other requirements specified in this profile.</dl>     
+
+
+<p><strong>1.2.2  Encoder Conformance</strong>
+
+<p>
+<dl><dt>
+<p>In order to conform to this Point Profile, an SDTS encoder shall:
+
+<p>
+
+<dd>(a) generate only SDTS Point Profile transfers which conform to Section 1.2.1 (or be able to
+be directed to only generate transfers which conform to this profile);
+
+<p>
+
+<dd>(b) convert spatial objects in the input system to appropriate SDTS spatial objects;
+
+<p>
+
+<dd>(c) convert attribute data stored in the input system (such as in a data base) to SDTS
+Attribute Primary and Secondary modules;
+
+<p>
+
+<dd>(d) correctly maintain linkages between spatial objects and attributes; 
+
+<p>
+
+<dd>(e) be able to encode both standard precision (32-bit integer) and high precision (64-bit
+floating point) coordinate formats, with the choice of data type to be specified by the user at
+the time of encoding, and, as an option, be able to create a single transfer with both standard
+and high precision point data in separate layers; and
+
+<p>
+
+<dd>(f) support all profile options it claims to support.</dl>
+
+
+<p><strong>1.2.3  Decoder Conformance</strong>
+
+<dl><dt>
+<p>In order to conform to this Point Profile, an SDTS decoder shall:
+
+<p>
+<dd>(a) be able to interpret Point Profile transfers which conform to Section 1.2.1;
+
+<p>
+
+<dd>(b) be able to decode any module required or permitted by the body or Annex A of this
+profile (decoding of modules permitted by Annex D is optional);
+
+<p>
+
+<dd>(c) be able to decode any spatial object required or permitted by section 2.1 of the profile
+and, to the fullest extent possible in the output system, convert it to a corresponding object or
+equivalent information structures in the output system;
+
+<p>
+
+<dd>(d) be able to decode any Attribute Primary or Secondary module and convert it to a data
+base or other format usable by the output system;</dl>
+<pre>
+
+</pre>
+<center>6-3</center>
+<br><br><br><br>
+<table width="100%">
+<tr>
+<td>Federal Geographic Data Committee</td>
+<td align=right>FGDC-STD-002.6</td>
+</tr>
+<tr>
+<td>Spatial Data Transfer Standard (SDTS)-Part 6: Point Profile, December 1997</td>
+<td><br></td>
+</tr>
+</table>
+<hr noshade>
+<pre>
+
+</pre>
+<dl><dt>
+<dd>(e) correctly maintain linkages between spatial objects and Attribute Primary records;
+
+<p>
+
+<dd>(f) be able to decode either standard precision (32-bit integer) or high precision (64-bit
+floating point) coordinate formats, as necessitated by the data type format used in the encoded
+transfer files, or both when both occur within the same transfer;
+
+<p>
+
+<dd>(g) be able to ignore modules, fields, and subfields which are permitted only by profile
+annexes which it chooses not to implement;
+
+<p>
+
+<dd>(h) be able to recover if an error is encountered in a particular record, field, or subfield in the
+SDTS transfer;
+
+<p>
+
+<dd>(i) report to a file or output device information describing the position of errors encountered
+in the SDTS transfer, including Module Name, Record ID, tag, and label of the last
+successfully decoded data element and, if possible, the Module Name, Record ID, field tag,
+and subfield label of the data element containing the error; and 
+
+<p>
+
+<dd>(j) support all profile options it claims to support.</dl>
+
+
+<p><font size="+1"><strong>1.3  Changes to Parts 1 and 3 Requirements</strong></font>
+
+<dl><dt>
+<p>The following is a summary of the changes to Parts 1 and 3 of FIPS PUB 173 that become
+effective along with this addition of Part 6 to FIPS PUB 173-1:
+
+<p>
+
+<dd>(a) many-to-many and many-to-one relationships between spatial objects and attributes are
+permitted (Section 5.3);
+
+<p>
+
+<dd>(b) composite objects which do not contain component objects are permitted (Section 5.4);
+
+<p>
+
+<dd>(c) the Entity Authority and Attribute Authority subfields in the Data Dictionary/Schema
+module may contain a maximum of 8 characters;  if Part 2 of the SDTS is the source of a
+definition, the subfield shall contain "SDTS-USA";  a provision for standard feature registers
+of other countries has been added (Section 5.12);
+
+<p>
+
+<dd>(d) the Attribute Authority subfield in the Data dictionary/Domain and Data
+Dictionary/Definition modules may have a maximum length of 8 characters (Sections 5.13
+and 5.14);</dl>
+<pre>
+
+
+
+</pre>
+<center>6-4</center>
+<br><br><br><br>
+<table width="100%">
+<tr>
+<td>Federal Geographic Data Committee</td>
+<td align=right>FGCD-STD-002.6<</td>
+</tr>
+<tr>
+<td>Spatial Data Transfer Standard (SDTX)-Part6: Point Profile, December 1997</td>
+<td><br></td>
+</tr>
+</table>
+<hr noshade>
+<pre>
+
+</pre>
+<dl><dt>
+<dd>(e) the External Spatial Reference subfield in the Conformance field in the Identification
+module shall have a null value meaning "undefined, not relevant" when used in a transfer
+containing only a master data dictionary;  it is acceptable to specify this by omitting this
+subfield (Section A.2.2);
+
+<p>
+
+<dd>(f) in the Point-Node module, the Attribute ID field (ATID) is not mandatory for objects
+"NE" and "NL" (Section 5.5.4).
+
+<p>
+
+<dd>(g) "GY" is the object representation code for layer.</dl> 
+
+<pre>
+
+
+</pre>
+<p><font size="+1"><strong>1.4 Maintenance Authority</strong></font>
+
+
+<p>The Point Profile will be maintained by the National Geodetic Survey, National Oceanic and
+Atmospheric Administration.
+<pre>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</pre>
+<center>6-5</center>
+<br><br><br><br>
+<table width="100%">
+<tr>
+<td>Federal Geographic Data Committee</td>
+<td align=right>FGDC-STD-002.6</td>
+</tr>
+<tr>
+<td>Spatial Data Transfer Standard (SDTS)-Part 6: Point Profile, December 1997</td>
+<td><br></td>
+</tr>
+</table>
+<hr noshade>
+<pre>
+
+</pre>
+<p><strong><font size="+2">2   Spatial Data Concepts</strong></font><br>
+(see also Part 1, Section 2, Spatial Data Concepts)
+
+
+<p><strong><font size="+1">2.1  Spatial Objects</strong></font><br> 
+(see also Part 1, Section 2.3, Definition of Spatial Objects)
+
+
+<p>Table 1 indicates which spatial objects are required, optional, or not permitted for this profile.
+
+
+<p align="center"><strong>Table 1 - Permitted Spatial Objects</strong>
+
+
+<p><center><table border=1 width="90%"></center>
+<tr><td>Object Representation Code</td>
+<td align="center" width="19%">Required</td>
+<td align="center" width="19%">Optional</td>
+<td align="center" width="25%">Not Permitted</td>
+</tr>
+<tr><td>NP - Point</td>
+<td align="center"><br></td>
+<td align="center">x</td>
+<td align="center"><br></td>
+</tr>
+<tr><td>NL - Label point</td>
+<td align="center"><br></td>
+<td align="center">x</td>
+<td align="center"><br></td>
+</tr>
+<tr><td>NE - Entity point</td>
+<td align="center">x</td>
+<td align="center"><br></td>
+<td align="center"><br></td>
+</tr>
+<tr><td>NA - Area point</td>
+<td align="center"><br></td>
+<td align="center"><br></td>
+<td align="center">x</td>
+</tr>
+<tr><td>NO - Node, planar</td>
+<td align="center"><br></td>
+<td align="center"><br></td>
+<td align="center">x</td>
+</td>
+<tr><td>NN - Node, network</td>
+<td align="center"><br></td>
+<td align="center"><br></td>
+<td align="center">x</td>
+</tr>
+<tr><td>LQ - Link</td>
+<td align="center"><br></td>
+<td align="center"><br></td>
+<td align="center">x</td>
+</tr>
+<tr><td>LS - String</td>
+<td align="center"><br></td>
+<td align="center"><br></td>
+<td align="center">x</td>
+</tr>
+<tr><td>LE - Complete chain</td>
+<td align="center"><br></td>
+<td align="center"><br></td>
+<td align="center">x</td>
+</tr>
+<tr><td>LL - Area chain</td>
+<td align="center"><br></td>
+<td align="center"><br></td>
+<td align="center">x</td>
+</tr>
+<tr><td>LW,LY - Network chain</td>
+<td align="center"><br></td>
+<td align="center"><br></td>
+<td align="center">x</td>
+</tr>
+<tr><td>AC,AE,AU,AB - All arcs</td>
+<td align="center"><br></td>
+<td align="center"><br></td>
+<td align="center">x</td>
+</tr>
+<tr><td>RM - Ring with mixed composition</td>
+<td align="center"><br></td>
+<td align="center"><br></td>
+<td align="center">x</td>
+</tr>
+<tr><td>RS - Ring composed of strings</td>
+<td align="center"><br></td>
+<td align="center"><br></td>
+<td align="center">x</td>
+</tr>
+<tr><td>RU - Ring composed of chains</td>
+<td align="center"><br></td>
+<td align="center"><br></td>
+<td align="center">x</td>
+</tr>
+<tr><td>RA - Ring composed of arcs</td>
+<td align="center"><br></td>
+<td align="center"><br></td>
+<td align="center">x</td>
+</tr>
+<tr><td>PG - G-polygon</td>
+<td align="center"><br></td>
+<td align="center"><br></td>
+<td align="center">x</td>
+</tr>
+<tr><td>PC - GT-polygon</td>
+<td align="center"><br></td>
+<td align="center"><br></td>
+<td align="center">x</td>
+</tr>
+<tr><td>PR - GT-polygon</td>
+<td align="center"><br></td>
+<td align="center"><br></td>
+<td align="center">x</td>
+</tr>
+<tr><td>PU - Universe polygon</td>
+<td align="center"><br></td>
+<td align="center"><br></td>
+<td align="center">x</td>
+</tr>
+<tr><td>PW - Universe polygon</td>
+<td align="center"><br></td>
+<td align="center"><br></td>
+<td align="center">x</td>
+</tr>
+<tr><td>PV - Void polygon</td>
+<td align="center"><br></td>
+<td align="center"><br></td>
+<td align="center">x</td>
+</tr>
+<tr><td>PX - Void polygon</td>
+<td align="center"><br></td>
+<td align="center"><br></td>
+<td align="center">x</td>
+</tr>
+<tr><td>GI,GJ,GK,GM - Raster objects</td>
+<td align="center"><br></td>
+<td align="center"><br></td>
+<td align="center">x</td>
+</tr>
+<tr><td>FF - Composite</td>
+<td align="center"><br></td>
+<td align="center">x</td>
+<td align="center"><br></td>
+</tr>
+</table>
+</center>
+<pre>
+</pre>
+<center>6-6</center>
+<br><br><br><br>
+<table width="100%">
+<tr>
+<td>Federal Geographic Data Committee</td>
+<td align=right>FGDC-STD-002.6</td>
+</tr>
+<tr>
+<td>Spatial Data Transfer Standard (SDTS)-Part6: Point Profile, December 1997</td>
+<td><br></td>
+</tr>
+</table>
+<hr noshade>
+<p><strong><font size="+1">2.2  Layers and (or) Partitions</strong></font>
+
+<dl><dt>
+<p>Data are to be represented by one or more layers (see Part 1 definition 2.3.4.3).  A layer shall
+be used to transfer:
+
+<p>
+
+<dd>(a) one theme (or sub-theme), or an integrated set of themes, as a "vertical" data layer within
+
+<p>
+
+<dd>(b) one horizontal partition of the earth's surface.  This partition may be representative of a
+map sheet (e.g., a USGS quadrangle), an administrative/ political/study area unit, or a sub-partition thereof.</dl>
+
+
+<p>More than one layer and (or) more than one horizontal partition may be included within a
+single SDTS transfer.  See Section 4.7 of Part 6, "Relationships Between Modules and
+Layers" for information on module requirements when transferring multiple layers.
+<pre>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</pre>
+<center>6-7</center>
+<br><br><br><br>
+<table width="100%">
+<tr>
+<td>Federal Geographic Data Committee</td>
+<td align=right>FGDC-STD-002.6</td>
+</tr>
+<tr>
+<td>Spatial Data Transfer Standard(SDTS)-Part6: Point Profile, December 1997</td>
+<td><br></td>
+</tr>
+</table>
+<hr noshade>
+<pre>
+
+</pre>
+<font size="+2"><strong>3   Spatial Data Quality</strong></font><br>
+(see also Part 1, Section 3, Spatial Data Quality)
+
+
+<p><strong><font size="+1">3.1  Lineage</strong></font>
+
+
+<p>Separate processing histories pertaining to, for example, separate data sources, shall be
+documented.
+
+
+<p><strong><font size="+1">3.2  Positional Accuracy</strong></font>
+
+
+<p>The quality of point data shall be reported by using procedures established in existing
+standards such as the geodetic standard.  If a separate survey has been used, it shall be
+described in the standard form, even if results fall below recognized classification thresholds.
+
+
+<p>Description of positional accuracy shall consider the quality of the final product after all
+transformations.  The report of any test of positional accuracy shall include the date of the
+test.  Measures of positional accuracy may be obtained by deductive estimate, internal
+evidence, comparison to source, or independent source of higher accuracy.
+
+
+<p><strong><font size="+1">3.3  Logical Consistency</strong></font>
+
+
+<p>Tests for permissible values may be applied to point data.  Some data sets, such as geodetic
+control data, may have additional specific requirements that are not applicable to all point
+data sets.  The quality report shall contain a description of the tests applied or a reference to
+documentation of the software used.  The report shall state whether all inconsistencies were
+corrected or it shall detail the remaining errors by case.  For example, if multiple points have
+the exact same spatial address, then this shall be reported as either a valid or invalid
+condition.
+
+
+<p>The report shall include the date on which the tests were applied.  If corrections and
+modifications have occurred after the test for logical consistency, the quality report shall
+indicate how the new information was checked for logical consistency.
+
+
+<p><font size="+1"><strong>3.4  Completeness and (or) Logical Consistency</font></strong>
+
+
+<p>Report and explain data encoding practices, especially in object records, which might seem
+contrary to, or to deviate from, normal, standard, or preferred practices.  For example, if one
+or more composite object records lack lists of component objects, the meaning of this shall be
+explained in the completeness portion of the data quality report.
+<pre>
+
+
+
+</pre>
+<center>6-8</center>
+<br><br><br><br>
+<table width="100%">
+<tr>
+<td>Federal Geographic Data Committee</td>
+<td align=right>FGDC-STD-002.6</td>
+</tr>
+<tr>
+<td>Spatial Data Transfer Standard (SDTS)-Part 6: Point Profile, December 1997</td>
+<td><br></td>
+</tr>
+</table>
+<hr noshade>
+<pre>
+
+</pre>
+<strong><font size="+2">4   General Specification (The Transfer Model)</font></strong><br>
+(see also Part 1, Section 4.1.3, The Transfer Model)
+
+
+<p><strong><font size="+1">4.1  Standard Module Names</strong></font>
+
+
+<p>SDTS Point Profile module names (the unique name of each individual module) shall be
+standardized and consist of four characters.  All letters in module names shall be upper case. 
+For modules carrying spatial objects, the module name shall begin with the same two
+characters as the object representation code for the objects.  The valid two character Object
+Representation codes are shown in Section 2.1 of Part 6, Spatial Data Concepts, Spatial
+Objects.  The last two characters of the module name are free to distinguish different
+modules/files.  Attribute Primary and Secondary modules shall be named "Axxx" and "Bxxx"
+respectively (where x is any number 0-9 or any upper case letter A-Z).
+
+
+<p>Non-object modules shall be named the same as the primary module field mnemonic (ISO
+8211 Tag) (see Part 1, Sections 5.2 and 5.3, Global Information and Data Quality Modules,
+and Part 3 Table 1):
+
+<blockquote>
+IDEN  (Identification),<br>
+CATD  (Catalog/Directory),<br>
+CATX  (Catalog/Cross Reference),<br>
+CATS  (Catalog/Spatial Domain),<br>
+SCUR  (Security),<br>
+IREF  (Internal Spatial Reference),<br>
+XREF  (External Spatial Reference),<br>
+SPDM  (Spatial Domain),<br>
+DDDF  (Data Dictionary/Definition),<br>
+DDOM  (Data Dictionary/Domain),<br>
+DDSH  (Data Dictionary/Schema),<br>
+STAT  (Statistics),<br>
+DQHL  (Data Quality/Lineage),<br>
+DQPA  (Data Quality/Positional Accuracy),<br>
+DQAA  (Data Quality/Attribute Accuracy),<br>
+DQLC  (Data Quality/Logical Consistency),<br>
+DQCG  (Data Quality/Completeness)</blockquote>
+
+
+<p>More than one module of the following types may exist:
+
+<blockquote>SCUr,  IREf,  SPDm,  DDDf,  DDOm,  DDSh,<br>
+DQHl,  DQPa,  DQAa,  DQLc,  and  DQCg.</blockquote>
+<pre>
+
+
+
+</pre>
+<center>6-9</center>
+<br><br><br><br>
+<table width="100%">
+<tr>
+<td>Federal Geographic Data Committee</td>
+<td align=right>FGDC-STD-002.6</td>
+</tr>
+<tr>
+<td>Spatial Data Transfer Standard (SDTS)-Part 6: Point Profile, December 1997</td>
+<td><br></td>
+</tr>
+</table>
+<hr noshade>
+<pre>
+
+</pre>
+<p>The last character shall change to reflect more than one module of the same type.
+
+<dl><dt>
+<p><font size="+1"><strong>4.2  Order of Records, Fields, and Subfields within Modules</font></strong>
+
+<p>
+
+<dd>(a) Records within modules shall be ordered, in ascending order, by Record ID.  But the
+actual Record ID integer values need not start with "1," and records in sequence may skip
+integers arbitrarily, up to (2<sup>31</sup> - 1).
+
+<p>
+
+<dd>(b) The subfields within fields and fields within records shall be ordered as in the SDTS
+module specification layout tables in Part 1, Section 5.</dl>
+
+
+<p><strong><font size="+1">4.3  Coordinate Frame of Reference</strong></font><br> 
+(see also Part 1, Section 4.1.3.5, Spatial Registration)
+
+
+<p>There shall be only one external coordinate frame of reference within a transfer.  The external
+spatial reference system shall be one of the systems which make up conformance level 1: 
+latitude-longitude (geographic), Universal Transverse Mercator/Universal Polar Stereographic
+(UTM/UPS), or State Plane Coordinate Systems (SPCS).  If different layers are included
+within the transfer, each may have its own internal coordinate system (referenced to the
+external spatial reference system by translation and scaling parameters in an Internal Spatial
+Reference module record).
+
+
+<p><strong><font size="+1">4.4  Spatial Address (Coordinate) Format</strong></font><br>  
+(see also Part 1, Section 4.1.3.5, Spatial Registration, and Section 5.2.4, Spatial Reference)
+
+
+<p><strong>4.4.1  External Spatial Reference</strong>
+
+<dl><dt>
+<p>Point Profile transfers shall be restricted to the use of conformance level 1 for horizontal
+external coordinates.  To explicitly state this restriction,
+
+<p>
+
+<dd>(a) the External Spatial Reference subfield of the Conformance field of the Identification
+module shall have the value of "1" indicating that, YES, one of three recommended systems
+is used, and
+
+<p>
+
+<dd>(b) the Reference System Name subfield in the External Spatial Reference Module primary
+field shall have the value "GEO", "SPCS", "UTM", or "UPS".</dl>  
+
+
+<p>Note that Part 1 restricts the unit of measurement in the external reference system to meters
+for all Z coordinates and X and Y coordinates when using the State Plane Coordinate System. 
+However, coordinates can be stored in the internal reference system in feet as long as the
+appropriate scaling factors are used in the Internal Spatial Reference module.
+<pre>
+
+
+</pre>
+<center>6-10</center>:2500
+
+<br><br><br><br>
+<table width="100%">
+<tr>
+<td>Federal Geographic Data Committee</td>
+<td align=right>FGDC-STD-002.6</td>
+</tr>
+<tr>
+<td>Spatial Data Transfer Standard (SDTS)-Part6: Point Profile, December 1997</td>
+<td><br></td>
+</tr>
+</table>
+<hr noshade>
+<pre>
+
+
+</pre>
+<strong>4.4.2  Internal Representation of Spatial Addresses</strong><br>
+(see also Part 1, Section 4.2.1, Specification Layout; Part 3, Section 9.3, Binary Data)
+
+
+<p>The internal representation of X, Y, and Z coordinates shall be as 32-bit signed implicit fixed
+point (integer) binary numbers ("BI32" SDTS data type) or 64-bit real floating point binary
+numbers ("BFP64" SDTS data type).  These data types cannot be mixed in a single module or
+in a set of modules which are associated with the same layer.
+
+
+<p>Signed integers are represented in "two's complement" format as defined in ANSI X3.122 -
+1986 Part 3, Section 5.1.  Floating point binary numbers are represented in a format defined
+in ANSI X3.122 - 1986 Part 3, Section 5.5 (which is the same format as defined in
+ANSI/IEEE 754).  Both formats require "big endian" bit ordering in which the most
+significant bit is stored first.  (Cross-index for ANSI X3.122  is FIPSPUB 128 and ISO 8632
+all of which are the Computer Graphics Metafile standard.)
+
+
+<p>Internal fixed point coordinates can be converted to external coordinates by converting to
+floating point and applying the scaling and translation values from an Internal Spatial
+Reference module.  Internal floating point coordinates can be converted to external
+coordinates by applying the scaling and translation values from an Internal Spatial Reference
+module (see Part 1, 5.2.4.1).
+
+
+<p><strong>4.4.3  Restrictions on X and Y Subfields</strong>
+
+
+<p>The X subfield of spatial addresses shall only be used to transfer longitude and easting
+values.  The Y subfield shall only be used to transfer latitude or northing.
+
+
+<p><strong><font size="+1">4.5  Null (and Like) Values</strong></font><br> 
+(see also Part 1, Section 4.1.3.3.9, Nulls and Defaults)
+
+
+<p>When a transfer uses fixed length subfields (e.g., to carry attribute data linked to the various
+objects), then special consideration must be given to handling Null values.  The SDTS default
+option for implementing nulls is not feasible in this case.  When appropriate, the following
+text shall be encoded in the Comment subfield of a Logical Consistency module record, and
+implemented:
+
+<p>
+<blockquote>
+When a subfield, either user-defined in Attribute Primary and Attribute Secondary module
+records, or in other SDTS module records, is implemented as fixed-length, the following null
+scheme is used:  (a) when information to be encoded in the subfield is known to be not
+applicable (undefined, not relevant), then the subfield is valued by a string of spaces; and (b)
+when the information to be encoded is relevant but unknown (or missing), then the subfield is
+valued by a string of question marks "?".</blockquote>
+<pre>
+
+
+
+
+
+</pre>
+<center>6-11</center>
+<br><br><br><br>
+<table width="100%">
+<tr>
+<td>Federal Geographic Data Committee</td>
+<td align=right>FGDC-STD-002.6</td>
+</tr>
+<tr>
+<td>Spatial Data Transfer Standard (SDTS)-Part 6: Point Profile, December 1997</td>
+<td><br></td>
+</tr>
+</table>
+<hr noshade>
+<pre>
+
+
+</pre>
+The Logical Consistency module with the above text shall be associated to applicable
+modules through the Catalog/Cross Reference module.
+
+
+
+<p><strong><font size="+1">4.6  Attribute Usage</strong></font><br> 
+(see also Part 1, Annex B Section B.6 Suggested Code Sets)
+
+
+<p>All agencies shall use established FIPS codes where applicable, such as FIPS PUB 6-4 (31
+August 1990) Counties and Equivalent Entities Codes or FIPS PUB 10-3 (9 February 1984)
+Countries, Dependencies, Areas of Special Sovereignty and their Principal Administrative
+Division.
+
+<dl><dt>
+<p><strong><font size="+1">4.7  Relationships Between Modules and Layers</strong></font>
+
+<p>
+
+<dd>(a) For objects particular to one layer there shall be:
+<dl><dt>
+<p>
+
+<dd>zero or more Point-Node modules for required simple object type NE;
+
+<p>
+
+<dd>zero or more Point-Node modules for optional simple object type NP; and
+
+<p>
+
+<dd>zero or more Point-Node module for optional simple object type NL.</dl>
+
+<p>
+
+<p>There must be at least one module containing points with the NE object representation code
+in the SDTS transfer.
+
+<p>
+
+<dd>(b) If more than one layer is transferred, data particular to a given layer will be transferred
+within its own set of simple object modules, and these modules will be related to each other
+and to theme(s) and partition (map or domain) in the Catalog/Spatial Domain module.  If
+more than one layer is contained in a transfer, each layer shall be assigned a unique name
+which shall be used in the Aggregate Object subfield for all records for modules which apply
+only to the particular layer.
+
+<p>
+
+<dd>(c) Each layer may have its own internal coordinate system.  Therefore an SDTS transfer with
+more than one layer may have more than one Internal Spatial Reference module.  Different
+layers of the same horizontal partition may use different Internal Spatial Reference modules if
+layers require different precisions (i.e., 32-bit and 64-bit).
+
+<p>
+<dd>(d) There may be different entity types represented by the records of a given object module
+(e.g., a single Composite module may contain records for many different types of entities).</dl>
+<pre>
+
+
+</pre>
+<center>6-12</center>
+<br><br><br><br>
+<table width="100%">
+<tr>
+<td>Federal Geographic Data Committee</td>
+<td align=right>FGDC-STD-002.6</td>
+</tr>
+<tr>
+<td>Spatial Data Transfer Standard (SDTS)-Part 6: Point Profile, December 1997</td>
+<td><br></td>
+</tr>
+</table>
+<hr noshade>
+<pre>
+
+
+</pre>
+<dl><dt>
+<dd>(e) There are two methods of identifying the entity type of a particular spatial object:  (1) the
+SDTS default option which uses the Data Dictionary/Schema module to assign an entity to a
+particular attribute in a Attribute Primary module, or  (2) the method described under Section
+4.9 of Part 4 (and repeated in Section 4.9 of this profile).  When the SDTS default option is
+used, each different entity type shall be distinguished in its own unique Attribute Primary
+module.  When using the SDTS default option, there shall be one Attribute Primary module
+for each unique entity type for data particular to a given layer.
+
+<p>
+
+<dd>(f) Composite objects may be composed of objects from more than one layer.  Additional
+Composite modules shall be used to transfer such composite objects.  There shall be a
+separate Attribute Primary module for each entity type represented in these multi-layer
+Composite modules.</dl>
+
+
+<p><strong><font size="+1">4.8  Multi-valued Attributes</strong></font>
+
+
+<p>Attributes that can be multi-valued shall be in their own tables, along with any other
+attributes that are functionally dependent.  An attribute's cardinality and functional
+dependence is solely determined by the data encoder's data model.  As an example of a multi-valued attribute consider an entity "road" with the attribute "name" that has the two values
+"10th Street" and "Highway BB".  Attributes are functionally dependent when the value of
+one attribute determines the value of another attribute.  For example, assume that the attribute
+"route_number" is dependent on "name", which means the value of "name" determines the
+value for "route_number".  (See Annex B for an example of encoding multi-valued attributes
+using geodetic point data.)
+
+
+<p><strong><font size="+1">4.9  Attributing Points with Entity Labels</strong></font>
+
+
+<p>The SDTS implementation of the "entity, attribute, attribute-value" model provides a means of
+directly assigning attribute values to specific feature objects.  The type of entity which the
+object represents is specified indirectly through Data Dictionary/Schema module records.  The
+assumption is that each represented entity type is characterized by attributes.  However, in
+some cases all that may be encoded about a feature is its entity type with no other attributes.
+
+
+<p>"ENTITY_LABEL" and "ENTITY_AUTHORITY" are two generic attribute labels, defined by
+the Topological Vector Profile, that may be used with this profile.  These are used for
+features with entity labels but no attributes, and optionally in cases where different features
+share the same attributes.  Note that an entity label may only be unique when coupled with
+the authority for its definition.  The authority for the definition of these two attribute labels is
+the Topological Vector Profile, designated in Data Dictionary/Schema records (Attribute
+Authority subfield) as "SDTS/TVP".  No Data Dictionary/Definition or Data
+<pre>
+
+
+</pre>
+<center>6-13</center>
+<br><br><br><br>
+<table width="100%">
+<tr>
+<td>Federal Geographic Data Committee</td>
+<td align=right>FGDC-STD-002.6</td>
+</tr>
+<tr>
+<td>Spatial Data Transfer Standard (SDTS)-Part6: Point Profile, December 1997</td>
+<td><br></td>
+</tr>
+</table>
+<hr noshade>
+<pre>
+
+
+</pre>
+Dictionary/Domain records are necessary for these two attribute labels.  The domain of
+attribute values for these attributes shall be any entity label and its authority as defined in
+either SDTS Part 2 or Data Dictionary/Definition records included with the transfer (either
+internally or externally).  When all entity labels in a single transfer are defined by the same
+authority, the ENTITY_AUTHORITY attribute may be omitted in the attribute records.
+
+
+<p>Annex C contains a geodetic control example of attributing points with entity labels.
+<pre>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</pre>
+<center>6-14</center>
+<br><br><br><br>
+<table width="100%">
+<tr>
+<td>Federal Geographic Data Committee</td>
+<td align=right>FGDC-STD-002.6</td>
+</tr>
+<tr>
+<td>Spatial Data Transfer Standard (SDTS)-Part 6: Point Profile, December 1997</td>
+<td><br></td>
+</tr>
+<hr noshade>
+<pre>
+
+
+
+</pre>
+<p><strong><font size="+2">5   Transfer Module Specification</strong></font><br> 
+(see also Part 1, Section 5, Transfer Module Specification)
+
+
+<p>This section addresses the module level restrictions as they apply to a transfer.  Certain
+requirements of Part 1 are repeated here for clarity.  Following the module level
+restrictions/requirements, any restrictions on field/subfield values are noted for each module. 
+The order of coverage follows that of Part 1, Section 5.
+
+
+<p>Table 2 contains the inclusion/exclusion and cardinality rules for each module.  The
+standardized modules names are included, along with the minimum number and the maximum
+number of occurrences of the module type.  A lowercase "n" indicates that the upper limit is
+user defined.  Any lowercase letters or dots in the module name has the meaning explained in
+Section 4, Standard Module Names.
+
+
+<p align="center"><strong>Table 2 - Module Level Restrictions and Requirements</strong>
+
+
+<p><table border=1  width="97%">
+<tr><td align=center>Module Type</td>
+<td>Name</td>
+<td>Min. No.</td>
+<td>Max. No.</td>
+</tr>
+<tr><td colspan="4">  <strong>Global Information Modules</strong> (see also Part 1, Section 5.2, Global Information Modules)</td>
+</tr>
+<tr><td>Identification</td>
+<td>IDEN</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr><td>Catalog/Directory</td>
+<td>CATD</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr><td>Catalog/Cross Reference</td>
+<td>CATX</td>
+<td>0</td>
+<td>1</td> 
+</tr>
+<tr><td>Catalog/Spatial Domain</td>
+<td>CATS</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr><td>Security</td>
+<td>SCUr</td>
+<td>0</td>
+<td>n</td>
+</tr>
+<tr><td>Internal Spatial Reference</td>
+<td>IREf</td>
+<td>1</td>
+<td>n</td>
+</tr>
+<tr><td>External Spatial Reference</td>
+<td>XREF</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr><td>Registration</td>
+<td>--</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr><td>Spatial Domain</td>
+<td>SPDm</td>
+<td>0</td>
+<td>n</td>
+</tr>
+<tr><td>Data Dictionary/Definition</td>
+<td>DDDf</td>
+<td>0<a href="#N_1_">(1)</a></td>
+<td>n<a href="#N_2_">(2)</a></td>
+</tr>
+</table>
+<pre>
+
+
+
+
+
+
+
+
+
+</pre>
+<center>6-15</center>
+<br><br><br><br>
+<table width="100%">
+<tr>
+<td>Federal Geographic Data Committee</td>
+<td align=right>FGDC-STD-002.6</td>
+</tr>
+<tr>
+<td>Spatial Data Transfer Standard (SDTS)-Part 6: Point Profile, December 1997</td>
+<td><br></td>
+</tr>
+</table>
+<hr noshade>
+<p><center><table border=1 width="97%">
+<tr align=center>
+<td>Module Type</td>
+<td>Name</td>
+<td>Min.No.</td>
+<td>Max.No.</td>
+</tr>
+<tr><td>Data Dictionary/Domain</td>
+<td>DDOm</td>
+<td>1<a href="#N_3_">(3)</a></td>
+<td>n<a href="#N_2_">(2)</a></td>
+</tr>
+<tr><td>Data Dictionary/Schema</td>
+<td>DDSh</td>
+<td>1</td>
+<td>n<sup>2</sup></font>
+</tr>
+<tr><td>Transfer Statistics</td>
+<td>STAT</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr><td colspan="4">  <strong>Data Quality Modules</strong> (see also Part 1, Section 5.3, Data Quality Modules)</td>
+</tr>
+<tr><td>Lineage</td>
+<td>DQHl</td>
+<td>1</td>
+<td>n</td>
+</tr>
+<tr><td>Positional Accuracy</td>
+<td>DQPa</td>
+<td>1</td>
+<td>n</td>
+</tr>
+<tr><td>Attribute Accuracy</td>
+<td>DQAa</td>
+<td>1</td>
+<td>n</td>
+</tr>
+<tr><td>Logical Consistency</td>
+<td>DQLc</td>
+<td>1</td>
+<td>n</td>
+<tr><td>Completeness</td>
+<td>DQCg</td>
+<td>1</td>
+<td>n</td>
+</tr>
+<tr><td><strong>Composite Module</strong></td>
+<td>FF..</td>
+<td>0</td>
+<td>n</td>
+</tr>
+<tr><td colspan="4"> <strong>Attribute Modules</strong> (see also Part 1, Section 5.4, Attribute Modules)</td>
+</tr>
+<tr><td>Attribute Primary</td>
+<td>A...</td>
+<td>1</td>
+<td>n</td>
+</tr>
+<tr><td>Attribute Secondary</td>
+<td>B...</td>
+<td>0</td>
+<td>n</td>
+</tr>
+<tr><td colspan="4"> <strong>Vector Modules</strong> (see also Part 1, Section 5.6, Vector Modules)</td>
+</tr>
+<tr><td>Point-Node</td>
+<td>NE..,<br>NL..,NP..<br>NO..,NA..,NN..</td>
+<td>1<br>0<br>0</td>
+<td>n<br>n<br>0</td>
+</tr>
+<tr><td>Line</td>
+<td>LE..</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr><td>Arc</td>
+<td>--</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr><td>Ring</td>
+<td>--</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr><td>Polygon</td>
+<td>PC..</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr><td><strong>Raster Modules</strong></td>
+<td>--</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr><td><strong>Graphic Representation Modules</strong><a href="#N_4_">(4)</a></td>
+<td>--</td>
+<td>0</td>
+<td>0</td>
+</tr>
+</table>
+</center>
+<pre>
+
+
+
+
+
+</pre>
+<center>6-16</center
+<br><br><br><br>
+<table width="100%">
+<tr>
+<td>Federal Geographic Data Committee</td>
+<td align=right>FGDC-STD-002.6</td>
+</tr>
+<tr>
+<td>Spatial Data Transfer Standard(SDTS)-Part 6: Point Profile, December 1997</td>
+<td><br></td>
+</tr>
+</table>
+<hr noshade>
+<p>
+<dl><dt>
+<p><strong><font size="+1">5.1  Global Information Modules</font></strong><br> 
+(see also Part 1, Section 5.2, Global Information Modules)
+
+<p>
+
+<dd>(a) If more than one layer is transferred, data particular to a given layer will be transferred
+within their own set of modules.  These modules will be related to each other and to theme(s)
+and partition (map or domain) in the Catalog/Spatial Domain module.  If more than one layer
+is contained in a transfer, each layer shall be assigned a unique name which shall be used in
+the Aggregate Object subfield for all records which apply only to the particular layer.
+
+<p>
+
+<dd>(b) Each layer may have its own internal coordinate system.  Therefore an SDTS transfer with
+more than one layer may have more than one Internal Spatial Reference module.
+
+<p>
+
+<dd>(c) For each SDTS transfer data set that does not reference an external SDTS data dictionary
+there must be at least one, and it is recommended that there be only one, of the following
+global module:
+
+<p><dl><dt>
+
+<dd>   Data Dictionary/Domain (DDOM).</dl>
+
+<p>
+
+<dd>For each SDTS transfer data set that does not reference an external SDTS data dictionary, and
+that does not have level 1 feature conformance with Part 2, there must be at least one, and it
+is recommended that there be only one, of the following global module:
+
+<p><dl><dt>
+
+<dd>    Data Dictionary/Definition (DDDF).</dl>
+
+<p>
+
+<dd>There must be at least one, and it is recommended that there be only one, of the following
+global module:
+
+<p><dl><dt>
+
+<dd>   Data Dictionary/Schema (DDSH).</dl>
+
+<p>
+
+<dd>(d) A common set of Data Dictionary/Definition and Data Dictionary/Domain modules may</dl>
+<pre>
+
+
+
+
+
+
+
+
+
+
+</pre>
+<center>6-17</center>
+<br><br><br><br>
+<table width="100%">
+<tr>
+<td>Federal Geographic Data Committee</td>
+<td align=right>FGCD-STD-002.6</td>
+</tr>
+<tr>
+<td>Spatial Data Transfer Standard(SDTS)-Part 6: Point Profile, December 1997</td>
+<td><br></td>
+</tr>
+</table>
+<hr noshade>
+<dl><dt>
+<p><br>
+<dd>be used for an entire series of files to be distributed.  This Data Dictionary may be made
+available separately; and it need not be duplicated within each SDTS transfer.  If the SDTS
+data dictionary is separate from the individual SDTS transfer data set, then it shall be
+uniquely identified and referenced by the individual SDTS transfer data set.  Annex A
+describes the method by which such a master data dictionary transfer will be accomplished. 
+See also Part 1, Section 4.1.3.3.1, Modules within a Spatial Data Transfer (clause (d)), and
+Section 5.2.2.1, Catalog/Directory (Table 11, subfields External and Module Version), and
+Section 5.2.6 Data Dictionary.</dl>
+
+<dl><dt>
+<p><strong><font size="+1">5.2  Data Quality Modules</strong></font><br> 
+(see also Part 1, Section 5.3, Data Quality Modules)
+<p>
+
+<dd>(a) A common set of Data Quality modules may be used for an entire series of files to be
+distributed.  These Data Quality modules may be made available separately; and they need
+not be duplicated within each SDTS transfer.  If the SDTS Data Quality modules are separate
+from the individual SDTS transfer data set, then they shall be uniquely identified and
+referenced by the individual SDTS transfer data set.  See Part 1, Section 4.1.3.3.1, Modules
+within a Spatial Data Transfer (clause (e)), and Section 5.2.2.1, Catalog/Directory (Table 11,
+subfields External and Module Version).
+
+<p>
+
+<dd>(b) Separate processing histories pertaining to, for example, separate data layers, shall be
+documented in a Lineage module.
+
+<p>
+
+<dd>(c) If data are collected from a graphic map, the Positional Accuracy module shall contain a
+statement explaining that the data may contain cartographic offsets.
+
+<p>
+
+The quality of control surveys shall be reported by using procedures established in the
+geodetic standard.  If a separate control survey has been used, it shall be described in the
+standard form, even if results fall below recognized classification thresholds.
+
+<p>
+
+Description of positional accuracy shall consider the quality of the final product after all
+transformations.  The report of any test of positional accuracy shall include the date of the
+test.  Measures of positional accuracy may be obtained by deductive estimate, internal
+evidence, comparison to source, or independent source of higher accuracy.
+
+<p>
+
+<dd>(d) The technique used to verify entity consistency (e.g., reasonable range of values) shall be
+documented in the Logical Consistency module.</dl>
+<pre>
+
+
+
+
+</pre>
+<center>6-18</center>
+<br><br><br><br>
+<table width="100%">
+<tr>
+<td>Federal Geographic Data Committee</td>
+<td align=right>FGDC-STD-002.6</td>
+</tr>
+<tr>
+<td>Spatial Data Transfer Standard(SDTS)-Part 6: Point Profile, December 1997</td>
+<td><br></td>
+</tr>
+</table>
+<hr noshade>
+<br>
+<dl><dt>
+<dd>Tests for permissible values may be applied to point data.  Some data sets, such as geodetic
+control data, may have additional specific requirements that are not applicable to all point
+data sets.  The quality report shall contain a description of the tests applied or a reference to
+documentation of the software used.  The report shall state whether all inconsistencies were
+corrected or it shall detail the remaining errors by case.
+
+<p>
+
+<dd>The report shall include the date on which the tests were applied.  If corrections and
+modifications have occurred after the test for logical consistency, the quality report shall
+indicate how the new information was checked for logical consistency.
+
+<p>
+
+<dd>(e) Completeness modules and (or) Logical Consistency modules shall be used to report and
+explain data encoding practices, especially in object records, which might seem contrary to, or
+to deviate from, normal, standard or preferred practices.  For example, if one or more
+composite object record lacks lists of component objects, the meaning of this shall be
+explained in a Completeness module.</dl>
+
+<p>
+
+<p><strong><font size="+1">5.3  Attribute Modules</strong></font><br>
+(see also Part 1, Section 5.4, Attribute Modules)
+
+
+<p>There is no restriction on the relationships between objects and Attribute Primary module
+records;  the relationship may be one-to-one, one-to-many, many-to-one, or many-to-many.  If
+the relationship is not one-to-one or one-to-many, the encoder is required to alert decoders to
+this fact in the Catalog/Cross Reference module record for the modules involved.  This shall
+be done by placing the characters "JJ" into the first two characters of the Comment subfield.
+
+
+<p><font size="+1"><strong>5.4  Composite Module</strong></font><br>
+(see also Part 1, Section 5.5, Composite Module)
+
+
+<p>Composite objects may optionally <strong>not</strong> have a list of component objects.  If such a list does
+not exist, the meaning of this shall be explained in a Data Quality Completeness module
+record.
+
+
+<p><strong><font size="+1">5.5  Vector Modules</strong></font><br>
+(see also Part 1, Section 5.6, Vector Modules)
+
+
+<p><strong>5.5.1  Topological Pointers</strong>
+
+
+<p>Points ("NP", "NL", or "NE" object representations) shall not have any topological pointers.
+<p>
+
+<p><strong>5.5.2  Attribute Primary References</strong>
+<pre>
+
+
+</pre>
+<center>6-19</center>
+<br><br><br><br>
+<table width="100%">
+<tr>
+<td>Federal Geographic Data Committee</td>
+<td align=right>FGDC-STD-002.6</td>
+</tr>
+<tr>
+<td>Spatial Data Transfer Standard(SDTS)-Part 6: Point Profile, December 1997</td>
+<td><br></td>
+</tr>
+</table>
+<hr noshade>
+<br>
+<p>Object records may reference zero, one, or more attribute primary records.
+
+
+<p><strong>5.5.3  Number of Object Types Within a Single Module</strong>
+
+
+<p>A single module shall contain only records of a single object type (indicated by appropriate
+object representation code).
+
+
+<p><strong>5.5.4  Label Points</strong>
+
+
+<p>The Attribute Primary Foreign ID (PAID) field is mandatory for the "NL" object
+representation code.  This field references the record and the label of the attribute to be
+annotated.  This field shall reference an attribute record in either an Attribute Primary module
+or an Attribute Secondary module.
+
+
+<p><font size="+1"><strong>5.6  Raster Modules</strong></font>
+
+
+<p>These modules shall not be included in a transfer conforming to this profile.
+
+
+<p><strong><font size="+1">5.7  Graphic Representation Modules</strong></font>
+
+
+<p>These modules shall not be included in a transfer conforming to this profile unless the options
+described in Annex D are implemented.  Encoders and decoders are not required to support
+these module types to be conforming to this profile.
+
+
+<p><strong><font size="+1">5.8  Module Restrictions/Requirements:  Identification Module</strong></font><br> 
+(see also Part 1, Section 5.2.1, Table 10 Identification)
+
+
+<p><strong>5.8.1  External Spatial Reference</strong><br> 
+(see also Part 1, Section 5.2.1.2.2, External Spatial Reference Subfield)
+
+
+<p>The External Spatial Reference subfield of the Conformance field of the Identification module
+shall have the value of "1" indicating that, YES, one of the three recommended systems is
+used.
+
+
+<p><strong>5.8.2  Profile Identification</strong>
+
+
+<p>Each transfer encoded per these specifications shall have  
+
+
+<blockquote>"SDTS POINT PROFILE"</blockquote>
+
+
+<p>as the value of the Profile Identification subfield of the Identification module primary field.
+<pre>
+
+
+
+</pre>
+<center>6-20</center>
+<br><br><br><br>
+<table width="100%">
+<tr>
+<td>Federal Geographic Data Committee</td>
+<td align=right>FGDC-STD-002.6</td>
+</tr>
+<tr>
+<td>Spatial Data Transfer Standard(SDTS)-Part 6: Point Profile, December 1997</td>
+<td><br></td>
+</tr>
+</table>
+<hr noshade>
+<br>
+<p>If options described in Annex D are implemented in a transfer, the implemented annex shall
+be indicated by adding a "/" and the upper case letter of the annex to the Profile Identification
+subfield.   For example, if a transfer implements Annex  D, Profile Identification would
+contain "SDTS POINT PROFILE/D".
+
+
+<p>Each transfer shall have 
+
+
+<blockquote>"VERSION 1.0  &lt;DATE-tbd&gt;"</blockquote>
+
+
+<p>as the value of the Profile Version subfield of the Identification module primary field. 
+
+
+<p>Each transfer shall have the official Point Profile document number as the value of the Profile
+Document Reference subfield of the Identification module primary field.
+
+<pre>
+
+
+
+
+
+</pre>
+
+<p><strong>5.8.3  Feature Level Conformance</strong><br> 
+(see also Part 1, Section 5.2.1.2.3, Features Level Subfield)
+
+
+<p>Any level of SDTS Features Conformance is allowed (the value in the Features Level subfield
+of the Conformance field of the Identification module record shall be either "1", "2", "3", or
+"4").  Note that if SDTS is not the authority for any entity and attribute terms, then the
+Features Level subfield must be valued as "4".
+
+
+<p><strong>5.8.4  Global Attributes</strong>
+
+
+<p>The Attribute ID field is used to reference global information that applies to the entire
+transfer (e.g., National Geodetic Survey control point min and max ID numbers).
+
+
+<p><font size="+1"><strong>5.9  Module Restrictions/Requirements:  Internal Spatial Reference</strong></font>
+
+
+<p>The X subfield of spatial addresses shall be used only for longitude and easting values.  The
+Y subfield shall be used only for latitude and northing.  Therefore, the Spatial Address X
+Component Label subfield is restricted to  "LONGITUDE" when the external spatial reference
+system is geographic and "EASTING" when the external spatial reference system is
+UTM/UPS or SPCS.  The Spatial Address Y Component Label subfield is restricted to
+"LATITUDE" when the external spatial reference system is geographic and "NORTHING"
+when the external spatial reference system is UTM/UPS or SPCS.
+
+
+<p>The Scale Factor X, Scale Factor Y, X Origin, and Y Origin subfields in the Internal Spatial
+<pre>
+
+
+</pre>
+<center>6-21</center>
+<br><br><br><br>
+<table width="100%">
+<tr>
+<td>Federal Geographic Data Committee</td>
+<td align=right>FGDC-STD-002.6</td>
+</tr>
+<tr>
+<td>Spatial Data Transfer Standard(SDTS)-Part 6: Point Profile, December 1997</td>
+<td><br></td>
+</tr>
+</table>
+<hr noshade>
+<br>
+<p>Reference field are required.  If spatial addresses include Z values, the Scale Factor Z and Z
+Origin subfields are required.  These subfields specify the scaling and translation required to
+transform spatial addresses from the internal spatial reference to the external spatial reference
+(see Part 1, 5.2.4.1).  The use of the Registration module to specify this transformation is not
+allowed.
+
+
+<p><font size="+1"><strong>5.10  Module Restrictions/Requirements:  External Spatial Reference</strong></font>
+
+
+<p>The Reference System Name subfield in the External Spatial Reference Module primary field
+shall have the value "GEO", "SPCS", "UTM", or "UPS" depending upon the external spatial
+reference system being used.
+
+
+<p><strong><font size="+1">5.11  Module Restrictions/Requirements:  Catalog/Spatial Domain</font></strong>
+
+<dl><dt>
+<p>The following requirements apply to the Catalog/Spatial Domain field in the Catalog/Spatial
+Domain module:
+
+<p>
+
+<dd>(a) Either the Domain or Map subfields or both are required so that the coverage of the
+module is indicated.
+
+<p>
+
+<dd>(b) The Theme subfield is required for all data sources which separate data into themes.
+
+<p>
+
+<dd>(c) The Aggregate Object Type subfield shall contain the object representation code "GY"
+indicating that the module references a layer.
+
+<p>
+
+<dd>(d) The Aggregate Object subfield shall be used to indicate the layer to which modules,
+themes, domains, and maps are related.  If more than one layer is contained in a transfer,
+each layer shall be assigned a unique name which shall be used in the Aggregate Object
+subfield for all records for modules which apply only to the particular layer.  The use of the
+Aggregate Object is optional in other cases.</dl>
+
+
+<p><strong><font size="+1">5.12  Module Restrictions/Requirements:  Catalog/Directory</font></strong>
+
+<dl><dt>
+<p>So that the contents of a transfer are independent of the transfer media, the following
+restrictions are placed on the primary field of the Catalog/Directory module:
+
+<p>
+
+<dd>(a) The Volume subfield shall not be used.
+
+<p>
+
+<dd>(b) The File subfield shall not include a directory path, only a file name meeting the
+requirements of Section 6.5.</dl>
+<pre>
+
+
+
+</pre>
+<center>6-22</center>
+<br><br><br><br>
+<table width="100%">
+<tr>
+<td>Federal Geographic Data Committee</td>
+<td align=right>FGDC-STD-002.6</td>
+</tr>
+<tr>
+<td>Spatial Data Transfer Standard(SDTS)-Part 6: Point Profile, December 1997</td>
+<td><br></td>
+</tr>
+</table>
+<hr noshade>
+<br>
+<p><strong><font size="+1">5.13  Module Restrictions/Requirements:  Data Dictionary/Schema</strong></font>
+
+
+<p>The Entity Authority and Attribute Authority subfields shall contain "SDTS-USA" when Part
+2 of FIPS 173 is the authority for the definition.  When a standard register of entities and
+attributes of a country other than the United States is the authority, these subfields shall
+contain "SDTS-" followed by the three-character ISO 3166 country code.  Entity Authority
+and Attribute Authority may have a maximum length of 8 graphics characters.
+
+
+<p><font size="+1"><strong>5.14  Module Restrictions/Requirements:  Data Dictionary/Domain</strong></font>
+
+
+<p>The Attribute Authority subfield may have a maximum length of 8 graphics characters.
+
+
+<p><font size="+1"><strong>5.15  Module Restrictions/Requirements:  Data Dictionary/Definition</font></strong>
+
+
+<p>The Attribute Authority subfield may have a maximum length of 8 graphics characters.
+
+
+<p><font size="+1"><strong>5.16  Module Restrictions/Requirements:  Catalog/Cross Reference</strong></font>
+
+
+<p>When a transfer includes multiple Internal Spatial Reference modules, each spatial object
+module must be cross-referenced to one Internal Spatial Reference module.
+<pre>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</pre>
+<center>6-23</center>
+<br><br><br><br>
+<table width="100%">
+<tr>
+<td>Federal Geographic Data Committee</td>
+<td align=right>FGDC-STD-002.6</td>
+</tr>
+<tr>
+<td>Spatial Data Transfer Standard(SDTS)-Part 6: Point Profile, December 1997</td>
+<td><br></td>
+</tr>
+</table>
+<hr noshade>
+<br>
+<p><strong><font size="+2">6   ISO 8211 Specific Decisions</font></strong><br>
+(see also ANSI/ISO 8211-1994 Specifications for a Data Descriptive File for Information
+Interchange, and Part 3, ISO 8211 Encoding)
+
+
+<p><strong><font size="+1">6.1  Objective</strong></font><br> 
+(see also Part 3, Sections 1.1 and 1.2, Purpose and Objectives)
+
+
+<p>SDTS/ISO 8211 is optimized for retrieval and storage (versus interactive decoding); non-SDTS directories/indices may be added to allow such interactive decoding (e.g., on a CD-ROM media).
+
+<dl><dt>
+<p><font size="+1"><strong>6.2  Relationship of Modules to ISO 8211 Files</strong></font><br>
+(see also Part 1, Section 4.1.3, Tables 3a &amp; 3b, and Part 3, Section 7, Assignment of Fields to
+Records and Files)
+
+<p>
+
+<dd>(a) A file (an ISO 8211 Data Definition File (DDF)) shall contain one and only one module. 
+All Point Profile files must have only fields from the same module in any particular record
+and file, i.e., each file will represent only a single module.  Normally, a module will only
+occupy a single file.
+
+<p>
+
+<dd>(b) A module may span files only when the size of a single file would exceed volume
+capacity, that is if the file needs to be broken into separate files to be placed on separate
+volumes, because of media constraints.  Thus modules may be broken into different files only
+in a multi-volume transfer, and then only if the module cannot itself fit on a single volume.</dl>
+
+<p><font size="+1"><strong>6.3  Media</strong></font><br>
+(see also Part 3, Section 10, Media Requirements)
+
+
+<p>When only a single SDTS transfer is on a media volume, then the volume name shall begin
+with the same four characters as the first four characters of file names for that transfer (see
+section 6.5.)  When multiple transfers are contained on a volume, then the first four
+characters of the volume name shall be "SDTS".  
+
+
+<p>For multi-volume transfers, the first four characters shall be the transfer base characters as
+described above, and the remainder of the name shall indicate the volume sequence.
+
+
+<p><strong><font size="+1">6.4  Organization of Files on Media</strong></font>
+
+
+<p>In general, the files comprising a single transfer shall be kept separate from any other transfer
+files.  
+<pre>
+
+
+
+
+</pre>
+<center>6-24</center>
+<br><br><br><br>
+<table width="100%">
+<tr>
+<td>Federal Geographic Data Committee</td>
+<td align=right>FGDC-STD-002.6</td>
+</tr>
+<tr>
+<td>Spatial Data Transfer Standard(SDTS)-Part 6: Point Profile, December 1997</td>
+<td><br></td>
+</tr>
+</table>
+<hr noshade>
+<br>
+<dl><dt>
+<dd>(a) On floppy disks and CD-ROM, each transfer shall be grouped completely in a single
+directory.  Multiple transfers may reside on the same media volume, with each in its own
+subdirectory. 
+
+<p>
+
+<dd>(b) On magnetic tape, files of a single transfer shall be ordered by module type, following the
+order of presentation in Part 1, Section 5.  File adjacency shall be used to group transfer files
+when multiple transfers reside on the same media volume.  All files that follow the
+Identification Module (first file of a transfer) up until another Identification Module or an end
+of tape marker is encountered shall be considered part of the transfer.
+
+<p>
+
+<dd>(c) A file called "README" is required (see Part 3, Section 11, Conformance).  There shall
+be one such file per media volume.  This file shall reside in the root directory of a floppy
+disk or CD-ROM.  On a magnetic tape, the README file shall be located immediately
+before the Identification module (the first file in each SDTS transfer) of the first SDTS
+transfer.  It is permissible for non-SDTS adjunct files to be placed before the README file. 
+Contents of the README file is discussed in section 6.10.</dl>
+
+
+<p><strong><font size="+1">6.5  File Names</font></strong>
+
+
+<p>SDTS Point Profile file names, to be consistent from the various agencies shall consist of
+eight characters of base name.  A single transfer data set shall use the same first four
+characters in the file name of each SDTS ISO 8211 file in the entire transfer.  The next four
+characters in the file name shall be the unique name of the module transferred in that file (see
+naming convention for modules in Section 4.1 of Part  6).  When allowed, the extension
+should be ".DDF" to indicate the type of file transferred; but the last character of this
+extension or an optional ninth character on the base name may be used in the case of modules
+that span files.  Thus the extension could become ".DDG", ".DDH", ".DDI", ... for multi-volume modules.  Such file extenders are optional.  Any file that is not ISO 8211 compliant
+(e.g., adjunct files) shall not have the ".DDx" extension.   Letters in file names may be upper
+case, lower case. or a mix.
+
+
+<p><strong><font size="+1">6.6  Taking Advantage of Dropped Leader and Directory</strong></font><br>
+(see also Part 3, Section 6.4, Repeating Fields and Records)
+
+
+<p>This profile encourages taking advantage of ISO 8211 mechanisms to reduce file size.  All
+modules shall use fixed size fields whenever practical to allow for the dropping of leader and
+directory information from the data records in ISO 8211.  In the case where there are a few
+records that exceed the fixed size fields' size, records shall be ordered within a file to
+maximize the use of dropped leaders and directories.  This means that exceptional data
+records (DRs) shall be placed first in the DDF.  All records that can share a common leader
+and directory shall be grouped at the end of the file.  (This is necessary because once the
+leader and directory are dropped, they cannot be respecified later in the file.) 
+<pre>
+
+
+
+</pre>
+<center>6-25</center>
+<br><br><br><br>
+<table width="100%">
+<tr>
+<td>Federal Geographic Data Committee</td>
+<td align=right>FGDC-STD-002.6</td>
+</tr>
+<tr>
+<td>Spatial Data Transfer Standard(SDTS)-Part 6: Point Profile, December 1997</td>
+<td><br></td>
+</tr>
+</table>
+<hr noshade>
+<br>
+<p>Maximizing the use of dropped leaders and directories needs to be taken into consideration
+when designing attribute modules. If there are attributes that can have a wide range in the
+size of their value (e.g., place names), then consider separating these attributes into their own
+module.
+<dl><dt>
+<p><font size="+1"><strong>6.7  ISO 8211 DDR Contents</strong></font>
+
+<p>
+
+<dd>(a) Data descriptive fields which have no specified labels may be augmented by user-supplied
+labels for the identification of subfield data.  An import system is not required to recognize
+user-supplied labels. 
+
+<p>
+
+<dd>(b) Subfield labels for the horizontal components of spatial address fields shall be "X" and
+"Y".
+
+<p>
+
+<dd>(c) The first part of the file title shall be consistent for all files within the transfer, but the last
+part should be unique for each file and give some indication of the contents of that file.  This
+file title should be equivalent to the eight character base name (plus the optional ninth
+character).</dl>
+
+
+<p><font size="+1"><strong>6.8  Use of Binary Data Type for Spatial Addresses</strong></font>
+
+<p>
+<dl><dt>
+<p>A binary data type shall be used in the subfields of a spatial address field.  The binary
+subfields shall be either a fixed width of 32 bits or a fixed width of 64 bits.  However, these
+two types cannot be mixed.  Each file shall use only one binary subfield width.
+<p>
+
+<dd>(a) In the case where the spatial address field does not repeat, the following format control
+shall be used for a spatial address type:
+
+<p>
+<pre>
+           (2B(w))
+
+
+           where 2 = 2 or 3 depending on x,y or x,y,z
+                 B = indicates binary type subfield in ISO 8211 file
+                 w = specifies the width of the binary subfield (32 or 64)
+</pre>
+<p>
+
+<dd>(b) In the case where all Data Records (DR) in a DDF contain the same number of
+repetitions, a user-calculated repeat factor (<em>n</em>) shall be used in the format control for the field. 
+A format control for a spatial address type field shall have the form: 
+
+<p>
+<pre>
+           (n(2B(w)))</dl></dl>
+
+
+
+
+</pre>
+<center>6-26</center>
+<br><br><br><br>
+<table width="100%">
+<tr>
+<td>Federal Geographic Data Committee</td>
+<td align=right>FGDC-STD-002.6</td>
+</tr>
+<tr>
+<td>Spatial Data Transfer Standard(SDTS)-Part 6: Point Profile, December 1997</td>
+<td><br></td>
+</tr>
+</table>
+<hr noshade>
+<br>
+<pre>
+                  where n = the number of spatial address tuples; repeat factor
+                        2 = 2 or 3 depending on x,y or x,y,z
+                        B = indicates binary type subfield in ISO 8211 file
+                        w = specifies the width of the binary subfield (32 or 64)
+</pre>
+<dl><dt>
+<dd>(c) In the case where each DR in a DDF contains a different number of repetitions, the
+following format control shall be used:
+
+<p>
+<pre>
+           ((2B(w)))
+
+
+           where 2 = 2 or 3 depending on x,y or x,y,z
+                 B = indicates binary type subfield in ISO 8211 file
+                 w = specifies the width of the binary subfield (32 or 64)
+</pre>
+<p>
+
+<dd>ISO 8211 does not permit a binary field located after the left parenthesis to implicitly repeat. 
+Therefore, the above format includes an additional pair of parentheses.  (Note: If the binary
+data happens to include a field terminator in the first byte at the start of a new repetition, then
+the field will terminate.)</dl>
+
+<p>
+
+<p><font size="+1"><strong>6.9  Use of Character Data Type for Dates</strong></font><br> 
+(see also Part 3, Section 9.2, Dates)
+
+
+<p>Dates in the form YYYYMMDD are to be encoded as ISO 8211 data type = A.
+
+
+<p><font size="+1"><strong>6.10  README File</strong></font><br> 
+(see also Part 3, Section 11, Conformance)
+
+
+<p>The README file shall contain volume name, date, a list of SDTS transfers (if more than
+one), and then for each SDTS transfer:  a list of subdirectories and non-SDTS files, if
+appropriate, the file name of the Catalog/Directory module, where it can be found, and an
+explanation that this file and all other SDTS files are in ISO 8211 format, and that the
+Catalog/Directory module carries a complete directory to all other SDTS ISO 8211 files
+comprising the SDTS transfer, notes about any non-SDTS adjunct/auxiliary files, a brief
+explanation of the spatial domain, the purpose, authority (FIPS 173), source (e.g., agency
+name), and contacts within the source organization.  If there are any issues about the transfer,
+use of optional profile annexes, special purposes (i.e., private agreement transfer), non-standard uses of modules, etc., this shall be described.
+<pre>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</pre>
+<center>6-27</center>
+
+<br><br><br><br>
+<table width="100%">
+<tr>
+<td>Federal Geographic Data Committee</td>
+<td align=right>FGDC-STD-002.6</td>
+</tr>
+<tr>
+<td>Spatial Data Transfer Standard(SDTS)-Part 6: Point Profile, December 1997</td>
+<td><br></td>
+</tr>
+</table>
+<hr noshade>
+<pre>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</pre>
+<p><center><font size="+7"><strong>Part 6</strong></font></center>
+
+<p><center><strong><font size="+8">ANNEXES</strong></font></center>
+<pre>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</pre>
+<center>6-28</center>
+<br><br><br><br>
+<table width="100%">
+<tr>
+<td>Federal Geographic Data Committee</td>
+<td align=right>FGDC-STD-002.6</td>
+</tr>
+<tr>
+<td>Spatial Data Transfer Standard(SDTS)-Part 6: Point Profile, December 1997</td>
+<td><br></td>
+</tr>
+</table>
+<hr noshade>
+<center><strong>Normative Annex</strong></center>
+
+<p>
+
+<center><font size="+2"><strong>A:  The Data Dictionary Transfer</font></strong></center>
+
+
+<p><em>This Annex A, The Data Dictionary Transfer, repeats information from Part 4, The
+Topological Vector Profile.  It is included here so that users of this profile will not be
+required to obtain a copy of a different profile in order to implement a master data dictionary
+transfer.</em>
+
+
+<p><font size="+1"><strong>A.1  Introduction</font></strong>
+
+
+<p>This annex describes the method by which master data dictionary transfer will be
+accomplished.  The first section addresses the requirements of the dictionary transfer itself;
+the next section addresses the requirements of a spatial transfer that will use a dictionary
+transfer.
+
+
+<p><strong><font size="+1">A.2  Requirements for Master Data Dictionary Transfer</strong></font>
+
+
+<p><strong>A.2.1  Required Modules</strong>
+
+
+<p>One each of the following modules is required:
+
+<blockquote>
+Identification<br>
+Catalog/Directory<br>
+Lineage<br>
+Completeness<br>
+Data Dictionary/Definition<br>
+Data Dictionary/Domain</blockquote>
+
+
+<p>No other types of modules shall be included.
+
+
+<p><strong>A.2.2  Required Contents Per Module</strong>
+
+
+<p>These are requirements in addition to those specified by Parts 1, 2, and 3.  This information
+aids in precisely identifying transfer contents.
+
+<dl><dt>
+<p>Identification Module:
+
+
+<dd>Title - this subfield shall include text to the effect of "Master Data Dictionary for ..."
+<p>
+
+<dd>Data Id - this subfield shall include the version number of this release of the master data
+dictionary</dl>
+<pre>
+
+
+
+
+
+</pre>
+<center>6-29</center>
+<br><br><br><br>
+<table width="100%">
+<tr>
+<td>Federal Geographic Data Committee</td>
+<td align=right>FGDC-STD-002.6</td>
+</tr>
+<tr>
+<td>Spatial Data Transfer Standard(SDTS)-Part 6: Point Profile, December 1997</td>
+<td><br></td>
+</tr>
+</table>
+<hr noshade>
+<br><dl><dt>
+<dd>Data Structure - this subfield shall include "MASTER DATA DICTIONARY"
+
+<p>
+
+<dd>Data Set Creation Date - this subfield shall include the date of the last modification to the
+contents of the data dictionary
+
+<p>
+
+<dd>Comment - this subfield shall contain a statement to the effect of "This transfer is intended to
+be used in conjunction with a spatial data transfer to form a conforming SDTS transfer"
+
+<p>
+
+<dd>Composites - this subfield shall contain "N"
+
+<p>
+
+<dd>Vector Geometry - this subfield shall contain "N"
+
+<p>
+
+<dd>Vector Topology - this subfield shall contain "N"
+
+<p>
+
+<dd>Raster - this subfield shall contain "N"
+
+<p>
+
+<dd>External Spatial Reference - this subfield shall have a null value meaning "undefined, not
+relevant;" it is acceptable to specify this by omitting this subfield
+
+<p>
+
+<dd>Features Level - this subfield shall contain the feature conformance level ("1", "2", "3", or
+"4") for transfers which use this master data dictionary.</dl>
+
+
+<p>Catalog/Directory:
+
+
+<p>Module Version - this subfield shall include the version number of this release of the master
+data dictionary.
+
+
+<p>Lineage:
+
+
+<p>Comment - this subfield shall include a change log summarizing the differences between all
+versions.  It should also recommend which old versions would best be replaced by this
+version. 
+
+<p>Completeness:
+
+
+<p>Comment - this subfield shall describe the product (transfer) series to which this dictionary
+applies.  If applicable, it shall also note what subset of definitions this transfer contains.
+
+
+<p><strong>A.2.3  Version Numbering</strong>
+
+
+<p>Version numbers shall have the following form:  
+<pre>
+
+
+
+
+</pre>
+<center>6-30</center>
+<br><br><br><br>
+<table width="100%">
+<tr>
+<td>Federal Geographic Data Committee</td>
+<td align=right>FGDC-STD-002.6</td>
+</tr>
+<tr>
+<td>Spatial Data Transfer Standard(SDTS)-Part 6: Point Profile, December 1997</td>
+<td><br></td>
+</tr>
+</table>
+<hr noshade>
+<br>
+<blockquote>
+<p>d.nn
+</blockquote>
+
+<p>where d = a positive integer, with no leading zeroes, and nn = two-digit positive integer.
+Valid version numbers are 1.01, 1.12, and 2.13.  Invalid version numbers are 01.1 and 2.1.
+
+
+<p>Version numbers shall be incremented according to the following rules.  The first released
+version of a master data dictionary transfer shall be 1.00. 
+
+
+<p>The number "nn" shall be incremented when
+<blockquote>
+a) typographical errors are corrected<br>
+b) definitions are enhanced, without meaning being changed<br>
+c) a domain is increased<br>
+d) unintentionally omitted entities/attributes are added.</blockquote>
+
+
+<p>The number "d" shall be incremented when
+<blockquote>
+a) additional entities/attributes are added<br>
+b) meaning of a domain value is changed.</blockquote>
+
+
+<p>Note:  When "d" is incremented, "nn" shall restart from "00".  A valid sequence of version
+numbers would be:  1.00, 1.01, 1.02, 2.00, 2.01, 2.02, 2.03, 3.00.  Invalid sequence would be
+1.0, 1.10, 1.20.  Another invalid sequence would be 1.00, 1.01, 1.02, 2.03.
+
+
+<p>The numbering scheme is intended to help the receiver of a transfer decide which version of a
+data dictionary is required.  The changes in "nn" indicate that changes of a corrective nature
+have been made, whereas the changes in "d" indicate that something new and different has
+been added.
+
+
+<p><strong>A.2.4  Module Naming Conventions</strong>
+
+<p>The modules must be named in such a way as to not cause module name conflicts with any
+module in a Point Profile transfer.  The modules shall be named in the following manner:
+
+<blockquote>
+MIDE  Identification<br>
+MDIR  Catalog/Directory<br>
+MQHL  Lineage<br>
+MQCG  Completeness<br>
+MDEF  Data Dictionary/Definition<br>
+MDOM  Data Dictionary/Domain</blockquote>
+
+
+<p><strong>A.2.5  File Restrictions and Naming Conventions</strong>
+
+
+<p>Each file (ISO 8211 DDF) shall contain information from a single module.  Files shall be
+named using the following convention:
+<pre>
+
+
+</pre>
+<center>6-31</center>
+<br><br><br><br>
+<table width="100%">
+<tr>
+<td>Federal Geographic Data Committee</td>
+<td align=right>FGDC-STD-002.6</td>
+</tr>
+<tr>
+<td>Spatial Data Transfer Standard(SDTS)-Part 6: Point Profile, December 1997</td>
+<td><br></td>
+</tr>
+</table>
+<hr noshade>
+<br>
+<blockquote>
+xxxxMIDE  Identification<br>
+xxxxMDIR  Catalog/Directory<br>
+xxxxMQHL  Lineage<br>
+xxxxMQCG  Completeness<br>
+xxxxMDEF  Data Dictionary/Definition<br>
+xxxxMDOM  Data Dictionary/Domain
+
+<blockquote>
+<p>where xxxx = 4 characters which uniquely identify the data dictionary.  Examples are an
+agency abbreviation or a data model abbreviation.</blockquote></blockquote>
+
+
+<p>When allowed, the extension should be ".DDF" to indicate the type of file transferred; but the
+last character of this extension or an optional ninth character on the base name may be used
+in the case of modules that span files.  Thus the extension could become ".DDG", ".DDH",
+".DDI", ... for multi-volume modules.  Such file extenders are optional.  Any file that is not
+ISO 8211 compliant (e.g., adjunct files) shall not have the ".DDx" extension.
+
+
+<p><strong>A.2.6  Requirements for Transfer Using a Master Data Dictionary</strong>
+
+<dl><dt>
+<p>The following restrictions apply to any spatial data transfer that requires the use of a master
+data dictionary.
+
+<p>
+
+<dd>(a) No Data Dictionary/Definition or Data Dictionary/Domain modules shall be present in this
+transfer, prior to a merge with a Data Dictionary only transfer.  
+
+<p>
+
+<dd>(b) This transfer shall make no references via foreign identifier to module records of the
+master data dictionary.
+
+<p>
+
+<dd>(c) No module names or file names reserved for a data dictionary transfer shall be used in the
+spatial data transfer.</dl>
+
+
+<p>To indicate that this transfer requires a master data dictionary, the following modules shall
+include the following information. 
+
+
+<p>Identification:
+
+<blockquote>
+Comment - this subfield shall include a statement to the effect "This transfer requires an
+external data dictionary from &lt;agency&gt;, with 4-character code of ..., Version number d.nn".</blockquote>
+
+
+<p>Catalog/Directory:
+
+<blockquote>
+There shall be a module record in a Catalog/Directory module for each Data Dictionary
+module that is required by this transfer.</blockquote>
+<pre>
+
+
+</pre>
+<center>6-32</center>
+<br><br><br><br>
+<table width="100%">
+<tr>
+<td>Federal Geographic Data Committee</td>
+<td align=right>FGDC-STD-002.6</td>
+</tr>
+<tr>
+<td>Spatial Data Transfer Standard(SDTS)-Part 6: Point Profile, December 1997</td>
+<td><br></td>
+</tr>
+</table>
+<hr noshade>
+<br>
+<dl><dt>
+<dd>External - this subfield shall contain a "Y".
+
+<p>
+
+<dd>Module Version - this subfield shall contain the version number of the module referenced in
+the Name subfield (of this module record).
+
+<p>
+
+<dd>Volume - this subfield must not contain a value.</dl>
+
+
+<p><strong>A.2.7  Creating a Complete Transfer</strong>
+
+
+<p>When external transfer modules are merged with a spatial transfer, the appropriate fields in
+the Catalog/Directory module must be updated - External set to "N", and Volume, file, and
+record filled if information is present.  It is recommended that the Module Version subfield
+remain as is, so version information is not lost.
+<pre>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</pre>
+<center>6-33</center>
+<br><br><br><br>
+<table width="100%">
+<tr>
+<td>Federal Geographic Data Committee</td>
+<td align=right>FGDC-STD-002.6</td>
+</tr>
+<tr>
+<td>Spatial Data Transfer Standard(SDTS)-Part 6: Point Profile, December 1997</td>
+<td><br></td>
+</tr>
+</table>
+<hr noshade>
+<br>
+<p align="center"><strong>Informative Annex</strong>
+
+
+<p align="center"><strong><font size="+2">B:  Encoding Multi-valued Attributes</strong></font>
+
+
+<p>Attributes that can be multi-valued shall be in their own tables, along with any other
+attributes that are functionally dependent.  For example, assume that the entity "triangulation
+station" has attributes "permanent identifier" (PERM_ID), "station name"
+(STATION_NAME), "state code" (STATE_CODE), "county name" (COUNTY_NAME), and
+"reference object permanent identifier" (REF_OBJ_PERM_ID).  "Reference object permanent
+identifier" can have many values for a single instance of "triangulation station."  Further,
+every value of "reference object permanent identifier" is associated with a value of "reference
+object station name" (REF_OBJ_STN_NAME).  Since the value of attribute "reference object
+station name" is dependent on the value of "reference object permanent identifier", then both
+of these are put in their own table.  The modules that follow illustrate the proper way to
+handle multi-valued attributes.
+
+
+<p>The point module NE01 references the attribute records in the Attribute Primary modules that
+describe the entity instance being represented.  The attribute module AP12 contains the
+attributes that are not multi-valued for entity "triangulation station."  The attribute module
+AP13 contains the multi-valued attribute "reference object permanent identifier" along with its
+functionally dependent attribute "reference object station name".
+
+<p>
+
+
+<table border="1"  width="71%">
+<tr><td colspan="6" width="17%">Module Type:  Point</td>
+</tr>
+<tr align=center><td colspan="3">POINT</td>
+<td colspan="2" width="17%">ATID</td>
+<td><br></td>
+</tr>
+<tr><td>MODN</td>
+<td>RCID</td>
+<td>OBRP</td>
+<td>MODN</td>
+<td>RCID</td>
+<td valign="top">...</td>
+</tr>
+<tr><td valign="top">NE01</td>
+<td valign="top">52</td>
+<td valign="top">NE</td>
+<td valign="top">AP12<br>AP13<br>AP13<br>AP13<br></td>
+<td valign="top">18<br>01<br>02<br>03<br></td>
+<td rowspan=2><br></td>
+</tr>
+<tr><td valign="top">NE01</td>
+<td valign="top">53</td>
+<td valign="top">NE</td>
+<td valign="top">AP12<br>AP13<br>AP13<br>AP13<br>AP13<br>AP13<br>AP13</td>
+<td valign="top">19<br>04<br>05<br>06<br>07<br>08<br>09</td>
+</table>
+<pre>
+
+
+
+
+
+
+
+
+
+
+</pre>
+<center>6-34</center>
+<br><br><br><br>
+<table width="100%">
+<tr>
+<td>Federal Geographic Data Committee</td>
+<td align=right>FGDC-STD-002.6</td>
+</tr>
+<tr>
+<td>Spatial Data Transfer Standard(SDTS)-Part 6: Point Profile, December 1997</td>
+<td><br></td>
+</tr>
+</table>
+<hr noshade>
+<pre>
+
+
+
+
+
+
+</pre>
+<center>
+<table border=1  width="98%">
+<tr><td colspan="6">Module Type:  Attribute Primary</td>
+</tr>
+<tr align=center><td colspan="2">ATPR</td>
+<td colspan="4">ATTP</td>
+</tr>
+<tr><td>MODN</td>
+<td>RCID</td>
+<td>PERM_ID</td>
+<td>STATION_NAME</td>
+<td>STATE_CODE</td>
+<td>COUNTY_NAME</td>
+</tr>
+<tr><td>AP12</td>
+<td>18</td>
+<td>DX3756</td>
+<td>DASH</td>
+<td>CA</td>
+<td>RIVERSIDE</td>
+</tr>
+<tr><td>AP12</td>
+<td>19</td>
+<td>TV0029</td>
+<td>FRANK</td>
+<td>PR</td>
+<td>PONCE</td>
+</tr>
+</table>
+</center>
+<pre>
+
+
+
+
+</pre>
+<table border=1  width="72%">
+<tr><td colspan="4">Module Type:  Attribute Primary</td>
+</tr>
+<tr><td colspan="2" align=center>ATPR</td>
+<td colspan="2" align=center>ATTP</td>
+</tr>
+<tr><td>MODN</tr>
+<td>RCID</td>
+<td>REF_OBJ_PERM_ID</td>
+<td>REF_OBJ_STN_NAME</td>
+</tr>
+<tr><td>AP13</td>
+<td>01</td>
+<td>none</td>
+<td>DASH RM 1</td>
+</tr>
+<tr><td>AP13</td>
+<td>02</td>
+<td>none</td>
+<td>DASH RM 2</td>
+</tr>
+<tr><td>AP13</td>
+<td>03</td>
+<td>DX3764</td>
+<td>MID</td>
+</tr>
+<tr><td>AP13</td>
+<td>04</td>
+<td>TV1238</td>
+<td>CENTER</td>
+</tr>
+<tr><td>AP13</td>
+<td>05</td>
+<td>TV0030</td>
+<td>FRANK RM 2</td>
+</tr>
+<tr><td>AP13</td>
+<td>06</td>
+<td>TV1241</td>
+<td>KLAUS</td>
+</tr>
+<tr><td>AP13</td>
+<td>07</td>
+<td>TV0027</td>
+<td>PBR 75 USE</td>
+</tr>
+<tr><td>AP13</td>
+<td>08</td>
+<td>TV1239</td>
+<td>JERRY</td>
+</tr>
+<tr><td>AP13</td>
+<td>09</td>
+<td>TV0028</td>
+<td>FRANK RM 1</td>
+</tr>
+</table>
+<pre>
+
+
+
+
+
+
+
+
+
+</pre>
+<center>6-35</center>
+<br><br><br><br>
+<table width="100%">
+<tr>
+<td>Federal Geographic Data Committee</td>
+<td align=right>FGDC-STD-002.6</td>
+</tr>
+<tr>
+<td>Spatial Data Transfer Standard(SDTS)-Part 6: Point Profile, December 1997</td>
+<td><br></td>
+</tr>
+</table>
+<hr noshade>
+<br>
+<p>Repeating the row, as shown in the following modules, is an undesirable solution. Attributes
+that do not repeat are duplicated in subsequent rows.  It is not clear whether the two attributes
+with changing values are related or not.
+<br>
+
+<p><table border  width="69%">
+<tr><td colspan="6">Module Type:  Point</td>
+</tr>
+<tr align=center><td colspan="3">POINT</td>
+<td colspan="2">ATID</td>
+<td><br></td>
+</tr>
+<tr><td>MODN</td>
+<td>RCID</td>
+<td>OBRP</td>
+<td>MODN</td>
+<td>RCID</td>
+<td valign=top>...</td>
+</tr>
+<tr><td valign="top">NE01</td>
+<td valign="top">52</td>
+<td valign="top">NE</td>
+<td>AP11<br>AP11<br>AP11</td>
+<td>23<br>24<br>25</td>
+<td rowspan=2><br></td>
+</tr>
+<tr><td valign="top">NE01</td>
+<td valign="top">53</td>
+<td valign="top">NE</td>
+<td>AP11<br>AP11<br>AP11<br>AP11<br>AP11<br>AP11</td>
+<td>26<br>27<br>28<br>29<br>30<br>31</td>
+</table>
+<pre>
+
+</pre>
+<table border=1  width="100%">
+<tr><td colspan="8">Module Type:  Attribute Primary</td>
+</tr>
+<tr align=center><td colspan="2">ATPR</td>
+<td colspan="6">ATTP</td>
+</tr>
+<tr><td>MODN</td>
+<td>RCID</td>
+<td>PERM_ID</td>
+<td>STATION_NAME</td> 
+<td>STATE_CODE</td>
+<td>COUNTY_NAME</td>
+<td>REF_OBJ_PERM_ID</td>
+<td>REF_OBJ_STN_NAME</td>
+</tr>
+<tr><td>AP11</td>
+<td>23</td>
+<td>DX3756</td>
+<td>DASH</td>
+<td>CA</td>
+<td>RIVERSIDE</td>
+<td>none</td>
+<td>DASH RM 1</td>
+</tr>
+<tr><td>AP11</td>
+<td>24</td>
+<td>DX3756</td>
+<td>DASH</td>
+<td>CA</td>
+<td>RIVERSIDE</td>
+<td>none</td>
+<td>DASH RM 2</td>
+</tr>
+<tr><td>AP11</td>
+<td>25</td>
+<td>DX3756</td>
+<td>DASH</td>
+<td>CA</td>
+<td>RIVERSIDE</td>
+<td>DX3764</td>
+<td>MID</td>
+</tr>
+<tr><td>AP11</td>
+<td>26</td>
+<td>TV0029</td>
+<td>FRANK</td>
+<td>PR</td>
+<td>PONCE</td>
+<td>TV1238</td>
+<td>CENTER</td>
+</tr>
+<tr><td>AP11</td>
+<td>27</td>
+<td>TV0029</td>
+<td>FRANK</td>
+<td>PR</td>
+<td>PONCE</td>
+<td>TV0030</td>
+<td>FRANK RM 2</td>
+</tr>
+<tr><td>AP11</td>
+<td>28</td>
+<td>TV0029</td>
+<td>FRANK</td>
+<td>PR</td>
+<td>PONCE</td>
+<td>TV1241</td>
+<td>KLAUS</td>
+</tr>
+<tr><td>AP11</td>
+<td>29</td>
+<td>TV0029</td>
+<td>FRANK</td>
+<td>PR</td>
+<td>PONCE</td>
+<td>TV0027</td>
+<td>PBR 75 USE</td>
+</tr>
+<tr><td>AP11</td>
+<td>30</td>
+<td>TV0029</td>
+<td>FRANK</td>
+<td>PR</td>
+<td>PONCE</td>
+<td>TV1239</td>
+<td>JERRY</td>
+</tr>
+<tr><td>AP11</td>
+<td>31</td>
+<td>TV0029</td>
+<td>FRANK</td>
+<td>PR</td>
+<td>PONCE</td>
+<td>TV0028</td>
+<td>FRANK RM 1</td>
+</tr>
+</table>
+<pre>
+
+
+
+</pre>
+<center>6-36</center>
+<br><br><br><br>
+<table width="100%">
+<tr>
+<td>Federal Geographic Data Committee</td>
+<td align=right>FGDC-STD-002.6</td>
+</tr>
+<tr>
+<td>Spatial Data Transfer Standard(SDTS)-Part 6: Point Profile, December 1997</td>
+<td><br></td>
+</tr>
+</table>
+<hr noshade>
+<p><em>The two previous modules do NOT show the proper way of handling multi-valued attributes.</em>
+<pre>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</pre>
+<center>6-37</center>
+<br><br><br><br>
+<table width="100%">
+<tr>
+<td>Federal Geographic Data Committee</td>
+<td align=right>FGDC-STD-002.6</td>
+</tr>
+<tr>
+<td>Spatial Data Transfer Standard(SDTS)-Part 6: Point Profile, December 1997</td>
+<td><br></td>
+</tr>
+</table>
+<hr noshade>
+<br>
+<p align="center"><strong>Informative Annex</strong>
+<br>
+<p align="center"><strong><font size="+2">C:  An Example of Attributing Points with Entity Labels</strong></font>
+
+<p><table border=1  width="55%">
+<tr><td colspan="5">Module Type:  Point</td>
+</tr>
+<tr align=center><td colspan="3">POINT</td>
+<td colspan="2">ATID</td>
+</tr>
+<tr><td>MODN</td>
+<td>RCID</td>
+<td>OBRP</td>
+<td>MODN</td>
+<td>RCID</td>
+</tr>
+<tr><td>NE01</tr>
+<td>01</td>
+<td>NE</td>
+<td>AP01</td>
+<td>26</td>
+</tr>
+<tr><td>NE01</td>
+<td>02</td>
+<td>NE</td>
+<td>AP01</td>
+<td>36</td>
+</tr>
+<tr><td>NE01</td>
+<td>03</td>
+<td>NE</td>
+<td>AP01</td>
+<td>37</td>
+</tr>
+<tr><td>NE01</tr>
+<td>04</td>
+<td>NE</td>
+<td>AP01</td>
+<td>42</td>
+</tr>
+<tr><td>NE01</td>
+<td>05</td>
+<td>NE</td>
+<td>AP01</td>
+<td>43</td>
+</tr>
+</table>
+<br>
+
+<p><table border=1  width="74%">
+<tr><td colspan="4">Module Type:  Attribute Primary</td> 
+</tr>
+<tr align=center><td colspan="2">ATPR</td>
+<td colspan="2">ATTP</td>
+</tr>
+<tr><td>MODN</td>
+<td>RCID</td>
+<td>ENTITY_LABEL</td>
+<td>STATION_NAME</td>
+</tr>
+<tr><td valign="top">AP01</td>
+<td valign="top">26</td>
+<td>NON-BENCHMARK,<br>VERTICAL CONTROL<br>STATION</td>
+<td valign="top">B 221</td>
+</tr>
+<tr><td valign="top">AP01</td>
+<td valign="top">36</td>
+<td>TRIANGULATION<br>STATION</td>
+<td valign="top">DASH</td>
+</tr>
+<tr><td>AP01</td>
+<td>37</td>
+<td>TRAVERSE STATION</td>
+<td>JAMES NCGS</td>
+</tr>
+<tr><td valign="top">AP01</td>
+<td valign="top">42</td>
+<td>TRIANGULATION<br>STATION</td>
+<td valign="top">FRANK</td>
+</tr>
+<tr><td>AP01</td>
+<td>43</td>
+<td>BENCH MARK</td>
+<td>11 C 25</td>
+</tr>
+</table>
+<pre>
+
+</pre>
+
+<p><em>Note that in this example, the ENTITY_AUTHORITY attribute label is not used.  The
+authority for the definition of all entity labels in this transfer is "NOAA/NGS."  This example
+also shows a case where entity types share a common attribute (STATION_NAME).</em>
+<pre>
+
+
+
+
+</pre>
+<center>6-38</center>
+<br><br><br><br>
+<table width="100%">
+<tr>
+<td>Federal Geographic Data Committee</td>
+<td align=right>FGDC-STD-002.6</td>
+</tr>
+<tr>
+<td>Spatial Data Transfer Standard(SDTS)-Part 6: Point Profile, December 1997</td>
+<td><br></td>
+</tr>
+</table>
+<hr noshade>
+<pre>
+
+
+
+
+
+
+</pre>
+<table border  width="100%">
+<tr><td colspan="11">Module Type:  Data Dictionary/Schema</td>
+</tr>
+<tr><td>MODN</td>
+<td>RCID</td>
+<td>NAME</td>
+<td>TYPE</td>
+<td>ETLB</td>
+<td>EUTH</td>
+<td>ATLB</td>
+<td>AUTH</td>
+<td>FMT</td>
+<td>MXLN</td>
+<td>KEY</td>
+</tr>
+<tr><td>DDSH</td>
+<td>201</td>
+<td>AP01</td>
+<td>ATPR</td>
+<td>n/a</td>
+<td>n/a</td>
+<td>ENTITY_LABEL</td>
+<td>SDTS/TVP</td>
+<td>A</td>
+<td>40</td>
+<td>n/a</td>
+</tr>
+<tr><td>DDSH</td>
+<td>202</td>
+<td>AP01</td>
+<td>ATPR</td>
+<td>n/a</td>
+<td>n/a</td>
+<td>STATION_NAME</td>
+<td>NOAA/NGS</td>
+<td>A</td>
+<td>127</td>
+<td>n/a</td>
+</tr>
+</table>
+<pre>
+
+
+
+
+
+
+
+</pre>
+<table border=1  width="99%">
+<tr><td colspan="8">Module Type:  Data Dictionary/Definition</td>
+</tr>
+<tr><td>MODN</td>
+<td>RCID</td>
+<td>EORA</td>
+<td>EALB</td>
+<td>SRCE</td>
+<td>DFIN</td>
+<td>AUTH</td>
+<td>ADSC</td>
+</tr>
+<tr><td valign="top">DDDF</td>
+<td valign="top">85</td>
+<td valign="top">ENT</td>
+<td valign="top">BENCH MARK</td>
+<td valign="top">...</td>
+<td valign="top">...</td>
+<td valign="top">NOAA/NGS</td>
+<td valign="top">National Oceanic and<br>Atmospheric<br>Administration,National<br>Geodetic Survey,...</td>
+</tr>
+<tr><td valign="top">DDDF</td>
+<td valign="top">86</td>
+<td valign="top">ENT</td>
+<td valign="top">NON<br>BENCHMARK,<br>VERTICAL<br>CONTROL<br>STATION</td>
+<td valign="top">...</td>
+<td valign="top">...</td>
+<td valign="top">NOAA/NGS</td>
+<td valign="top">National Oceanic and<br>Atmospheric<br>Administration,National<br>Geodetic Survey,...</td>
+</tr>
+<tr><td valign="top">DDDF</td>
+<td valign="top">87</td>
+<td valign="top">ENT</td>
+<td valign="top">TRIANGULATION<br>STATION</td>
+<td valign="top">...</td>
+<td valign="top">...</td>
+<td valign="top">NOAA/NGS</td>
+<td valign="top">National Oceanic and<br>Atmospheric<br>Administration,National<br>Geodetic Survey,...</td>
+</tr>
+<tr><td valign="top">DDDF</td>
+<td valign="top">88</td>
+<td valign="top">ENT</td>
+<td valign="top">TRAVERSE<br>STATION</td>
+<td valign="top">...</td>
+<td valign="top">...</td>
+<td valign="top">NOAA/NGS</td>
+<td valign="top">National Oceanic and<br>Atmospheric<br>Administration,National<br>Geodetic Survey,...</td>
+</tr>
+<tr><td valign="top">DDDF</td>
+<td valign="top">90</td>
+<td valign="top">>ATT</td>
+<td valign="top">STATION_NAME</td>
+<td valign="top">...</td>
+<td valign="top">...</td>
+<td valign="top">NOAA/NGS</td>
+<td valign="top">National Oceanic and<br>Atmospheric<br>Administration,National<br>Geodetic Survey,...</td>
+</tr>
+</table>
+<pre>
+
+
+
+</pre>
+<center>6-39</center>
+<br><br><br><br>
+<table width="100%">
+<tr>
+<td>Federal Geographic Data Committee</td>
+<td align=right>FGDC-STD-002.6</td>
+</tr>
+<tr>
+<td>Spatial Data Transfer Standard(SDTS)-Part 6: Point Profile, December 1997</td>
+<td><br></td>
+</tr>
+</table>
+<hr noshade>
+<p><center><strong>Normative Annex</strong></center>
+
+
+<p><center><font size="+2"><strong>D:  Graphic Representation Option</font></strong></center>
+
+<br>
+<p><strong><font size="+1">D.1  Introduction</font></strong>
+
+
+<p>This annex contains an option which allows the use of Graphic Representation modules. 
+Unless stated otherwise in this annex, all requirements of the body of this part also apply
+when using this option.
+
+
+<p><font size="+1"><strong>D.2  Spatial Objects</strong></font>
+
+
+<p>This option does not add any additional permitted spatial object types.
+
+
+<p><font size="+1"><strong>D.3  Transfer Module Specification</strong></font>
+
+
+<p>The following table contains inclusion/exclusion, and cardinality rules for additional modules
+permitted by this annex.  The standardized modules names are included, along with the
+minimum number and the maximum number of occurrences of the module type.  A lowercase
+"n" indicates that the upper limit is user defined.  Any lowercase letters or dots in the module
+name has the meaning explained in Section 4, Standard Module Names.  
+
+
+<p><table border  width="100%">
+<tr align=center><td>Module Type</td>
+<td>Name</td>
+<td>Min. No.</td>
+<td>Max. No.</td>
+</tr>
+<tr><td>Text Representation</td>
+<td>TEXt</td>
+<td>0</td>
+<td>n</td>
+</tr>
+<tr><td>Line Representation</td>
+<td>LNRp</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr><td>Symbol Representation</td>
+<td>SYRp</td>
+<td>0</td>
+<td>n</td>
+</tr>
+<tr><td>Area Fill Representation</td>
+<td>AFIl</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr><td>Color Index</td>
+<td>CLRx</td>
+<td>0</td>
+<td>n</td>
+</tr>
+<tr><td>Font Index</td>
+<td>FONt</td>
+<td>0</td>
+<td>n</td>
+</tr>
+</table>
+<pre>
+
+
+
+
+</pre>
+<p><font size="+1"><strong>D.4  Module Restrictions/Requirements:  Identification Module</strong></font>
+<pre>
+
+
+
+</pre>
+<center>6-40</center>
+<br><br><br><br>
+<table width="100%">
+<tr>
+<td>Federal Geographic Data Committee</td>
+<td align=right>FGDC-STD-002.6</td>
+</tr>
+<tr>
+<td>Spatial Data Transfer Standard(SDTS)-Part 6: Point Profile, December 1997</td>
+<td><br></td>
+</tr>
+</table>
+<hr noshade>
+<br>
+<p>To indicate that this annex is being used, the Profile Identification subfield shall include  "/D"
+in the manner described in section 5.8.2 of Part 6.
+
+
+<p><strong><font size="+1">D.5  Module Restrictions/Requirements:  Catalog/Cross Reference Module</font></strong>
+
+
+<p>If there is more than one Font Index or Color Index module, entries in the Catalog/Cross
+Reference module shall be used to indicate which Font Index module is referenced by each
+Text Representation module and which Color Index module is referenced by each Text
+Representation and Symbol Representation module.  A module may not reference more than
+one Font Index or Color Index module.
+
+
+<p><a name="N_1_">1. </a>1.A minimum of one module is required if the transfer does not have level 1 feature
+conformance with SDTS Part 2.  The module may be contained in an external SDTS data
+dictionary as described in Annex A.
+<p><a name="N_2_">2. </a>2.A maximum of one module is recommended.
+<p><a name="N_3_">3. </a>3.The module may be contained in an external SDTS data dictionary as described in Annex
+A.
+<p><a name="N_4_">4. </a>4.Allowed only as an option as described in Annex D.
+</body>
+</html>

@@ -1,0 +1,104 @@
+$MODULE_NAME = "IRC_weather2.plg";
+$MODULE_AUTHOR = "galen";
+$MODULE_DESC = "Returns to you the lovely temperature and other various info.";
+
+if ($B_code == $IRCCB_ONPRIVMSG || $B_code == $IRCCB_ONCHANNELMSG) {
+
+if ( $B_code == $IRCCB_ONPRIVMSG ) $dest = $B_nick; else $dest = $B_destination;
+            
+
+   // *** temp - tells the current temperature, defaults to zip code 80525
+   // *** params: [zipcode] 
+   // *** access: -1
+   if ($SYS_COMMAND == "temp") {
+      $zip = 80525;
+      if (count($SYS_PARAMS) == 2) $zip = $SYS_PARAMS[1];
+      
+      if ( !is_numeric($zip) ) {
+         irc_privmsg($dest, "Zipcode must be numeric, numbnuts.");
+      } else {
+
+$raw="";
+$file = fopen ("http://www.weather.com/weather/local/$zip", "r");
+if ($file) {
+  while (!feof ($file)) $raw .= fgets ($file, 1024);
+  $pos = strpos($raw,"<!-- Insert City Name and Zip Code -->");
+  if ($pos === false) irc_privmsg($dest, "($zip) not found");
+  else {
+  	//get city/zip
+  	$tmp = substr($raw,$pos-80,80);
+  	$pos2 = strrpos($tmp,">");
+  	$city = substr($tmp,$pos2+2,strlen($tmp)-$pos2);
+	
+	//get clouds
+	$pos = strpos($raw,"<!-- insert forecast text -->");
+	$tmp = substr($raw,$pos+29,strlen($tmp)-($pos+29));
+	$pos2 = strpos($tmp,"<");
+	$clouds = substr($tmp,0,$pos2);
+
+	//get temp
+	$pos = strpos($raw,"<!-- insert current temp -->");
+	$tmp = substr($raw,$pos+28,strlen($tmp)-($pos+28));
+	$pos2 = strpos($tmp,"<");
+	$temp = substr($tmp,0,$pos2);
+	$temp = str_replace("&nbsp;"," ",$temp);
+	$temp = str_replace("&deg;","",$temp);
+
+	//get feels
+	$pos = strpos($raw,"<!-- insert feels like temp -->");
+	$tmp = substr($raw,$pos+31,strlen($tmp)-($pos+31));
+	$pos2 = strpos($tmp,"<");
+	$feels = substr($tmp,0,$pos2);
+	$feels = str_replace("&nbsp;"," ",$feels);
+	$feels = str_replace("&deg;","",$feels);
+
+	//get uv
+	$pos = strpos($raw,"<!-- insert UV number -->");
+	$tmp = substr($raw,$pos+25,strlen($tmp)-($pos+25));
+	$pos2 = strpos($tmp,"<");
+	$uv = substr($tmp,0,$pos2);
+	$uv = str_replace("&nbsp;"," ",$uv);
+	$uv = str_replace("Minimal", "Min.", $uv);
+	$uv = str_replace("Moderate", "Mod.", $uv);
+
+	//get wind
+	$pos = strpos($raw,"<!-- insert wind information -->");
+	$tmp = substr($raw,$pos+32,strlen($tmp)-($pos+32));
+	$pos2 = strpos($tmp,"<");
+	$wind = substr($tmp,0,$pos2);
+	$wind = str_replace("&nbsp;"," ",$wind);
+	$wind = str_replace("From the ","From ",$wind);
+	$wind = str_replace("Northeast ","NE", $wind);
+	$wind = str_replace("Northwest ","NW", $wind);
+	$wind = str_replace("Southeast ","SE", $wind);
+	$wind = str_replace("Southwest ","SW", $wind);
+	$wind = str_replace("North ","N", $wind);
+	$wind = str_replace("South ","S", $wind);
+	$wind = str_replace("East ","E", $wind);
+	$wind = str_replace("West ","W", $wind);
+	$wind = str_replace("  "," ", $wind);
+	$wind = str_replace("at"," at", $wind);
+	$wind = str_replace(" mph", "mph", $wind);
+
+	//get humidity
+	$pos = strpos($raw,"<!-- insert humidity -->");
+	$tmp = substr($raw,$pos+24,strlen($tmp)-($pos+24));
+	$pos2 = strpos($tmp,"<");
+	$humidity = substr($tmp,0,$pos2);
+	$humidity = str_replace(" ", "", $humidity);
+
+  	irc_privmsg($dest, $city.": ".$temp." and ".$clouds." (Like ".$feels.") [UV Index: ".$uv."] [Wind: ".$wind."] [Hum.: ".$humidity."]");
+  	}
+unset ($raw);
+unset ($tmp);
+unset ($pos);
+unset ($pos2);
+unset ($city);
+unset ($tmp);
+unset ($clouds);
+unset ($feels);
+unset ($uv);
+unset ($wind);
+unset ($himidity);
+} else irc_privmsg($dest,"Error retrieving weather data.");
+}}}

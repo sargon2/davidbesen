@@ -1,0 +1,36 @@
+$MODULE_NAME = "IRC_bofh.plg";
+$MODULE_AUTHOR = "gurov";
+$MODULE_DESC = "asks the bofh excuse server about stuff.";
+
+if ($B_code == $IRCCB_ONPRIVMSG || $B_code == $IRCCB_ONCHANNELMSG) {
+
+   // *** bofh module
+   // *** params: none
+   // *** access: -1
+   if (($SYS_COMMAND == "bofh" && $B_code == $IRCCB_ONPRIVMSG) || $SYS_COMMAND == "bofh") {
+      if ( $B_code == $IRCCB_ONPRIVMSG ) 
+         $dest = $B_nick;
+      else
+         $dest = $B_destination;
+
+
+$ans = '';
+$fs = fsockopen("128.105.45.50", 666);
+if (!feof($fs))
+while (strlen($a = fgets($fs, 5000)) != 0) $ans .= $a;
+
+preg_match('/Your excuse is: (.*)/m', $ans, $matches);
+
+fclose($fs);
+
+
+
+            if (count($matches) > 0) {
+              irc_privmsg($dest, "Your excuse is: " . $matches[1]);
+            } else {
+                  irc_privmsg($dest, "A mysterious error has happened.");
+            }
+
+	}
+
+}

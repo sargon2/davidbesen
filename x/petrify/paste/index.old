@@ -1,0 +1,1 @@
+<? print Header("Location: http://www.ramcon.net/~guantes/uberpaste.php"); ?>

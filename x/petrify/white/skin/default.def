@@ -1,0 +1,67 @@
+#
+# This is a template file for Drawboard's custom menu definition (with 
+# default values). If it's missing, default values are used.
+#
+#
+# If you are creating own skin definition, remember: !ALL VALUES MUST BE SET! 
+# Note: numeric values are not verified, so you have to control them yourself.
+# See Draboward documentation for customization hints. If your skin definition
+# doesn't work, watch browser's Java console for details.
+#
+# Menu graphic file names
+# example:
+#   menu_normal menu_normal.gif
+# or
+#   menu_normal another/nrml.gif
+
+menu_normal menu_normal.gif
+menu_light menu_light.gif
+menu_bold menu_bold.gif
+
+# Button and other element definitions
+#  x1 and y1 are coordintes of left-upper corner
+#  x2 and y2 are coordintes of right-lower corner
+# where (0,0) is a left-upper corner of the image
+#
+# General pattern:
+#   buttonname x1 y1 x2 y2
+
+# Tool selection buttons (x1 y1 x2 y2)
+freehand 0 0 50 50
+line 50 0 100 40
+box 0 50 50 95
+fillbox 50 40 100 85
+circle 0 95 50 145
+fillcircle 50 85 100 123
+texttool 50 123 100 155
+
+# Thickness telection buttons (x1 y1 x2 y2)
+thick1 0 160 65 174
+thick2 0 174 65 184
+thick3 0 184 65 195
+thick4 0 195 65 208
+thick5 0 208 65 220
+thick6 0 220 65 235
+
+# Saved image slot selection buttons (x1 y1 x2 y2)
+select1 0 250 15 270
+select2 0 270 15 290
+select3 0 290 15 310
+
+# Saved image operation buttons (x1 y1 x2 y2)
+copy 75 250 100 270
+show 75 270 100 290
+delete 75 290 100 310
+
+# Reset button (x1 y1 x2 y2)
+reset 67 209 96 236
+
+# Addidtional elements (x1 y1 x2 y2)
+copyright 60 310 93 343
+network 0 310 45 350
+
+# Thumbnail image coords (x1 y1 x2 y2)
+thumbnail 17 255 77 305
+
+# People counter coords (x1 y1)
+counter 81 160

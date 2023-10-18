@@ -1,0 +1,38 @@
+dave/12 Monkeys
+dave/2001: A Space Odyssey
+dave/Blade
+dave/Blade Runner
+dave/Bram Stoker's Dracula
+dave/Braveheart
+dave/Dark City
+dave/Devil's Advocate
+dave/Edward Scissorhands
+dave/Event Horizon
+dave/Fallen
+dave/Fight Club
+dave/Gattaca
+dave/Ghost in the Shell
+dave/Girl, Interrupted
+dave/Gladiator
+dave/Hackers
+dave/Interview with the Vampire
+dave/Matrix
+dave/Mortal Kombat
+dave/Ninja Scroll
+dave/Pitch Black
+dave/Princess Mononoke
+dave/Run Lola Run
+dave/Seven
+dave/Sleepy Hollow
+dave/Star Trek: First Contact
+dave/Star Trek: Generations
+dave/Stigmata
+dave/Strange Days
+dave/The Abyss
+dave/The Blair Witch Project
+dave/The Cell
+dave/The Crow
+dave/The Fifth Element
+dave/The Nightmare before Christmas
+dave/The Silence of the Lambs
+dave/The X-Files: Fight the Future

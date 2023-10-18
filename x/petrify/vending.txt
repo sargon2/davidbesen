@@ -1,0 +1,44 @@
+dolls	
+poring	800
+spore	3500
+stuffed	3000
+raccoon	9000
+yoyo	12000
+
+cards	
+anacondaq	150
+chonchon	5
+condor	8
+cornutus	60
+creamy	20
+elder willow	45
+fabre	3
+farmiliar	15
+ghoul	20
+golem	80
+hornet	20
+isis	200
+mandragora	250
+metaller	75
+mummy	60
+munak	100
+ork warrior	125
+pecopeco	30
+picky	3
+poison spore	35
+poporing	60
+poring	1
+pupa	20
+rocker	15
+scorpion	150
+skeleton	20
+smokie	30
+spore	5
+steel chonchon	75
+thief bug	5
+vadon	60
+willow	15
+wolf	25
+yoyo	40
+zombie	40
+

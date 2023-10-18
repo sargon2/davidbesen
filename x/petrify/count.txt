@@ -1,0 +1,15 @@
+section .text
+	global _start
+_start:
+	mov eax,0
+L1:
+	inc eax
+	inc eax
+	inc eax
+	inc eax
+	cmp eax,0xFFFFFFFF
+	jns L1
+
+	mov ebx,1
+	mov eax,1
+	int 0x80

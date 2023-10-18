@@ -1,0 +1,27 @@
+<HTML>
+<HEAD>
+<TITLE> Google Translation</TITLE>
+</HEAD>
+ <body bgcolor=#ffffff text=#000000 link=#0000cc vlink=#551a8b alink=#ff0000>
+
+<table width="95%" border=0 cellpadding=5 cellspacing=0>
+  <tr valign="top">
+    <td width="1%">
+    <img src=http://www.google.com/images/google_sm.gif border=0 alt="Google" align="left" vspace="10"> 
+    </td>
+    <td width="99%" bgcolor="#ffffff" valign="middle"> 
+      <table width="100%" cellpadding="3">
+        <tr bgcolor=#aa1002>
+          <td><b><font color="#FFFFFF" face="Arial, sans-serif">
+               Google in Your Language
+            </font></b></td>
+          </tr>
+        </table>
+     </table>
+
+
+        <b>Cookies required</b><p>
+        In order to log in to Google's Translation Console your browser must accept cookies.<p>
+        Please enable cookies in your browser and <a href=/tcbin/tc.py>try again</a>.<p>
+        We only use cookies to keep track of your login session.<p>
+        

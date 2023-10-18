@@ -1,0 +1,11 @@
+<html><pre>
+Results for the expression 'z'+1 in different languages:</br>
+<table border="1">
+<header><td><b>Language</td><td><b>Result</td><td><b>Syntax used</td><td><b>Reasoning</td></header>
+<tr><td>C/C++</td><td>{</td><td>printf("%c\n", 'z'+1);</td><td>{ is after z in ascii</td></tr>
+<tr><td>Perl</td><td>aa</td><td>print 'z'+1;</td><td>No clue</td></tr>
+<tr><td>PHP</td><td>1</td><td>print 'z'+1;</td><td>z is cast to 0, then 1 is added</td></tr>
+<tr><td>Visual basic</td><td>Run-time error '13': Type mismatch</td><td>Msgbox "z"+1</td><td>VB enforces strict casting (sometimes)</td></tr>
+<tr><td>MySQL</td><td>1</td><td>select ('z' + 1);</td><td>z is cast to 0, then 1 is added</td></tr>
+</table>
+</pre></html>

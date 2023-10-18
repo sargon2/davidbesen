@@ -1,0 +1,22 @@
+*p, *p2
+p = headptr
+p2 = headptr->next->next
+
+while(p != NULL && p2 != NULL) {
+	if(p == p2) Found loop!
+	p = p->next;
+	p2 = p2->next->next;
+}
+
+if 4 points at 3:
+123
+313
+
+if 7 points at 3:
+123456734
+357463574
+
+if 9 points at 1:
+12345678
+35792468
+

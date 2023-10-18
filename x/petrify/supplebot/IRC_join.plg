@@ -1,0 +1,28 @@
+$MODULE_NAME = "IRC_join.plg";
+$MODULE_AUTHOR = "guantes";
+$MODULE_DESC = "Functions to get the bot to join and leave a channel";
+
+if ($B_code == $IRCCB_ONPRIVMSG && $USR_LEVEL >= 900) {
+
+    // *** join - tells the bot to join a channel
+    // *** params: channel to join
+    // *** access: 900
+    if ($SYS_COMMAND == "join") {
+        $chtojoin = $SYS_PARAMS[1];   
+        
+        if (irc_join($chtojoin)) 
+            irc_privmsg($B_nick, "Joined channel $chtojoin");
+        else
+            irc_privmsg($B_nick, "Failed to join channel");
+    }
+    
+    
+    // *** part - tells the bot to part a channel
+    // *** params: channel to part
+    // *** access: 900
+    if ($SYS_COMMAND == "part") {
+        $chtopart = $SYS_PARAMS[1];
+        irc_part($chtopart);
+    }
+
+}

@@ -1,0 +1,26 @@
+// *** !badcommandmentoftheday - Something definitely NOT to do today
+// *** params: none
+// *** access: -1
+
+$MODULE_NAME = "IRC_commandment.plg";
+$MODULE_AUTHOR = "guantes";
+$MODULE_DESC = "A guide for planning your life";
+
+if ($SYS_COMMAND == "badcommandmentoftheday") {
+   if ( $B_code == $IRCCB_ONPRIVMSG )
+      $dest = $B_nick;
+   else
+      $dest = $B_destination;
+
+   $today = date("z", time());
+   if ($today == 0) $today = 1;
+   if ($today >= 365) $today = 364;
+   $query = "select commandment from cotd where id=$today";
+   $res = mysql_query($query);
+   $saying = mysql_fetch_assoc($res);
+   $saying = $saying["commandment"];
+   echo "$saying\n";
+   irc_privmsg($dest, "What you should not be doing today: $saying\n");
+
+
+}

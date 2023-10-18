@@ -1,0 +1,21 @@
+sub format_init_smilies {
+   %regexpicon = (
+      '\;-\)'         => 'wink',
+#      '\;-?D'         => 'grin',
+      ':\'\(?'        => 'cry',
+      ':-?/(?!\S)'    => 'notsure',
+      ':-?[xX]'       => 'confused',
+      ':-?\['         => 'embarassed',
+      ':-?\*'         => 'love',
+      '\&gt\;:\(',    => 'angry',
+      ':-?[pP]'       => 'tongue',
+      ':-?\)'         => 'happy',
+      '\:-?D'         => 'cheesy',
+      ':-?\('         => 'unhappy',
+      ':-[oO]'        => 'surprised',
+      '8-?\)'         => 'cool',
+      ':-?\|'         => 'flat',
+   );
+   $regexpicon = '(' . join('|', keys %regexpicon) . ')';
+}
+

@@ -1,0 +1,21 @@
+The following will put the current date in the variable DATE...
+in 2k, it's in the format "MM/DD/YYYY", in 98 it's "MM-DD-YYYY"
+
+Windows 2000:
+
+@echo off
+echo.|date|find "current" > tmp.bat
+echo set DATE=%%5 > the.bat
+call tmp.bat
+del tmp.bat
+del the.bat
+
+
+Windows 98:
+
+@echo off
+echo.|date|find "Current" > tmp.bat
+echo set DATE=%%4 > current.bat
+call tmp.bat
+del current.bat
+del tmp.bat

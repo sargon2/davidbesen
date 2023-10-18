@@ -1,0 +1,52 @@
+$MODULE_NAME = "IRC_stocks.plg";
+$MODULE_AUTHOR = "sargon";
+$MODULE_DESC = "Gets stock quotes.";
+
+if ($B_code == $IRCCB_ONPRIVMSG || $B_code == $IRCCB_ONCHANNELMSG) {
+   // *** stockquote - get a stock quote
+   // *** params: ticker symbol
+   // *** access: -1
+   if (($SYS_COMMAND == "stockquote" && $B_code == $IRCCB_ONPRIVMSG) || $SYS_COMMAND == "stockquote") {
+      if ( $B_code == $IRCCB_ONPRIVMSG ) 
+         $dest = $B_nick;
+      else
+         $dest = $B_destination;
+      
+      $symbol = strtoupper($SYS_PARAMS[1]);
+
+	if($symbol == "") {
+		irc_privmsg($dest, "Need a symbol to look up.");
+	} else {
+
+	$fd = fopen("http://finance.yahoo.com/q?s=$symbol", "r");
+	if(!$fd) {
+		irc_privmsg($dest, "Error: no webpage for you!");
+	} else {
+            socket_set_timeout($fd, 2);
+            $pagesrc = fread($fd, 20000);
+            fclose($fd);
+            $lines = explode("\n", $pagesrc);
+            foreach ($lines as $line) {
+		$line = preg_replace("/<[^>]+>/", "<", $line);
+               preg_match("/^<+$symbol(.*)/", $line, $matches);
+               if (count($matches) > 0) break;
+            }
+            if (count($matches) > 0) {
+		$matches[1] = preg_replace("/<+/", "<", $matches[1]);
+		$stuff = split("<", $matches[1]);
+		if(strstr($stuff[1], "No such ticker symbol.") || strstr($stuff[1], "Ticker symbol has changed to")) {
+			irc_privmsg($dest, $stuff[1] . $stuff[2]);
+		} else {
+                	irc_privmsg($dest, "$symbol  Last trade: " . $stuff[1] . "  " . $stuff[2] . "  Change: " . $stuff[3] . " " . $stuff[4] . "  Volume: " . $stuff[5]);
+		}
+            } else {
+		irc_privmsg($dest, "Error, no regex match.");
+            }
+	}
+	}
+   
+   }
+   
+   
+}
+

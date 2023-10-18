@@ -1,0 +1,232 @@
+#!/usr/bin/perl -w
+
+use Net::IRC;
+
+my $chan;
+$chan = "#linux";
+
+$irc = new Net::IRC;
+
+$conn = $irc->newconn(Nick => 'smokebot', Server => 'bigfeh.com', Ircname => 'smokebot');
+
+print ("....\n");
+$irc->start;
+
+sub on_connect {
+    my $self = shift;
+    $self->join ($chan);
+    $self->print ("joined\n");
+}
+
+sub on_msg {
+    my ($self, $event) = @_;
+    my ($arg) = $event->args;
+    my @in = split(/ /, $arg);
+    my $nick = $event->nick;
+    if($in[0] eq "join") {$self->join($chan); return;}
+    $force=0;
+    $query=0;
+    if($in[1]) { if($in[1] eq "force") {$force=1;}; }
+    if($in[1]) { if($in[1] eq "query") {$query=1;}; }
+    if(($in[0] eq "smoke")||($in[0] == "!smoke")) {
+	open FILE, "/home/besen/smokers/accounts";
+	@smokers = <FILE>;
+	chomp(@smokers);
+	close FILE;
+	$smoker = "";
+	foreach $blah (@smokers) {
+	    #print $blah . "\n";
+	    if($nick =~ /$blah/i) {$smoker = $blah;}
+	}
+	if($smoker ne "") {
+		undef @times;
+		if(open FILE, "/home/besen/smokers/$smoker") {
+			@times = <FILE>;
+			chomp(@times);
+			close FILE;
+		}
+		if($#times > 20) {
+			shift(@times);
+		}
+		$now = time();
+		$avstr = "";
+		if($#times >= 0) {
+			$last = $times[$#times];
+			$elap = $now - $last;
+			$ok = 1;
+			if($#times >= 5) {
+				$ok = 0;
+				$tot = 0; $count = 0;
+				for($i=0;$i<$#times;$i++) {
+					$tot += $times[$i+1] - $times[$i];
+					$count++;
+				}
+				$av = $tot / $count;
+				$av = int($av * 0.6);
+				$avsave = $av;
+				$days = int($av / 86400); $av -= $days*86400;
+				$hours = int($av / 3600); $av -= $hours*3600;
+				$minutes = int($av / 60); $av -= $minutes*60;
+				$seconds = $av;
+				$av = $avsave;
+				$avstr = sprintf("your average is %d days %02d:%02d:%02d.", $days, $hours, $minutes, $seconds);
+				$next = $last + $av;
+				if($now - $next >= 0) {$ok=1;}
+			}
+			if($force==1) {$ok=1;}
+			if($ok==1) {
+				$days = int($elap / 86400); $elap -= $days*86400;
+				$hours = int($elap / 3600); $elap -= $hours*3600;
+				$minutes = int($elap / 60); $elap -= $minutes*60;
+				$seconds = $elap;
+				if($query==0) {
+					push(@times, $now);
+					open FILE, ">/home/besen/smokers/$smoker";
+					foreach $blah (@times) {
+						print FILE "$blah\n";
+					}
+					close FILE;
+					$self->privmsg($nick, sprintf("ok, your last smoke was %d days %02d:%02d:%02d ago. ", $days, $hours, $minutes, $seconds) . $avstr);
+				} else {
+					$self->privmsg($nick, sprintf("your last smoke was %d days %02d:%02d:%02d ago. ", $days, $hours, $minutes, $seconds) . $avstr);
+				}
+			} else {
+				$elap = $next - $now;
+				$days = int($elap / 86400); $elap -= $days*86400;
+				$hours = int($elap / 3600); $elap -= $hours*3600;
+				$minutes = int($elap / 60); $elap -= $minutes*60;
+				$seconds = $elap;
+				if($query==0) {
+					$self->privmsg($nick, sprintf("no, in %d days %02d:%02d:%02d. ", $days, $hours, $minutes, $seconds) . $avstr);
+				} else {
+					$self->privmsg($nick, sprintf("in %d days %02d:%02d:%02d. ", $days, $hours, $minutes, $seconds) . $avstr);
+				}
+			}
+		} else {
+			$self->privmsg($nick, "ok");
+			push(@times, $now);
+			open FILE, ">/home/besen/smokers/$smoker";
+			foreach $blah (@times) {
+				print FILE "$blah\n";
+			}
+			close FILE;
+		}
+	} else {
+		$self->privmsg($nick, "You don't have an account");
+	}
+    }
+}
+
+sub on_public {
+    my ($self, $event) = @_;
+    my ($arg) = $event->args;
+    my @temp = split(/ /, $arg);
+    my $tmp = $temp[int rand $#temp];
+    my @in = split(/ /, $arg);
+    my $nick = $event->nick;
+    $force=0;
+    $query=0;
+    if($in[1]) { if($in[1] eq "force") {$force=1;}; }
+    if($in[1]) { if($in[1] eq "query") {$query=1;}; }
+    if($in[0] eq "!smoke") {
+	open FILE, "/home/besen/smokers/accounts";
+	@smokers = <FILE>;
+	chomp(@smokers);
+	close FILE;
+	$smoker = "";
+	foreach $blah (@smokers) {
+	    #print $blah . "\n";
+	    if($nick =~ /$blah/i) {$smoker = $blah;}
+	}
+	if($smoker ne "") {
+		undef @times;
+		if(open FILE, "/home/besen/smokers/$smoker") {
+			@times = <FILE>;
+			chomp(@times);
+			close FILE;
+		}
+		if($#times > 20) {
+			shift(@times);
+		}
+		$now = time();
+		$avstr = "";
+		if($#times >= 0) {
+			$last = $times[$#times];
+			$elap = $now - $last;
+			$ok = 1;
+			if($#times >= 5) {
+				$ok = 0;
+				$tot = 0; $count = 0;
+				for($i=0;$i<$#times;$i++) {
+					$tot += $times[$i+1] - $times[$i];
+					$count++;
+				}
+				$av = $tot / $count;
+				$av = int($av * 0.6);
+				$avsave = $av;
+				$days = int($av / 86400); $av -= $days*86400;
+				$hours = int($av / 3600); $av -= $hours*3600;
+				$minutes = int($av / 60); $av -= $minutes*60;
+				$seconds = $av;
+				$av = $avsave;
+				$avstr = sprintf("your average is %d days %02d:%02d:%02d.", $days, $hours, $minutes, $seconds);
+				$next = $last + $av;
+				if($now - $next >= 0) {$ok=1;}
+			}
+			if($force==1) {$ok=1;}
+			if($ok==1) {
+				$days = int($elap / 86400); $elap -= $days*86400;
+				$hours = int($elap / 3600); $elap -= $hours*3600;
+				$minutes = int($elap / 60); $elap -= $minutes*60;
+				$seconds = $elap;
+				if($query==0) {
+					push(@times, $now);
+					open FILE, ">/home/besen/smokers/$smoker";
+					foreach $blah (@times) {
+						print FILE "$blah\n";
+					}
+					close FILE;
+					$self->privmsg($chan, sprintf("ok, your last smoke was %d days %02d:%02d:%02d ago. ", $days, $hours, $minutes, $seconds) . $avstr);
+				} else {
+					$self->privmsg($chan, sprintf("your last smoke was %d days %02d:%02d:%02d ago. ", $days, $hours, $minutes, $seconds) . $avstr);
+				}
+			} else {
+				$elap = $next - $now;
+				$days = int($elap / 86400); $elap -= $days*86400;
+				$hours = int($elap / 3600); $elap -= $hours*3600;
+				$minutes = int($elap / 60); $elap -= $minutes*60;
+				$seconds = $elap;
+				if($query==0) {
+					$self->privmsg($chan, sprintf("no, in %d days %02d:%02d:%02d. ", $days, $hours, $minutes, $seconds) . $avstr);
+				} else {
+					$self->privmsg($chan, sprintf("in %d days %02d:%02d:%02d. ", $days, $hours, $minutes, $seconds) . $avstr);
+				}
+			}
+		} else {
+			$self->privmsg($chan, "ok");
+			push(@times, $now);
+			open FILE, ">/home/besen/smokers/$smoker";
+			foreach $blah (@times) {
+				print FILE "$blah\n";
+			}
+			close FILE;
+		}
+	} else {
+		$self->privmsg($chan, "You don't have an account");
+	}
+    }
+}
+sub on_caction {
+    my ($self, $event) = @_;
+    my ($arg) = $event->args;
+}
+
+$irc->do_one_loop();
+$conn->join($chan);
+
+# main loop
+#while(1)
+#{
+#    $irc->do_one_loop();
+#    sleep 1;
+#}

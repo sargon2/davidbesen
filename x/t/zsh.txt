@@ -1,0 +1,52 @@
+zsh stuff I found neat
+----------------------
+ls *.c >file1 >file2         # copies output to both files
+vi =(ls)                     # vim the output of ls
+ls **/*.c                    # list every c file under the current directory (recursive)
+ls **/*.c<tab>               # expand to every c file on the command line
+dirname/                     # cd to dirname/
+scp bes<tab>ev<tab><tab>     # expand to scp besen@evans.cs.colostate.edu: and show remote directory listing
+cd thing1 thing2             # if you're in /a/dir/thing1/etc/other, cd to /a/dir/thing2/etc/other
+echo $VAR<tab>               # expand $VAR to its value
+kill SCR<tab>                # expand to SCREEN's pid
+gcc -W<tab>                  # show all gcc options that start with W
+
+
+Here's what dd <TAB> does in zsh:
+
+sargon@bigfeh> dd                                                             ~
+bs     -- block size
+cbs    -- conversion buffer size
+conv   -- specify conversions to apply
+count  -- number of input blocks to copy
+files  -- specify number of input files to copy and concatenate
+ibs    -- input block size
+if     -- specify input file
+obs    -- output block size
+of     -- specify output file
+seek   -- output blocks initially skipped
+skip   -- input blocks initially skipped
+
+And dd conv=<TAB>:
+
+sargon@bigfeh> dd conv=                                                       ~
+ascii  block  ebcdic  ibm  lcase  noerror  swab  sync  ucase  unblock
+
+
+sargon@bigfeh> gzip -<TAB>
+--force       -f                -- force overwrite
+--help        -h                -- display help message
+--license     -L                -- display software license
+--list        -l                -- list compressed file contents
+--name        -N                -- save or restore the original name and time stamp
+--no-name     -n                -- do not save or restore the original name and time stamp
+--recursive   -r                -- operate recursively on directories
+--silent      --quiet       -q  -- suppress all warnings
+--suffix      -S                -- specify suffix for compressed files
+--test        -t                -- test compressed file integrity
+--to-stdout   --stdout      -c  -- write on standard output
+--uncompress  --decompress  -d  -- decompress
+--verbose     -v                -- verbose mode
+--version     -V                -- display version number
+--best        --fast        -1            -2            -3            -4            -5            -6            -7            -8            -9
+

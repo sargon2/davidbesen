@@ -1,0 +1,69 @@
+$MODULE_NAME = "IRC_help.plg";
+$MODULE_AUTHOR = "guantes";
+$MODULE_DESC = "Module for doing handling dynamic help and other user info functions.";
+
+if ($B_code == $IRCCB_ONPRIVMSG) {
+    
+    // *** help - displays help for all loaded modules
+    // *** params: module to display help on
+    // *** access: -1
+    if ($SYS_COMMAND == "help") {
+        // First case... if they didn't pass us any other parameters
+        if (!isset($SYS_PARAMS[1])) {
+            $numread = 0;
+            $listing = "Help is available on the following modules: ";
+            
+            foreach ($LOADED_PLUGINS as $currplug) {
+                $numread++;
+                $listing .= substr($currplug, 4, strpos($currplug, ".plg") - 4) . " ";
+                if ($numread > 10) {
+                    irc_privmsg($B_nick, $listing);
+                    $listing = "";
+                    $numread = 0;
+                }
+            }
+            
+            irc_privmsg($B_nick, $listing);   
+        } else {
+        // Otherwise, parse the help out of the module they requested
+            $plugname = $SYS_PARAMS[1];
+            $origname = $plugname;
+            // Do some shenanigans for non-case sensitive searching
+            $tmparr = $LOADED_PLUGINS;
+            for ($i=0; $i < count($tmparr); $i++) {
+                $tmparr[$i] = strtolower($tmparr[$i]);
+                $tmparr[$i] = substr($tmparr[$i], 4, strpos($tmparr[$i], ".plg") - 4);
+            }
+            $plugname = strtolower($plugname);
+            $origname = "plugins/IRC_" . $origname . ".plg";
+            
+            if ( in_array($plugname, $tmparr) ) {
+                $fd = fopen ($origname, "r");
+                $plgtxt = fread ($fd, filesize ($origname));
+                
+                preg_match_all("/\*\*\* (.*)\s+/imx", $plgtxt, $matches);
+                
+                if ( count($matches[1]) > 0) {
+                    irc_privmsg($B_nick, "Help on module: $plugname");
+                    for ($i=0; $i < count($matches[1]); ) {
+                        $cmdlvl = substr($matches[1][$i+2], 8);
+                        $cmdparams = substr($matches[1][$i+1], 8);
+                        
+                        if ($USR_LEVEL >= $cmdlvl) {
+                            irc_privmsg($B_nick, $matches[1][$i] . " | parameters: " . $cmdparams);
+                        }
+                        $i += 3;
+                        usleep(500);
+                    }
+                } else {
+                    irc_privmsg($B_nick, "No help is currently available for: $plugname");
+                }
+            } else {
+                irc_privmsg($B_nick, "Ur e Ur e, could not find help on $plugname");
+            }
+
+        }
+    }
+
+
+}

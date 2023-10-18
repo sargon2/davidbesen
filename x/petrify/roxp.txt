@@ -1,0 +1,4 @@
+$exptogo     // $needexp - $exp
+$jobexptogo  // $needjobexp - $jobexp
+$expmobstogo // int($exptogo / $lastexp) + 1
+$jobmobstogo // int($jobexptogo / $lastjobexp) + 1

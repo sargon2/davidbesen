@@ -1,0 +1,207 @@
+<BR> Project Drawboard, http://sourceforge.net/projects/drawboard
+<BR> Author: Tomek "TomasH" Zielinski, tomash@fidonet.org.pl
+<BR>
+<BR> v 1.4 (2002-12-25 "Christmas Edition") 
+<BR> Long awaited feature is finally done - you can now place your 
+<BR> favourite image as background of drawing area. Notice, that this option
+<BR> is turned off by default. Please read server runtime options section in
+<BR> documentation. Background image can be also changed in any moment by 
+<BR> connecting to server at specified port and giving URL/filename of
+<BR> the desired background image (server -b and -l switches). Please notice,
+<BR> the only allowed image format is PNG and it's size must fit the board 
+<BR>
+<BR> v 1.3 (2002-10-15)
+<BR> Drawboard client can now display all GUI text and console messages
+<BR> in many different languages. English, Polish and German are currently
+<BR> supported (Thanks to Manuel Kiessling for german translation). Please 
+<BR> contribute your language, all required sentences can you found at the end 
+<BR> of Main.java source file. InfoPeople and ImagePrint features were bugfixed,
+<BR> they no longer stops on communication errors.
+<BR>
+<BR> v 1.2 (2002-10-07)
+<BR> InfoPerson and imageprint features were added. With InfoPerson you can 
+<BR> read current number of users with CGI script or any network utility 
+<BR> (see server -i switch). With new imageprint feature you can embed current 
+<BR> image as PNG file into WWW page (-r switch). Thanks to Manuel Kiessling for
+<BR> inspiration and motivation.
+<BR>
+<BR> v 1.1 (2002-09-05)
+<BR> The "onlyview" applet mode was added. It should be useful with e-teaching
+<BR> and other situations, where one person wants to show something to many
+<BR> others without interruption. Thanks to Simon Triantafillou for motivation.
+<BR>
+<BR> v 1.0 (2002-08-08)
+<BR> After 16 months of developing Drawboard beta becomes Drawboard 1.0. All
+<BR> planned features are implemented, GUI looks good and works well, there
+<BR> were no serious bugs submitted since a few months. Drawboard will be 
+<BR> probably further advanced, but it depends on my free time.
+<BR>
+<BR> v 0.75 (2002-07-21)
+<BR> Added menu pseudo-transparency, menu can now have non-rectangle shape.
+<BR> Network communication module behaviour improved. Image load error raport
+<BR> message contains URL's of non loaded images. 	
+<BR>
+<BR> v 0.71 (2002-04-09)
+<BR> Backspace handling was added, you can now erase just written text.
+<BR> Polish and German national characters were added. If you want to give
+<BR> consideration for your country, please edit the Alphabet.java file and
+<BR> send us new character definitions. JAR package at last created and
+<BR> included in distribution packet.
+<BR>
+<BR> v 0.70 (2002-03-05)
+<BR> User can now enter e-mail address and send current clipboard content.
+<BR> Notice, that this option is turned off by default. Also few minor bugfixes.
+<BR>
+<BR> v 0.61 (2002-02-25)
+<BR> Fixed small bug from v. 0.56, applet did not worked when opened from
+<BR> local file.
+<BR>
+<BR> v 0.60 (2002-02-24)
+<BR> User can now click "Save image" button in Drawboard's clipboard viewer and
+<BR> his clipboard content will be saved to PNG file on server host. Destination
+<BR> directory can be customized.
+<BR>
+<BR> v 0.56 (2002-02-21)
+<BR> Drawboard is now loading images properly even, if it is fetched through HTTP
+<BR> connection with non-default (other than 80) port number. Thanks to VR Kaushik
+<BR> for bug report.
+<BR> 
+<BR> v 0.55 (2002-02-09)
+<BR> Drawboard license was changed to less restrictive LGPL, you can combine it 
+<BR> with GPL-incompatible software. See LINCESE file for details. Disconnected
+<BR> client will now always decrase people counter, fixed bug reported in Tracker.
+<BR> Server is now fully compatible with Java 1.1 (tested on 1.1.8), thanks to 
+<BR> Nicolas Vignal for help and motivation.
+<BR>
+<BR>
+<BR> v 0.50 (2002-02-02)
+<BR> Long time awaited feature is done. You can type letters and digits and any
+<BR> other characters. Some small bugfixes were done. Server was improvement, it
+<BR> reports now time of message and accepts -quiet option. WARNING! If you are
+<BR> using own skin, add texttool button and proper line to definition file.
+<BR>
+<BR> v 0.45 (2001-10-24)
+<BR> Full skin support added. It's better than Winamp 2.x, because it allows to
+<BR> change visual design and button locations.
+<BR> 
+<BR> v 0.40 (2001-10-09)
+<BR> It was quite a lot of work - say "goodbye" to most AWT classes and handle
+<BR> all graphics ourself. But now there is no image flicking, no slow refreshing
+<BR> and no more such things. Offline image is an array of integers, so it can be
+<BR> easily compressed and transported. Fetching current image is even 100 times 
+<BR> faster than before! Server process size is now constant, uncontrolled 
+<BR> growing was bounded. You can click right mouse key on image to pick color 
+<BR> and configure more parameters. See documentation for details.
+<BR> 
+<BR> v 0.31 (2001-09-09)
+<BR> Important bugfix, server-class CPU load was 99%. Now it's about 
+<BR> 1% on my Celeron 500.
+<BR> 
+<BR> v 0.30 (2001-08-30)
+<BR> Created new Server class with separate and completely independent
+<BR> client handles. This model of communication is good, but not hard
+<BR> tested yet. Please do so and write me if you have any problems.
+<BR> There are many new improvements to applet, most important are people
+<BR> counter and "wait" cursor use, when required.
+<BR> 
+<BR> v 0.20 (2001-08-26)
+<BR> Whole Drawboard was rewritted. There is no networking support, because
+<BR> server will be also brand new, multithreaded and much more optimized.
+<BR> Operating manual was created and uploaded to SourceForge. There is too
+<BR> much imporvements to list them all here. Current version is much closer
+<BR> relase, than any previous. 
+<BR> 
+<BR> v 0.15 (2001-05-31)
+<BR> One quick bugfix - integer number color coding was used instead of 
+<BR> java.awt.Color (server failed on some Java Virtual Machines). Other news:
+<BR> be extremally careful with Java VM on Irix 6.5 (Silicon Graphics). It
+<BR> has huge memory leaks (about 100MB of RAM in 12 hours).
+<BR> 
+<BR> v 0.14 (2001-05-30)
+<BR> Yesterday I've presented drawboard to my teacher and got note "5" 
+<BR> (very good, highest possible). Developing of drawboard will now stop 
+<BR> for about two weeks because of going soon hard exams. Latest changes are:
+<BR> fixed stupid mouse key bug (you had to press both keys on Netscape), fixed
+<BR> out-of-bounds mouse moving (you can abort circle or box drawing by moving
+<BR> mouse outside canvas without any unwanted artifacts), added grayscale to
+<BR> ColorPicker (with distinct white color). Server class was revised and
+<BR> checked. In some cases internal user counter failed, hope now it's OK.
+<BR> If you found any bug, mail me or use SourceForge's bugtracker. See you
+<BR> in two weeks (or a bit more, maybe)!
+<BR> 
+<BR> v 0.13 (2001-05-29) SWITCHED TO BETA PHASE
+<BR> Milestone edition. Everything is prepared to project presentation on
+<BR> "Computer networks" classes. There were added nice graphic menu (draw
+<BR> type, thickness select), reset button and network status indicator.
+<BR> Because of unworkaroundable PixelGrabber major bug, right mouse key
+<BR> (fetching color from image) was disabled. Filled rectangle is now
+<BR> avaible. Source code was divided to more files, because glowna.java was
+<BR> definitive too big. Sources are still hard to read, it will be 
+<BR> cleaned and commented later.
+<BR> 
+<BR> v 0.12 (2001-05-28)
+<BR> Added circle, box and straight line drawing options. Also created 
+<BR> connection status line. Improved graphics rendering performance by removing
+<BR> canvas repaint after each drawed line. Several small bugfixes.
+<BR> 
+<BR> v 0.11 (2001-05-27)
+<BR> Found a bug in Netscape Java VM - when mouse is dragged, there is no 
+<BR> BUTTON1_MASK flag raised in MouseEvent.getModifiers(). Workarounded. You 
+<BR> can also try to pick color from image, but color is often inadequate. 
+<BR> Will be fixed. The line drawing routine was rewrited, you can now draw 
+<BR> single rounded points. There is very first GUI designed, it's based on 
+<BR> GridBagLayout. Advanced drawing options don't work yet. Created and added 
+<BR> counter of users currently online.
+<BR> 
+<BR> v 0.10 (2001-05-13)
+<BR> One bugfix and one workaround. Some Microsoft implementations of Java VM
+<BR> are resetting jawa.awt.Color instance, if it's a member of serialized 
+<BR> object. Transmitted data contains now RGB intereger components and 
+<BR> everything works fine. The workaround is related to offline image 
+<BR> initialization. It will be redesigned in the future. Development is
+<BR> stopped for a week.
+<BR> 
+<BR> v 0.09 (2001-05-11)
+<BR> Changes in communication model - now packet size depends on
+<BR> amount of transported data. Server remembers some image data and
+<BR> sends it to all new clients. This sometimes causes exception, I don't 
+<BR> know why. Metod stop() changed to destroy() - because of Netscape
+<BR> compatibility. Little change in ColorPicker. Big unfounded bug: why in
+<BR> some browsers all incoming paintings is in black color!?
+<BR> 
+<BR> v 0.08 (2001-05-10)
+<BR> Added colorful ColorPicker and current pen color preview.
+<BR> When cursor moves over the canvas, it becomes cross-hair style.
+<BR> To avoid IE 4 bug, temporary pen thickness is realised by 
+<BR> jawa.awt.Choice, not List. GUI design is still missing, there are
+<BR> still more important features left.
+<BR> 
+<BR> v 0.07 (2001-05-09)
+<BR> Network model changed from two one-directional to one
+<BR> bi-directional socket. Server architecture modified.
+<BR> Raported problem with known IE 4 java.awt.List bug, ignoring.
+<BR> 
+<BR> v 0.06 (2001-05-08)
+<BR> Bugfixed first working version. Three basic operations - 
+<BR> drawing, color choosing and clearing table. Server distributes 
+<BR> image to all clients. Client automatically reconnect when 
+<BR> connection is down or server is not avaible. It's still early 
+<BR> alpha, but you can see small and nice working code. 
+<BR> 
+<BR> v 0.05 (2001-05-06)
+<BR> First really working version. Two basic operations - drawing 
+<BR> and clearing table. Server distributes image to all clients. 
+<BR> Client automatically reconnect when connection is down or 
+<BR> server is not avaible. It's still early alpha, but you can 
+<BR> see small and nice working code.
+<BR> 
+<BR> v 0.02 (2001-04-28)
+<BR> Basic client-server socket implementation. Client drawing 
+<BR> is transported via net and shown by server. There isn't 
+<BR> any performance optimization yet.
+<BR> 
+<BR> v 0.01 (2001-04-22)
+<BR> This is my very first MouseMotionListener class. It allows 
+<BR> to free-hand draw on Canvas and shows the last painting in 
+<BR> separate window. Nothing important, but I'm still learning 
+<BR> Java.

@@ -1,0 +1,19 @@
+This is test data.  It has nothing to do with the lineup for any tournament at RamCon.<br>
+<form method="POST" action="back.php">
+<?
+foreach ($HTTP_GET_VARS as $key => $value) {
+	echo "<input type='hidden' name='$key' value='$value'>";
+	$querystring .= "&$key=$value";
+	if($key!="draw_x"&&$key!="draw_y") $reloadstring .= "&$key=$value";
+}
+foreach ($HTTP_POST_VARS as $key => $value) {
+	echo "<input type='hidden' name='$key' value='$value'>";
+	$querystring .= "&$key=$value";
+	if($key!="draw_x"&&$key!="draw_y") $reloadstring .= "&$key=$value";
+}
+echo "<input type=\"hidden\" name=\"back\" value=\"1\">";
+$querystring .= "&back=1";
+print "<a href=\"back.php?$reloadstring\">reload</a> (please don't use your browser's reload button, it will advance people in the tournament)";
+echo "<input type=\"image\" border=\"0\" name=\"draw\" alt=\"\" src=\"draw.php?$querystring\">";
+?>
+</form>

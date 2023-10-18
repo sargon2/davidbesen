@@ -1,0 +1,517 @@
+// *** !death - Adds a little black spice to a word, also use -* to add words
+// *** params: word; -v [verb] [verbED] [verbING]; -a [adjective]; -pl [place]; -plt [PlaceThing] [plural]; -pt [PersonThing] [plural]; -pe [Person], -t [Thing] [plural];
+// *** access: -1
+    // BMAG written for guantes' supplebot
+    //   all the death you ever need, version 1.something 
+    //   by huevo
+    
+	  
+    $MODULE_NAME = "suppleBMAG.plg";
+    $MODULE_AUTHOR = "huevo";
+    $MODULE_DESC = "666 SATAN GOAT HORNS";
+
+    if (!function_exists("getPersonThing"))
+    {
+
+    function getPersonThing($Letter, $Plural)
+    {
+        $T="Name";
+        if ($Plural=="YES") $T="Plural";
+    
+        $GetPersonThing = mysql_query("select $T from PersonThing where Letter = '$Letter'");
+        if (mysql_num_rows($GetPersonThing)==0)
+            return $Letter."BlankPersonThing".$Plural;
+        
+        for ($i=0; $i <= mysql_num_rows($GetPersonThing)-1; $i++)
+        {
+            $blah = mysql_fetch_array($GetPersonThing, MYSQL_NUM);
+            $Results[$i] = $blah[0];
+        }
+    
+    return $Results[rand(0, mysql_num_rows($GetPersonThing)-1)];
+            
+    }
+    
+    function getThing($Letter, $Plural)
+    {
+        $T="Name";
+        if ($Plural=="YES") $T="Plural";
+    
+        $GetThing = mysql_query("select $T from Thing where Letter = '$Letter'");
+        if (mysql_num_rows($GetThing)==0)
+            return $Letter."BlankThing".$Plural;
+        
+        for ($i=0; $i <= mysql_num_rows($GetThing)-1; $i++)
+        {
+            $blah = mysql_fetch_array($GetThing, MYSQL_NUM);
+            $Results[$i] = $blah[0];
+        }
+    
+    return $Results[rand(0, mysql_num_rows($GetThing)-1)];
+            
+    }
+    
+    function getAdj($Letter)
+    {
+        $GetAdj = mysql_query("select Name from Adjective where Letter = '$Letter'");
+        if (mysql_num_rows($GetAdj)==0)
+            return $Letter."BlankAdj";
+        
+        for ($i=0; $i <= mysql_num_rows($GetAdj)-1; $i++)
+        {
+            $blah = mysql_fetch_array($GetAdj, MYSQL_NUM);
+            $Results[$i] = $blah[0];
+        }
+    
+    return $Results[rand(0, mysql_num_rows($GetAdj)-1)];
+        
+    }
+    
+    function getVerb($Letter, $Tense)
+    {
+        if ($Tense=="ing") $T="Now";
+        else if ($Tense=="ed") $T="Past";
+        else if ($Tense=="NO") $T="Name";
+        $GetVerb = mysql_query("select $T from Verb where Letter = '$Letter'");
+        if (mysql_num_rows($GetVerb)==0)
+            return $Letter."BlankVerb".ing;
+        
+        for ($i=0; $i <= mysql_num_rows($GetVerb)-1; $i++)
+        {
+            $blah = mysql_fetch_array($GetVerb, MYSQL_NUM);
+            $Results[$i] = $blah[0];
+        }
+        
+        return $Results[rand(0, mysql_num_rows($GetVerb)-1)];
+    }
+    
+    function getPerson($Letter)
+    {
+        $GetPerson = mysql_query("select Name from Person where Letter = '$Letter'");
+        if (mysql_num_rows($GetPerson)==0)
+            return $Letter."BlankPerson";
+        
+        for ($i=0; $i <= mysql_num_rows($GetPerson)-1; $i++)
+        {
+            $blah = mysql_fetch_array($GetPerson, MYSQL_NUM);
+            $Results[$i] = $blah[0];
+        }
+    
+    return $Results[rand(0, mysql_num_rows($GetPerson)-1)];
+        
+    }
+    
+    function getPlaceThing($Letter, $Plural)
+    {
+        $T="Name";
+        if ($Plural=="YES") $T="Plural";
+    
+        $GetPlaceThing = mysql_query("select $T from PlaceThing where Letter = '$Letter'");
+        if (mysql_num_rows($GetPlaceThing)==0)
+            return $Letter."BlankPlaceThing".$Plural;
+        
+        for ($i=0; $i <= mysql_num_rows($GetPlaceThing)-1; $i++)
+        {
+            $blah = mysql_fetch_array($GetPlaceThing, MYSQL_NUM);
+            $Results[$i] = $blah[0];
+        }
+    
+    return $Results[rand(0, mysql_num_rows($GetPlaceThing)-1)];
+            
+    }
+    
+    function getPlace($Letter)
+    {
+        $GetPlace = mysql_query("select Name from Place where Letter = '$Letter'");
+        if (mysql_num_rows($GetPlace)==0)
+            return $Letter."BlankPlace";
+        
+        for ($i=0; $i <= mysql_num_rows($GetPlace)-1; $i++)
+        {
+            $blah = mysql_fetch_array($GetPlace, MYSQL_NUM);
+            $Results[$i] = $blah[0];
+        }
+    
+    return $Results[rand(0, mysql_num_rows($GetPlace)-1)];
+        
+    }
+   
+    function makeMetal($Alias)
+    {
+	//$Alias = preg_replace("/[^A-Za-z]/i","",$Alias); 
+        $length = strlen($Alias);
+        
+        switch ($length)
+        {
+            case 1:
+                return getThing(substr($Alias, 0, 1), "NO");
+                break;
+                
+            case 2:
+                $which = rand(1, 4);
+                
+                switch ($which)
+                {
+                    case 1:// <adjective> <thing>
+                    return getAdj(substr($Alias, 0, 1))." ".getThing(substr($Alias, 1, 1), "NO");
+                    break;
+                    
+                    case 2:// <verb-ing> <PlaceThing>
+                    return getVerb(substr($Alias, 0, 1), "ing")." ".getPlaceThing(substr($Alias, 1, 1), "NO");
+                    break;
+                    
+                    case 3:// <adjective> <PlaceThing>
+                    return getAdj(substr($Alias, 0, 1))." ".getPlaceThing(substr($Alias, 1, 1), "NO");
+                    break;
+                    
+                    case 4://  <verb-ed> <PlaceThing>
+                    return getVerb(substr($Alias, 0, 1), "ed")." ".getThing(substr($Alias, 1, 1), "YES");
+                    break;
+                }        
+            break;
+            
+            case 3:
+                $which = rand(1,4);
+                
+                switch ($which)
+                {
+                    case 1:// <PersonThing> of <Adj> <thing plural>
+                    return getPersonThing(substr($Alias, 0, 1), "NO")." of ".getAdj(substr($Alias, 1, 1))." ".getThing(substr($Alias, 2, 1), "YES");
+                    break;
+                    
+                    case 2:// <adj> <adj> <PersonThing>
+                    return getAdj(substr($Alias, 0, 1))." ".getAdj(substr($Alias, 1, 1))." ".getPersonThing(substr($Alias, 2, 1), "NO");
+                    break;
+                    
+                    case 3:// <verb-ing> the <adj> <PlaceThing Plural>
+                    return getVerb(substr($Alias, 0, 1),"ing")." the ".getAdj(substr($Alias, 1, 1))." ".getPlaceThing(substr($Alias, 2, 1),"YES");
+                    break;
+                    
+                    case 4:// <verb-ed> <thing plural> of the dark <Placething plural>
+                    return getVerb(substr($Alias, 0, 1),"ed")." ".getThing(substr($Alias, 1, 1), "YES")." of the dark ".getPlaceThing(substr($Alias, 2, 1), "YES");
+                    default:
+                    break;
+                }
+                
+                break;
+                
+            case 4:
+                $which = rand(1,4);
+                
+                switch ($which)
+                {
+                    case 1:// <adj> <PersonThing> of <Adj> <PlaceThing plural>
+                    return getAdj(substr($Alias, 0, 1))." ".getPersonThing(substr($Alias, 1, 1), "NO")." of ".getAdj(substr($Alias, 2, 1))." ".getPlaceThing(substr($Alias, 3, 1), "YES");
+                    break;
+                    
+                    case 2:// <PersonThing> <verb-ing> the <Adj> <PlaceThing>
+                    return getPersonThing(substr($Alias, 0, 1), "NO")." ".getVerb(substr($Alias, 1, 1), "ing")." the ".getAdj(substr($Alias, 2, 1))." ".getPlaceThing(substr($Alias, 3, 1), "NO");
+                    break;
+                    
+                    case 3:// <PersonThing> of the <adj> <verb-ing> <PlaceThing>
+                    return getPersonThing(substr($Alias, 0, 1), "NO")." of the ".getAdj(substr($Alias, 1, 1))." ".getVerb(substr($Alias, 2, 1),"ing")." ".getPlaceThing(substr($Alias, 3, 1), "NO");
+                    break;
+                    
+                    case 4:// <Thing> sent from the <adj> <adj> <PlaceThing>
+                    return getThing(substr($Alias, 0, 1), "NO")." sent from the ".getAdj(substr($Alias, 1, 1))." ".getAdj(substr($Alias, 2, 1))." ".getPlaceThing(substr($Alias, 3, 1), "NO");
+                    break;
+                    
+                    default:
+                    break;
+                }
+                
+                break;
+                
+            case 5:
+                $which = rand(1,4);
+                
+                switch ($which)
+                {
+                    case 1: //<verb-ed> <adj> <PersonThing> rising from <adj> <PlaceThing Plural>
+                    return getVerb(substr($Alias, 0, 1),"ed")." ".getAdj(substr($Alias, 1, 1))." ".getPersonThing(substr($Alias, 2, 1),"NO")." rising from ".getAdj(substr($Alias, 3, 1))." ".getPlaceThing(substr($Alias, 4, 1), "YES");
+                    break;
+                    
+                    case 2: //<PersonThing> <verb-ing> <PlaceThing-plural> with <adj> <Thing-plural>
+                    return getPersonThing(substr($Alias, 0, 1), "NO")." ".getVerb(substr($Alias, 1, 1),"ing")." ".getPlaceThing(substr($Alias, 2, 1),"YES")." with ".getAdj(substr($Alias, 3, 1))." ".getThing(substr($Alias, 4, 1), "YES");
+                    break;
+                    
+                    case 3: //<PersonThing plural> and <PersonTHing Plural> <verb-ed> by <Adj> <PlaceThing Plural>
+                    return getPersonThing(substr($Alias, 0, 1), "YES")." and ".getPersonThing(substr($Alias, 1, 1), "YES")." ".getVerb(substr($Alias, 2, 1),"ed")." by ".getAdj(substr($Alias, 3, 1))." ".getPlaceThing(substr($Alias, 4, 1), "YES");
+                    break;
+    
+                    case 4: //<Adj> <PersonThing PLural> <verb-ing> the ancient <Thing plural> of <placeThing>
+                    return getAdj(substr($Alias, 0, 1))." ".getPersonThing(substr($Alias, 1, 1), "YES")." ".getVerb(substr($Alias, 2, 1), "ing")." the ancient ".getThing(substr($Alias, 3, 1), "YES")." of ".getPlaceThing(substr($Alias, 4, 1), "YES");
+                    break;
+                    
+                    default:
+                    break;
+                }
+                
+                break;
+                
+            case 6:
+                $which = rand(1,4);
+                
+                switch ($which)
+                {
+                    case 1: // <PersonThing> of <Adj> <THing Plural> summoned to <Verb> <Adj> <PlaceThing Plural>
+                    return getPersonThing(substr($Alias, 0, 1), "NO")." of ".getAdj(substr($Alias, 1, 1))." ".getThing(substr($Alias, 2, 1), "YES")." summoned to ".getVerb(substr($Alias, 3, 1), "NO")." the ".getAdj(substr($Alias, 4, 1))." ".getPlaceThing(substr($Alias, 5, 1), "YES");
+                    break;
+                    
+                    case 2: // <Thing Plural> from the <Adj> <PlaceThing plural> destined to <verb> the <Thing plural> of <PlaceTHing plural>
+                    return getThing(substr($Alias, 0, 1), "NO")." from the ".getAdj(substr($Alias, 1, 1))." ".getPlaceThing(substr($Alias, 2, 1), "YES")." destined to ".getVerb(substr($Alias, 3, 1), "NO")." the ".getThing(substr($Alias, 4, 1), "YES")." of ".getPlaceThing(substr($Alias, 5, 1), "YES");
+                    break;
+                    
+                    case 3: // <verb-ed> <PersonThing plural> <verb-ing> <Adj> <Adj> <Thing plural>
+                    return getVerb(substr($Alias,0,1),"ed")." ".getPersonThing(substr($Alias,1,1),"YES")." ".getVerb(substr($Alias,2,1),"ing")." ".getAdj(substr($Alias,3,1))." ".getAdj(substr($Alias,4,1))." ".getThing(substr($Alias,5,1),"YES");
+                    break;
+                    
+                    default: // <Adj> <PersonThing> <verbing> <Thing plural> of <Adj> <PlaceThing plural>
+                    return getAdj(substr($Alias, 0, 1))." ".getPersonThing(substr($Alias,1,1),"NO")." ".getVerb(substr($Alias,2,1),"ing")." ".getThing(substr($Alias,3,1),"YES")." of ".getAdj(substr($Alias,4,1))." ".getPlaceThing(substr($Alias,5,1),"YES");
+                    break;
+                    
+                }
+            break;
+                
+            case 7:
+                $which = rand(1,4);
+                
+                switch ($which)
+                {
+                    default: // <Adj> <PersonThing> <verb-ing> the <Adj> <THing plural> of the <adj> <PlaceTHing plural>
+                    return getAdj(substr($Alias, 0, 1))." ".getPersonThing(substr($Alias, 1, 1), "NO")." ".getVerb(substr($Alias, 2, 1), "ing")." the ".getAdj(substr($Alias, 3, 1))." ".getPlaceThing(substr($Alias, 4, 1), "YES")." of ".getAdj(substr($Alias, 5, 1))." ".getPlaceThing(substr($Alias, 6, 1), "YES");
+                    break;
+                    
+                    case 2: // <Thing> <verb-ing> <adj> <PersonThing plurals> for the <PersonThing's> <Adj> <PlaceThing>
+                    return getPersonThing(substr($Alias,0,1), "NO")." ".getVerb(substr($Alias,1,1),"ing")." ".getAdj(substr($Alias,2,1))." ".getPersonThing(substr($Alias,3,1),"YES")." for the ".getPersonThing(substr($Alias,4,1),"NO")."'s ".getAdj(substr($Alias,5,1))." ".getPlaceThing(substr($Alias,6,1),"NO");
+                    break;
+                }
+                
+            break;
+            
+            case 8:
+                $which = rand(1,4);
+                
+                switch($which)
+                {
+                    default: // <Adj> <PersonThing> of <Adj> <PlaceThing plural> <verb-ing> the <Adj> <THing Plural> of <PlaceThing PLural>
+                    return getAdj(substr($Alias,0,1))." ".getPersonThing(substr($Alias,1,1),"NO")." of ".getAdj(substr($Alias,2,1))." ".getPlaceThing(substr($Alias,3,1),"YES")." ".getVerb(substr($Alias,4,1),"ing")." the ".getAdj(substr($Alias,5,1))." ".getThing(substr($Alias,6,1),"YES")." of ".getPlaceThing(substr($Alias,7,1),"YES");
+                    break;
+                }
+            break;
+            
+            case 9:
+           	$which = rand(1.4);
+           	
+           	switch ($which)
+           	{
+           	    default: //<Adj> <Adj> <Personthing> <verbing> <placething plural> the <adj> <personthing plural> of <adj> <placething plural>
+                    return getAdj(substr($Alias,0,1))." ".getAdj(substr($Alias,1,1))." ".getPersonThing(substr($Alias,2,1),"NO")." ".getVerb(substr($Alias,3,1),"ing")." and ".getVerb(substr($Alias,4,1),"ing")." the ".getAdj(substr($Alias,5,1))." ".getPersonThing(substr($Alias,6,1),"YES")." of ".getAdj(substr($Alias,7,1))." ".getPlaceThing(substr($Alias,8,1),"YES");
+                    break;
+                }
+            break;
+            
+           case 10:
+           	$which = rand(1,4);
+           	
+           	switch ($which)
+           	{
+           	    case 1: //<Verbed> <Adj> <Adj> <Personthing> <verbing> <placething plural> the <adj> <personthing plural> of <adj> <placething plural>
+                    return getVerb(substr($Alias,0,1),"ed")." ".getAdj(substr($Alias,1,1))." ".getAdj(substr($Alias,2,1))." ".getPersonThing(substr($Alias,3,1),"YES")." ".getVerb(substr($Alias,4,1),"ing")." and ".getVerb(substr($Alias,5,1),"ing")." the ".getAdj(substr($Alias,6,1))." ".getPersonThing(substr($Alias,7,1),"YES")." of ".getAdj(substr($Alias,8,1))." ".getPlaceThing(substr($Alias,9,1),"YES");
+                    break;
+                    
+                    default: //<Things> of <Adj> <Adj> <Personthing> <verbing> <placething plural> the <adj> <personthing plural> of <adj> <placething plural>
+                    return getThing(substr($Alias,0,1),"YES")." of ".getAdj(substr($Alias,1,1))." ".getAdj(substr($Alias,2,1))." ".getPersonThing(substr($Alias,3,1),"YES")." ".getVerb(substr($Alias,4,1),"ing")." and ".getVerb(substr($Alias,5,1),"ing")." the ".getAdj(substr($Alias,6,1))." ".getPersonThing(substr($Alias,7,1),"YES")." of ".getAdj(substr($Alias,8,1))." ".getPlaceThing(substr($Alias,9,1),"YES");
+                    break;
+                }
+            break;
+            
+            case 11:
+            	$which = rand(1,4);
+            	
+            	switch ($which)
+            	{
+            	    default: //<Verbed> <Things> of <Adj> <Adj> <Personthing> <verbing> <placething plural> the <adj> <personthing plural> of <adj> <placething plural>
+                    return getVerb(substr($Alias,0,1),"ed")." ".getThing(substr($Alias,1,1),"YES")." of ".getAdj(substr($Alias,2,1))." ".getAdj(substr($Alias,3,1))." ".getPersonThing(substr($Alias,4,1),"YES")." ".getVerb(substr($Alias,5,1),"ing")." and ".getVerb(substr($Alias,6,1),"ing")." the ".getAdj(substr($Alias,7,1))." ".getPersonThing(substr($Alias,8,1),"YES")." of ".getAdj(substr($Alias,9,1))." ".getPlaceThing(substr($Alias,10,1),"YES");
+                    break;
+                }
+           break;
+            
+            default:
+                return "Your name is too evil";
+                break;
+        }
+        
+    }
+    
+    }
+    
+    if ($B_code == $IRCCB_ONCHANNELMSG || $B_code == $IRCCB_ONPRIVMSG)
+    { 
+       $domsg = 1;
+       if($B_code == $IRCCB_ONCHANNELMSG && $SYS_COMMAND == 'death')
+       { 	
+	 if ($SYS_PARAMS[1])
+	 {
+	   //adjective
+	   if (($SYS_PARAMS[1] == "-a") && ($SYS_PARAMS[2]))
+	   {
+		$atoadd = preg_replace("/[^A-Za-z]/i","",$SYS_PARAMS[2]);
+		
+		if (strlen($atoadd) > 0)
+		{
+			$test = mysql_query("select Name from Adjective where Name = '$atoadd'");
+			if (mysql_num_rows($test) > 0)
+				irc_privmsg($B_nick, "That word is already in the Adjective DB");
+			else{
+			$l = substr($atoadd,0,1);
+			mysql_query("insert into Adjective values (NULL, '$l', '$atoadd')");
+			echo mysql_error();
+			irc_privmsg($B_nick, "Ok, added the adjective \"".$atoadd."\" to the database");
+			}
+		}
+		$domsg=0;
+	   }
+	   
+	   //place
+	   else if (($SYS_PARAMS[1] == "-pl") && ($SYS_PARAMS[2]))
+	   {
+		$atoadd = preg_replace("/[^A-Za-z]/i","",$SYS_PARAMS[2]);
+		
+		if (strlen($atoadd) > 0)
+		{
+			$test = mysql_query("select Name from Place where Name = '$atoadd'");
+			if (mysql_num_rows($test) > 0)
+				irc_privmsg($B_nick, "That word is already in the Place DB");
+			else{
+			$l = substr($atoadd,0,1);
+			mysql_query("insert into Place values (NULL, '$l', '$atoadd')");
+			echo mysql_error();
+			irc_privmsg($B_nick, "Ok, added the place \"".$atoadd."\" to the database");
+			}
+		}
+		$domsg=0;
+	   }
+	   
+	   //person
+	   else if (($SYS_PARAMS[1] == "-pe") && ($SYS_PARAMS[2]))
+	   {
+		$atoadd = preg_replace("/[^A-Za-z]/i","",$SYS_PARAMS[2]);
+		
+		if (strlen($atoadd) > 0)
+		{
+			$test = mysql_query("select Name from Person where Name = '$atoadd'");
+			if (mysql_num_rows($test) > 0)
+				irc_privmsg($B_nick, "That word is already in the Person DB");
+			else{
+			$l = substr($atoadd,0,1);
+			mysql_query("insert into Person values (NULL, '$l', '$atoadd')");
+			echo mysql_error();
+			irc_privmsg($B_nick, "Ok, added the person \"".$atoadd."\" to the database");
+			}
+		}
+		$domsg=0;
+	   }
+	   
+	   //thing
+	   else if (($SYS_PARAMS[1] == "-t") && ($SYS_PARAMS[2]) && ($SYS_PARAMS[3]))
+	   {
+		$atoadd1 = preg_replace("/[^A-Za-z]/i","",$SYS_PARAMS[2]);
+		$atoadd2 = preg_replace("/[^A-Za-z]/i","",$SYS_PARAMS[3]);
+		
+		if ((strlen($atoadd1) > 0) && (strlen($atoadd2) > 0) && (substr($atoadd1,0,1) == substr($atoadd2,0,1)))
+		{
+			$test = mysql_query("select Name from Thing where Name = '$atoadd1'");
+			if (mysql_num_rows($test) > 0)
+				irc_privmsg($B_nick, "That word is already in the Thing DB");
+			else{
+			$l = substr($atoadd1,0,1);
+			mysql_query("insert into Thing values (NULL, '$l', '$atoadd1', '$atoadd2')");
+			echo mysql_error();
+			irc_privmsg($B_nick, "Ok, added the Thing \"".$atoadd1."\" to the database");
+			}
+		}
+		$domsg=0;
+	   }
+	   
+	   //personthing
+	   else if (($SYS_PARAMS[1] == "-pt") && ($SYS_PARAMS[2]) && ($SYS_PARAMS[3]))
+	   {
+		$atoadd1 = preg_replace("/[^A-Za-z]/i","",$SYS_PARAMS[2]);
+		$atoadd2 = preg_replace("/[^A-Za-z]/i","",$SYS_PARAMS[3]);
+		
+		if ((strlen($atoadd1) > 0) && (strlen($atoadd2) > 0) && (substr($atoadd1,0,1) == substr($atoadd2,0,1)))
+		{
+			$test = mysql_query("select Name from PersonThing where Name = '$atoadd1'");
+			if (mysql_num_rows($test) > 0)
+				irc_privmsg($B_nick, "That word is already in the PersonThing DB");
+			else{
+			$l = substr($atoadd1,0,1);
+			mysql_query("insert into PersonThing values (NULL, '$l', '$atoadd1', '$atoadd2')");
+			echo mysql_error();
+			irc_privmsg($B_nick, "Ok, added the PersonThing \"".$atoadd1."\" to the database");
+			}
+		}
+		$domsg=0;
+	   }
+	   
+	   //placething
+	   else if (($SYS_PARAMS[1] == "-plt") && ($SYS_PARAMS[2]) && ($SYS_PARAMS[3]))
+	   {
+		$atoadd1 = preg_replace("/[^A-Za-z]/i","",$SYS_PARAMS[2]);
+		$atoadd2 = preg_replace("/[^A-Za-z]/i","",$SYS_PARAMS[3]);
+		
+		if ((strlen($atoadd1) > 0) && (strlen($atoadd2) > 0) && (substr($atoadd1,0,1) == substr($atoadd2,0,1)))
+		{
+			$test = mysql_query("select Name from PlaceThing where Name = '$atoadd1'");
+			if (mysql_num_rows($test) > 0)
+				irc_privmsg($B_nick, "That word is already in the PlaceThing DB");
+			else{
+			$l = substr($atoadd1,0,1);
+			mysql_query("insert into PlaceThing values (NULL, '$l', '$atoadd1', '$atoadd2')");
+			echo mysql_error();
+			irc_privmsg($B_nick, "Ok, added the PlaceThing \"".$atoadd1."\" to the database");
+			}
+		}
+		$domsg=0;
+	   }
+	   
+	   //verb
+	   else if (($SYS_PARAMS[1] == "-v") && $SYS_PARAMS[2] && $SYS_PARAMS[3] && $SYS_PARAMS[4])
+	   {
+		$atoadd1 = preg_replace("/[^A-Za-z]/i","",$SYS_PARAMS[2]);
+		$atoadd2 = preg_replace("/[^A-Za-z]/i","",$SYS_PARAMS[3]);
+		$atoadd3 = preg_replace("/[^A-Za-z]/i","",$SYS_PARAMS[4]);
+		
+		if ((strlen($atoadd1) > 0) && (strlen($atoadd2) > 0) && (strlen($atoadd3) > 0)
+		  && (substr($atoadd1,0,1) == substr($atoadd2,0,1))
+		  && (substr($atoadd1,0,1) == substr($atoadd3,0,1))
+		  && (substr($atoadd2,0,1) == substr($atoadd3,0,1)))
+		{
+			$test = mysql_query("select Name from Verb where Name = '$atoadd1'");
+			if (mysql_num_rows($test) > 0)
+				irc_privmsg($B_nick, "That word is already in the Verb DB");
+			else{
+			$l = substr($atoadd1,0,1);
+			mysql_query("insert into Verb values (NULL, '$l', '$atoadd1', '$atoadd2', '$atoadd3')");
+			echo mysql_error();
+			irc_privmsg($B_nick, "Ok, added the Verb \"".$atoadd1."\" to the database");
+			}
+		}
+		$domsg=0;
+	   }
+	   else
+	   {
+	        $metal = makeMetal(preg_replace("/[^A-Za-x]/i","",$SYS_PARAMS[1]));
+	        $name = $SYS_PARAMS[1];
+           }
+	 }
+         else
+         {
+       	   $metal = makeMetal(preg_replace("/[^A-Za-z]/i","",$B_nick));
+	   $name = $B_nick;
+	 }
+	 if ($domsg==1)
+    	 	irc_privmsg($B_destination,$name.": ".$metal);
+       }
+    }

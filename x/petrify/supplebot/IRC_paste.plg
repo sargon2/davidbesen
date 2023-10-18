@@ -1,0 +1,26 @@
+$MODULE_NAME = "IRC_paster.plg";
+$MODULE_AUTHOR = "guantes";
+$MODULE_DESC = "Pasting service";
+
+if ($B_tick) {
+   $query = "select * from pastes where pasted is null";
+   $res = mysql_query($query);
+   $query = "update pastes set pasted=1 where pasted is null";
+   mysql_query($query);
+
+   while($data = mysql_fetch_assoc($res)) {
+      $ip = $data["ip"];
+      $text = $data["text"];
+      $dest = $data["destchannel"];
+
+      irc_privmsg($dest, "<$ip> $text");
+      usleep(500);
+   }
+
+   unset($data);
+   unset($ip);
+   unset($text);
+   unset($dest);
+   unset($data);
+   mysql_free_result($res);
+}

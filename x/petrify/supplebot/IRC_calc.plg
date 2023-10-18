@@ -1,0 +1,49 @@
+$MODULE_NAME = "IRC_calc.plg";
+$MODULE_AUTHOR = "sargon";
+$MODULE_DESC = "Uses awk as a calculator";
+
+if ($B_code == $IRCCB_ONPRIVMSG || $B_code == $IRCCB_ONCHANNELMSG) {
+
+   // *** calc module
+   // *** params: expression
+   // *** access: -1
+   if (($SYS_COMMAND == "calc" && $B_code == $IRCCB_ONPRIVMSG) || $SYS_COMMAND == "calc") {
+      if ( $B_code == $IRCCB_ONPRIVMSG ) 
+         $dest = $B_nick;
+      else
+         $dest = $B_destination;
+
+	$string = $SYS_PARAMSTRING;
+	$string = str_replace("$", "", $string);
+	$string = str_replace("`", "", $string);
+	$string = str_replace("'", "", $string);
+	$string = str_replace("\"", "", $string);
+	$var = `bcwrap "$string"`;
+//	$var = `echo "$string" | bc -l`; // !calc 2493852745928475 ^ 2389472983472983 ...
+// 	$var = `awk 'BEGIN { printf $SYS_PARAMSTRING; }'`;
+
+	irc_privmsg($dest, "Result: " . $var);
+
+	}
+   if (($SYS_COMMAND == "hex" && $B_code == $IRCCB_ONPRIVMSG) || $SYS_COMMAND == "hex") {
+      if ( $B_code == $IRCCB_ONPRIVMSG ) 
+         $dest = $B_nick;
+      else
+         $dest = $B_destination;
+
+	$string = $SYS_PARAMSTRING;
+	$string = str_replace("$", "", $string);
+	$string = str_replace("`", "", $string);
+	$string = str_replace("'", "", $string);
+	$string = str_replace("\"", "", $string);
+	$string = "obase=16;ibase=10;$string";
+	$var = `bcwrap "$string"`;
+//	$var = `echo "$string" | bc -l`; // !calc 2493852745928475 ^ 2389472983472983 ...
+// 	$var = `awk 'BEGIN { printf $SYS_PARAMSTRING; }'`;
+
+	irc_privmsg($dest, "Result: " . $var);
+
+	}
+	unset($var);
+	unset($string);
+}

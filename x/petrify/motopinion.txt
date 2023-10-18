@@ -1,0 +1,25 @@
+MotOpinion - Crazy 8
+5000ft above Sea Level, 75°F
+
+Motor: Aveox 27/39/1.5; 2083rpm/V; 0.016 Ohms; 1.53A idle.
+Battery: Sanyo RC2400; 7 cells; 2400mAh @ 1.2V; 0.0032 Ohms/cell.
+Speed Control: Generic Brushless ESC; 0.006 Ohms; High rate.
+Drive System: Generic prop; 9x5 (Pconst=1.31; Tconst=0.95) direct drive.
+Airframe: WattAge Crazy 8; 270sq.in; 32.3oz; 17.2oz/sq.ft; Cd=0.041; Cl=0.08; Clopt=0.43; Clmax=0.98.
+Stats: 166 W/lb in; 138 W/lb out; 24mph stall; 36mph opt @ 65% (19:28); 83mph level @ 101% (12:31); 2030ft/min @ 40.4°; -472ft/min @ -8.7°.
+
+Power System Notes:
+
+The full-throttle motor current at the best lift-to-drag ratio airspeed (41.2A) falls between the motor's maximum efficiency current (23.6A) and its current at maximum output (182.7A), thus making effective use of the motor.
+
+Aerodynamic Notes:
+
+The static pitch speed (60mph) is within the range of approximately 2.5 to 3 times the model's stall speed (24mph), which is considered ideal for good performance.
+With a wing loading of 17.2oz/sq.ft, a model of this size will have flying characteristics suited to the intermediate pilot, for use in calm to moderate wind conditions.
+The static thrust (39.4oz) to weight (32.3oz) ratio is 1.22:1, which will result in extremely short take-off runs, no difficulty taking off from grass surfaces (assuming sufficiently large wheels), and vertical climb-outs. This model will probably be able to perform a hover or torque roll.
+At the best lift-to-drag ratio airspeed, the excess-thrust (21.2oz) to weight (32.3oz) ratio is 0.66:1, which will give steep climbs and excellent acceleration. This model should be able to do consecutive loops, and has sufficient in-flight thrust for almost any aerobatic maneuver.
+
+General Notes:
+
+This analysis is based on calculations that take motor heating effects into account.
+

@@ -1,0 +1,60 @@
+$MODULE_NAME = "IRC_modban.plg";
+$MODULE_AUTHOR = "guantes";
+$MODULE_DESC = "Functions for banning users from certain modules/commands";
+
+if ($B_code == $IRCCB_ONPRIVMSG) {
+   // *** ban - bans a user from everything, a certain module, or a certain command.  Ex: "ban ^bascule:.*$ mod help" would ban bascule from using the help module.  The username regex will operate on the string: <nick>:<realname>:<host> 
+   // *** params: username, [ban type=mod,cmd | ALL] [<module name> | <command name>]
+   // *** access: 800
+   if ( $SYS_COMMAND == "ban" && $USR_LEVEL >= 800) {
+      if ( count($SYS_PARAMS) == 3 ) {
+         // This is probably a request to ban all...
+         if ( strtolower($SYS_PARAMS[2]) == "all" ) {
+            banFromAll($SYS_PARAMS[1]);
+            irc_privmsg($B_nick, $SYS_PARAMS[1] . " was banned from all functions.");
+         } else {
+         // must be an error
+            irc_privmsg($B_nick, "that's not valid syntax... see help for ban");
+         }
+      } else 
+      if ( count($SYS_PARAMS) == 4) {
+         if ( strtolower($SYS_PARAMS[2]) == "mod" )  {
+            banFromModule($SYS_PARAMS[1], $SYS_PARAMS[3]);
+            irc_privmsg($B_nick, $SYS_PARAMS[1] . " was banned from module: " . $SYS_PARAMS[3]);
+         } else
+         if ( strtolower($SYS_PARAMS[2]) == "cmd" ) {
+            banFromCommand($SYS_PARAMS[1], $SYS_PARAMS[3]);
+            irc_privmsg($B_nick, $SYS_PARAMS[1] . " was banned from command: " . $SYS_PARAMS[3]);
+         } else {
+            irc_privmsg($B_nick, "that's not valid syntax... see help for ban");
+         }
+      } else {
+         irc_privmsg($B_nick, "that's not valid syntax... see help for ban");
+      }
+   } // End ban
+   
+   
+   // *** listbans - lists all bans currently in effect
+   // *** params: none
+   // *** access: 800
+   if ( $SYS_COMMAND == "listbans" && $USR_LEVEL >= 800 ) {
+      $i = 1;
+      irc_privmsg($B_nick, "There are " . count($BANNED_DATA) . " active bans.");
+      foreach ($BANNED_DATA as $currban) {
+         irc_privmsg($B_nick, "[$i] - " . $currban['nick'] . " banned from: " . $currban['from']);
+         $i++;
+         sleep(1);
+      }
+   } // End listbans
+   
+   
+   // *** unban - removes a ban either by number (listbans) or nick regex.  Removing by nick regex will remove ALL nicks that match the regex.
+   // *** params: number | nick regex
+   // *** access: 800
+   if ( $SYS_COMMAND == "unban" && $USR_LEVEL >= 800) {
+      unban($SYS_PARAMS[1]);
+      irc_privmsg($B_nick, "Ban was removed for: " . $SYS_PARAMS[1]);
+   }
+
+
+}

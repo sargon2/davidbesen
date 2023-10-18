@@ -1,0 +1,33 @@
+
+100
+101 2002-12-16bgm_xmas_e_1.rgz
+102 2002-12-16bgm_xmas_e_2.rgz
+103 2002-12-14bgm_xmas_e.rgz
+104 2002-12-14gdata_xmas_e_1.gpf
+105 2002-12-14gdata_xmas_e_2.gpf
+106 2002-12-14gdata_xmas_e_3.gpf
+107 2002-12-14gdata_xmas_e_4.gpf
+108 2002-12-17gdata_e.gpf
+109
+110 2002-12-31gdata_e.gpf
+111 2002-12-24bgm.rgz
+112 2003-01-03gdata_e.gpf
+113 2003-01-09gdata_e.gpf
+114
+115
+116
+117 2003-01-20gdata_e.gpf
+118
+119 2003-01-24gdata_e.gpf
+120
+121
+122
+123 2003-02-14gdata_e.gpf
+124 2003-02-20gdata_e.gpf
+125 
+126 2003-02-20aBGM_e.rgz
+127 
+128 2003-02-21gdata_e.gpf
+129 2003-02-21aRagexe_e.rgz
+130 2003-02-21bRagexe_e.rgz
+131 2003-02-21gdata_e_b.gpf

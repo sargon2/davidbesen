@@ -1,0 +1,78 @@
+section .data
+;	num dd 0x29387
+	hex db '0123456789ABCDEF'
+section .bss
+	outstr resb 2
+	num resd 4
+section .text
+	global _start
+_start:
+
+	mov dword [num], 0x2
+	mov eax,1
+	mov ecx,44
+fib_start:
+;	mov [num],eax
+	push ecx
+	push dword [num]
+	add dword [num],eax
+
+	mov word [outstr],"0x"
+
+	mov ebx,1
+	mov ecx,outstr
+	mov edx,2
+	mov eax,4
+	int 0x80
+
+	mov ecx,4
+loop_start:
+	dec ecx
+	mov ebx,num
+	add ebx,ecx
+
+	push ecx
+	push ebx
+
+	movzx eax,byte [ebx]
+	and eax,0xf
+	mov bl,[hex+eax]
+	mov byte [outstr+1],bl
+
+	pop ebx
+
+	movzx eax,byte [ebx]
+	and eax,0xf0
+	shr eax,4
+	mov bl,[hex+eax]
+	mov byte [outstr],bl
+
+;	mov byte [outstr+2],' '
+
+	mov ebx,1
+	mov ecx,outstr
+	mov edx,2
+	mov eax,4
+	int 0x80
+
+	pop ecx
+
+	cmp ecx,0
+	jnz loop_start
+
+	mov ebx,1
+	mov byte [outstr],0xa
+	mov ecx,outstr
+	mov edx,1
+	mov eax,4
+	int 0x80
+
+	pop eax
+	pop ecx
+	dec ecx
+	cmp ecx,0
+	jnz fib_start
+
+	mov eax,1
+	mov ebx,1
+	int 0x80

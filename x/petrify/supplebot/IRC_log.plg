@@ -1,0 +1,23 @@
+$MODULE_NAME = "IRC_log.plg";
+$MODULE_AUTHOR = "guantes";
+$MODULE_DESC = "SQL logging module";
+$FORCE_UNBANNABLE = true;
+
+
+if ($B_code != $IRCCB_ONCTCPPING && $B_code != $IRCCB_ONPRIVMSG && $B_code != 0) {
+   // heh, don't wanna log ID requests
+   if ( !($B_code == $IRCCB_ONPRIVMSG && strtolower($SYS_COMMAND) == "id") ) {
+      $query = "insert into log (type, nick, contents, time, identd, host, dest)
+                values
+                (
+                \"$B_code\",
+                \"$B_nick\",
+                \"$B_param\",
+                now(),
+                \"$B_identd\",
+                \"$B_host\",
+                \"$B_destination\")";
+      mysql_query($query) or print("(IRC_log.plg) Query error: " . mysql_query() . "\n");
+   }
+   unset($query);
+}

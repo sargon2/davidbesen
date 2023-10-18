@@ -1,0 +1,113 @@
+section .data
+	hex db '0123456789ABCDEF'
+	s0 db 0xAA
+	s1 db 0xAA
+	b db '?'
+section .text
+	global _start
+_start:
+	;mov eax,s0
+	;mov ebx,s1
+	;mov edx,b
+
+	mov ecx,0x0 ; counter...
+L1:
+
+;	push '?'
+
+	mov al,byte [s1]
+	push eax ; t1
+	mov al,byte [s0] ; s[1] = s[0]
+	mov byte [s1],al ; "
+
+;	mov al,byte [s0]
+	mov bl,al
+	shl al,1
+	push eax ; s[0] << 1
+	mov al,bl
+
+;	mov al,byte [s0]
+	and al,0x80
+	shr al,7
+	pop ebx ; s[0] << 1
+	or al,bl
+	; now eax has t2 in it
+	pop ebx ; t1
+	add al,bl
+;	pop ebx ; '?'
+;	add al,bl
+	add al,byte [b]
+
+	mov byte [s0], al
+	
+	; loop
+
+	inc ecx
+	cmp ecx,0x3B9ACA00
+	js L1
+
+	; print it out
+
+	mov bl,byte [s0]
+
+	and ebx,0xf0
+	shr ebx,4
+	mov edx,hex
+	add edx,ebx
+
+	mov ecx,edx
+	mov edx,1
+	mov eax,4
+	mov ebx,1
+	int 0x80
+
+	mov bl,byte [s0]
+
+	and ebx,0xf
+	mov edx,hex
+	add edx,ebx
+
+	mov ecx,edx
+	mov edx,1
+	mov eax,4
+	mov ebx,1
+	int 0x80
+
+
+	mov bl,byte [s1]
+
+	and ebx,0xf0
+	shr ebx,4
+	mov edx,hex
+	add edx,ebx
+
+	mov ecx,edx
+	mov edx,1
+	mov eax,4
+	mov ebx,1
+	int 0x80
+
+	mov bl,byte [s1]
+
+	and ebx,0xf
+	mov edx,hex
+	add edx,ebx
+
+	mov ecx,edx
+	mov edx,1
+	mov eax,4
+	mov ebx,1
+	int 0x80
+
+	mov byte [s0],0xa
+	mov ecx,s0
+	mov edx,1
+	mov eax,4
+	mov ebx,1
+	int 0x80
+
+
+	mov eax,1
+	mov ebx,1
+	int 0x80
+

@@ -1,0 +1,29 @@
+Dim MyFile, MyPath, MyName
+' Returns "WIN.INI"  if it exists.
+MyFile = Dir("C:\WINDOWS\WIN.INI")   
+
+' Returns filename with specified extension. If more than one *.ini
+' file exists, the first file found is returned.
+MyFile = Dir("C:\WINDOWS\*.INI")
+
+' Call Dir again without arguments to return the next *.INI file in the 
+' same directory.
+MyFile = Dir
+
+' Return first *.TXT file with a set hidden attribute.
+MyFile = Dir("*.TXT", vbHidden)
+
+' Display the names in C:\ that represent directories.
+MyPath = "c:\"   ' Set the path.
+MyName = Dir(MyPath, vbDirectory)   ' Retrieve the first entry.
+Do While MyName <> ""   ' Start the loop.
+   ' Ignore the current directory and the encompassing directory.
+   If MyName <> "." And MyName <> ".." Then
+      ' Use bitwise comparison to make sure MyName is a directory.
+      If (GetAttr(MyPath & MyName) And vbDirectory) = vbDirectory Then
+         Debug.Print MyName   ' Display entry only if it
+      End If   ' it represents a directory.
+   End If
+   MyName = Dir   ' Get next entry.
+Loop
+

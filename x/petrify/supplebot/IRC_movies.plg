@@ -1,0 +1,66 @@
+$MODULE_NAME = "IRC_movies.plg";
+$MODULE_AUTHOR = "sargon";
+$MODULE_DESC = "Returns current movie times in fort collins, colorado.";
+
+if ($B_code == $IRCCB_ONPRIVMSG || $B_code == $IRCCB_ONCHANNELMSG) {
+
+   // *** movie - returns current movie times
+   // *** params: [regex to match movie name] 
+   // *** access: 900
+   if (($SYS_COMMAND == "movie" && $B_code == $IRCCB_ONPRIVMSG) || $SYS_COMMAND == "movie") {
+      if (count($SYS_PARAMS) < 2) {
+	 irc_privmsg($B_nick, "Need a movie name");
+      } else {
+         $url = "http://www.frii.com/community/movies/viewAll.php";
+         
+         $fd = fopen($url, "r");
+         if ( !$fd ) {
+            irc_privmsg($B_nick, "Something terrible has happened trying to get the webpage!");
+         } else {
+            socket_set_timeout($fd, 2);
+            $pagesrc = fread($fd, 41000);
+            fclose($fd);
+
+	    $lines = explode("\n", $pagesrc);
+	    $match = 0;
+
+	    for($i=1;$i<count($lines);$i++) {
+		if(stristr($lines[$i], "Listings for")) {
+			preg_match("/Listings for (.*)</", $lines[$i], $matches);
+			$currplace = $matches[1];
+		}
+		if(stristr($lines[$i], "viewMovie.php")) {
+			preg_match("/viewMovie.php.movieID=\d+..([^<]*)</", $lines[$i], $matches);
+			$currmovie = $matches[1];
+		}
+		if(preg_match("/<p>\d/", $lines[$i])) {
+			preg_match("/<p>(\d.*)</", $lines[$i], $matches);
+			$times = $matches[1];
+			if(preg_match("/$SYS_PARAMS[1]/i", $currmovie)) {
+			$i = count($lines)+1; $match = 1; }
+		}
+	    }
+
+            
+            if ( $B_code == $IRCCB_ONPRIVMSG ) 
+               $dest = $B_nick;
+            else
+               $dest = $B_destination;
+            
+	    if(($currmovie && $currplace && $times) && ($match == 1)) {
+                irc_privmsg($dest, "$currmovie is playing at the $currplace at: $times");
+	    } else {
+		irc_privmsg($dest, "Error retrieving movie information.");
+	    }
+         }
+      }
+      
+	unset($lines);
+	unset($currplace);
+	unset($currmovie);
+	unset($times);
+	unset($matches);
+	unset($pagesrc);
+   }
+    
+}
