@@ -4,3 +4,12 @@
 [submodule "sensitivity"]
 	path = sensitivity
 	url = https://bitbucket.org/dbesen/sensitivity.git
+[submodule "morse"]
+	path = morse
+	url = https://bitbucket.org/dbesen/morse.git
+[submodule "textwriter"]
+	path = textwriter
+	url = https://bitbucket.org/dbesen/textwriter.git
+[submodule "weather"]
+	path = weather
+	url = https://bitbucket.org/dbesen/weather.git
