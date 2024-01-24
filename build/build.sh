@@ -2,7 +2,7 @@
 
 cd "$(dirname "${BASH_SOURCE[0]}")"
 
-cd ..
+cd ../live
 
 gen_index () {
     pushd $1

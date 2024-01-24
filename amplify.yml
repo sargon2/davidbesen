@@ -7,7 +7,7 @@ frontend:
         - build/build.sh
   artifacts:
     # IMPORTANT - Please verify your build output directory
-    baseDirectory: /
+    baseDirectory: live
     files:
       - '**/*'
   cache:

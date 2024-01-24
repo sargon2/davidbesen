@@ -1,15 +1,15 @@
 [submodule "rollover"]
-	path = rollover
+	path = live/rollover
 	url = https://bitbucket.org/dbesen/rollover.git
 [submodule "sensitivity"]
-	path = sensitivity
+	path = live/sensitivity
 	url = https://bitbucket.org/dbesen/sensitivity.git
 [submodule "morse"]
-	path = morse
+	path = live/morse
 	url = https://bitbucket.org/dbesen/morse.git
 [submodule "textwriter"]
-	path = textwriter
+	path = live/textwriter
 	url = https://bitbucket.org/dbesen/textwriter.git
 [submodule "weather"]
-	path = weather
+	path = live/weather
 	url = https://bitbucket.org/dbesen/weather.git
