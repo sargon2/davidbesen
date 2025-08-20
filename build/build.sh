@@ -20,3 +20,4 @@ gen_index x/t
 gen_index x/j
 gen_index x/petrify
 gen_index_no_recurse x
+gen_index rants
