@@ -1,0 +1,255 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>The Legality of FPV Drone Piloting</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="https://edwardtufte.github.io/tufte-css/tufte.min.css" />
+  <style>
+/* CFR / statutory quotations */
+
+blockquote.cfr {
+    /* border-left: 2px solid rgba(17, 17, 17, 0.55); */
+    padding-left: 1rem;
+    margin-left: 2rem;
+
+    font-family:
+        Charter,
+        "Bitstream Charter",
+        "Iowan Old Style",
+        "Palatino Linotype",
+        Palatino,
+        Georgia,
+        serif;
+
+    font-style: normal;
+    font-size: 0.94em;
+    line-height: 1.4;
+}
+
+blockquote.cfr > p {
+    display: grid;
+    grid-template-columns: max-content minmax(0, 1fr);
+    column-gap: 0.5em;
+
+    font-size: 1.2rem;
+    line-height: 1.7rem;
+
+    margin-top: 0.25rem;
+    margin-bottom: 0.25rem;
+}
+
+blockquote.cfr > p.cfr-level-0 {
+    margin-top: 0.6rem;
+    margin-bottom: 0.3rem;
+}
+
+blockquote.cfr > p.cfr-level-0:first-child {
+    margin-top: 0;
+}
+
+blockquote.cfr > p.cfr-level-1 {
+    margin-left: 2em;
+    width: calc(55% - 2em);
+}
+
+.cfr-marker {
+    white-space: nowrap;
+    font-style: normal;
+    font-weight: 600;
+}
+
+  </style>
+</head>
+<body>
+  <article>
+    <h1>The Legality of FPV Drone Piloting</h1>
+    <p class="subtitle">David Besen, 08/19/2026. I am not a lawyer.</p>
+    <section>
+      <p>Several of my friends are into FPV drone piloting, and I'm interested in taking up the hobby as well. But, what I'm discovering is not a fun, skill-based hobby - it's a rabbit hole of poorly written, draconian laws. There are many cumbersome FAA and FCC laws around the hobby, and I'm going to dive into the 3 particular laws that I think are the biggest reasons to avoid the hobby. (This applies only to the US.)</p>
+      <h2>1. The FAA Spotter Requirement</h2>
+      <p>The Code of Federal Regulations (CFR) § 107.31 says this:</p>
+      <blockquote class="cfr"
+        cite="https://www.ecfr.gov/current/title-14/chapter-I/subchapter-F/part-107/subpart-B/section-107.31">
+
+        <p class="cfr-level-0">
+          <span class="cfr-marker">(a)</span>
+          <span>
+            With vision that is unaided by any device other than corrective
+            lenses, the remote pilot in command, the visual observer (if one
+            is used), and the person manipulating the flight control of the
+            small unmanned aircraft system must be able to see the unmanned
+            aircraft throughout the entire flight in order to:
+          </span>
+        </p>
+
+        <p class="cfr-level-1">
+          <span class="cfr-marker">(1)</span>
+          <span>Know the unmanned aircraft's location;</span>
+        </p>
+
+        <p class="cfr-level-1">
+          <span class="cfr-marker">(2)</span>
+          <span>
+            Determine the unmanned aircraft's attitude, altitude, and
+            direction of flight;
+          </span>
+        </p>
+
+        <p class="cfr-level-1">
+          <span class="cfr-marker">(3)</span>
+          <span>Observe the airspace for other air traffic or hazards; and</span>
+        </p>
+
+        <p class="cfr-level-1">
+          <span class="cfr-marker">(4)</span>
+          <span>
+            Determine that the unmanned aircraft does not endanger the life
+            or property of another.
+          </span>
+        </p>
+
+        <p class="cfr-level-0">
+          <span class="cfr-marker">(b)</span>
+          <span>
+            Throughout the entire flight of the small unmanned aircraft,
+            the ability described in paragraph (a) of this section must be
+            exercised by either:
+          </span>
+        </p>
+
+        <p class="cfr-level-1">
+          <span class="cfr-marker">(1)</span>
+          <span>
+            The remote pilot in command and the person manipulating the
+            flight controls of the small unmanned aircraft system; or
+          </span>
+        </p>
+
+        <p class="cfr-level-1">
+          <span class="cfr-marker">(2)</span>
+          <span>A visual observer.</span>
+        </p>
+
+        <footer>
+          <cite>
+            <a href="https://www.ecfr.gov/current/title-14/chapter-I/subchapter-F/part-107/subpart-B/section-107.31">
+              14 CFR § 107.31
+            </a>
+          </cite>
+        </footer>
+      </blockquote>
+      <p>This is very clear that FPV goggles are not good enough to fly, according to the law. The visual observer requirement is actually a compromise - before the visual observer text was added to the law, it was illegal to fly using FPV at all. In order to make it legal, they added the ability to use a visual observer.</p>
+      <p>But, this requirement is very cumbersome. Zero of my friends use a visual observer when they go fly. There are not visual observers at freestyle events, bandos, or outdoor races (indoor areas aren't governed by the FAA). FPV celebrity Joshua Bardwell does not use visual observers when flying. So, this law is not having its intended effect. All it's doing is making the entire FPV hobby illegal, rather than improving its safety. It is not improving the safety of real aircraft pilots because drone pilots are neither obeying it nor ceasing their activities. This law is ineffective and overbearing.</p>
+      <p>Note that the text of the law is self-contradictory. Part (a) uses the word "and" to say the remote pilot, the visual observer, and the person manipulating the controls must all three have "vision that is unaided", meaning using FPV goggles at all is illegal. But part (b) uses the terms "either" and "or", implying the pilot doesn't need "vision that is unaided" provided they have an observer.</p>
+
+      <h2>2. The FCC Identification Requirement</h2>
+      <p>For radio communications to be legal, they must be authorized by the FCC. The FCC authorizes devices certified under "Part 15", and also allows "amateur" radio communications via part 97 of the CFR, among other authorization paths.</p>
+      <p>Some FPV drone equipment is certified as part 15; for example, Radiomaster radios are part 15, meaning they're allowed to be used without any license. But, if a device isn't certified under part 15, it has to be otherwise authorized. One way to get something authorized is to use the "amateur" frequencies - these are frequencies intended for amateur ham radio operators, and all drone VTX transmitters that I'm aware of use these amateur frequencies. To be allowed to be used, the operator has to have a ham technician or better license, and the transmitter has to comply with part 97. Part 97 (actually the definitions preceeding it, in § 97.3 (a)) say to use amateur frequencies, you have to be "interested in radio technique solely with a personal aim and without pecuniary interest." This means it's illegal to use any FPV equipment that uses these amateur bands for any kind of profit, including posting FPV videos to ad-enabled Youtube channels.</p>
+      <p> One of the requirements of using amateur frequencies is you must identify yourself. § 97.119 parts a and b are:</p>
+      <blockquote class="cfr"
+        cite="https://www.ecfr.gov/current/title-47/chapter-I/subchapter-D/part-97/subpart-B/section-97.119">
+
+        <p class="cfr-level-0">
+          <span class="cfr-marker">(a)</span>
+          <span>
+            Each amateur station, except a space station or telecommand station,
+            must transmit its assigned call sign on its transmitting channel at
+            the end of each communication, and at least every 10 minutes during a
+            communication, for the purpose of clearly making the source of the
+            transmissions from the station known to those receiving the
+            transmissions. No station may transmit unidentified communications
+            or signals, or transmit as the station call sign, any call sign not
+            authorized to the station.
+          </span>
+        </p>
+
+        <p class="cfr-level-0">
+          <span class="cfr-marker">(b)</span>
+          <span>
+            The call sign must be transmitted with an emission authorized for
+            the transmitting channel in one of the following ways:
+          </span>
+        </p>
+
+        <p class="cfr-level-1">
+          <span class="cfr-marker">(1)</span>
+          <span>
+            By a CW emission. When keyed by an automatic device used only for
+            identification, the speed must not exceed 20 words per minute;
+          </span>
+        </p>
+
+        <p class="cfr-level-1">
+          <span class="cfr-marker">(2)</span>
+          <span>
+            By a phone emission in the English language. Use of a phonetic
+            alphabet as an aid for correct station identification is encouraged;
+          </span>
+        </p>
+
+        <p class="cfr-level-1">
+          <span class="cfr-marker">(3)</span>
+          <span>
+            By a RTTY emission using a specified digital code when all or part
+            of the communications are transmitted by a RTTY or data emission;
+          </span>
+        </p>
+
+        <p class="cfr-level-1">
+          <span class="cfr-marker">(4)</span>
+          <span>
+            By an image emission conforming to the applicable transmission
+            standards, either color or monochrome, of
+            <a href="https://www.ecfr.gov/current/title-47/section-73.682#p-73.682(a)">
+              § 73.682(a)
+            </a>
+            of the FCC Rules when all or part of the communications are
+            transmitted in the same image emission.
+          </span>
+        </p>
+
+        <footer>
+          <cite>
+            <a href="https://www.ecfr.gov/current/title-47/chapter-I/subchapter-D/part-97/subpart-B/section-97.119">
+              47 CFR § 97.119(a)–(b)
+            </a>
+          </cite>
+        </footer>
+      </blockquote>
+      <p>"Telecommand Station" is defined as "An amateur station that transmits communications to initiate, modify or terminate functions of a space station." Drone VTXes are transmitting video, so the applicable section is (b)(4). That references § 73.682(a). § 73.682(a) is:<p>
+      <blockquote class="cfr" cite="https://www.ecfr.gov/current/title-47/chapter-I/subchapter-C/part-73/subpart-E/section-73.682#p-73.682(a)">
+        <p class="cfr-level-0">
+          <span class="cfr-marker">(a)-(c)</span>
+          <span>
+            [Reserved]
+          </span>
+        </p>
+        <footer>
+          <cite>
+            <a href="https://www.ecfr.gov/current/title-47/chapter-I/subchapter-C/part-73/subpart-E/section-73.682#p-73">
+              47 CFR § 73.682(a)-(c)
+            </a>
+          </cite>
+        </footer>
+      </blockquote>
+      <p>This means that the CFR is claiming you must comply with nonexistant transmission standards. Is that possible for any human to do? I don't know.</p>
+      <p>Some drone operators interpret this to mean you have to put your ham callsign in your drone's video OSD. There is nothing in the CFR that says it's legal to do that. But surely it complies with the spirit of the law, if not the letter. Right?</p>
+      <p>The identification requirement applies to ALL transmissions, not just the control signal and the video signal. There is also telemetry to worry about. The receiver in the drone transmits telemetry back to the controller, using amateur bands. Some receivers (e.g. some Radiomaster receivers) have part 15, so don't need to identify. But many, including every receiver made by BetaFPV as far as I can tell, don't. Part 97 specifically calls out telemetry in § 97.217,  saying it's "not considered to be codes or ciphers", but does not exempt it from the identification requirement. That means your receiver, when sending telemetry, has to broadcast your ham callsign using an approved format such as RTTY. No receiver I'm aware of has this feature, meaning all non-part-15 drone receivers I'm aware of are illegal to market, sell, or operate.</p>
+    <h2>3. Illegal Per the FCC Even if Used Correctly</h2>
+    <p>Drone VTXes are commonly manufactured in other countries such as China. Those other countries have different laws than the US does, so it makes sense to design the transmitter to be able to transmit on various different frequencies. Unfortunately, the FCC says that's illegal.</p>
+    <p>FCC Enforcement Advisory <a href="https://www.fcc.gov/document/enforcement-bureau-issues-advisory-drone-transmitter-equipment">DA-18-581</a> says:</p>
+    <blockquote cite="https://www.fcc.gov/document/enforcement-bureau-issues-advisory-drone-transmitter-equipment">
+      <p>If an AV transmitter is capable of operating outside of the amateur frequency bands, it cannot be advertised, sold, or operated within the United States without an FCC equipment certification.</p>
+      <footer>
+        <a href="https://www.fcc.gov/document/enforcement-bureau-issues-advisory-drone-transmitter-equipment">Enforcement Bureau Issues Advisory on Drone Transmitter Equipment</a>
+      </footer>
+    </blockquote>
+    <p>This means that if your transmitter can broadcast outside the amateur band, <i>even if you don't use your transmitter outside the amateur band</i>, it's illegal to operate at all.</p>
+    <p>An enforcement advisory is not a law. The laws in this area are quite complex, and the advisory is the FCC's interpretation of the law. I was able to find several related laws, such as 47 CFR § 2.805(a) that says equipment which requires authorization can't be operated without it, and 47 U.S.C. § 302a(b) that says no person may "use devices" that fail to comply with FCC regulations. I wasn't able to find a specific law that says it's illegal to operate a non-certified, non-amateur-capable device. However, the FCC clearly intends to treat those devices as illegal, and has enforced the law that way in the past - for example, they fined HobbyKing almost $3 million in 2020 specifically for selling such devices.</p>
+    <p>Devices which can operate outside of the amateur bands won't be certified, so if you can find a certified device, that means it's legal to use with the appropriate license. You can tell if your device is certified by whether or not it has a valid FCC ID on the packaging, in the manual, or on the device itself. No drone VTX that I've been able to find is explicitly certified, and I suspect if one out there is certified, it will be severely crippled in range or capability.</p>
+    </section>
+  </article>
+</body>
+</html>
+
